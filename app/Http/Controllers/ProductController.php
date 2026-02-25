@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -21,7 +22,8 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        $categories = Category::all();
+        return view('products.create', compact('categories'));
     }
 
     /**
@@ -29,7 +31,25 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required|unique:products|min:3|max:100',
+            'color' => 'required|min:3|max:50',
+            'material' => 'required|min:2|max:100',
+            'price' => 'required|numeric|min:0',
+            'description' => 'required|min:10|max:300',
+            'category_id' => 'required|exists:categories,id',
+        ]);
+
+        $product = new Product();
+        $product->name = $request->input('name');
+        $product->color = $request->input('color');
+        $product->material = $request->input('material');
+        $product->price = $request->input('price');
+        $product->description = $request->input('description');
+        $product->category_id = $request->input('category_id');
+        $product->save();
+
+        return redirect('products')->with('success', 'Product created successfully!');
     }
 
     /**
@@ -37,7 +57,7 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        //
+        return view('products.show', compact('product'));
     }
 
     /**
@@ -45,7 +65,8 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        //
+        $categories = Category::all();
+        return view('products.edit', compact('product', 'categories'));
     }
 
     /**
@@ -53,7 +74,24 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        //
+        $request->validate([
+            'name' => 'required|min:3|max:100|unique:products,name,' . $product->id,
+            'color' => 'required|min:3|max:50',
+            'material' => 'required|min:2|max:100',
+            'price' => 'required|numeric|min:0',
+            'description' => 'required|min:10|max:300',
+            'category_id' => 'required|exists:categories,id',
+        ]);
+
+        $product->name = $request->name;
+        $product->color = $request->color;
+        $product->material = $request->material;
+        $product->price = $request->price;
+        $product->description = $request->description;
+        $product->category_id = $request->category_id;
+        $product->save();
+
+        return redirect('products')->with('success', 'Product updated successfully!');
     }
 
     /**
@@ -61,6 +99,8 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        //
+        $product->delete();
+
+        return redirect('products')->with('success', 'Product deleted successfully!');
     }
 }
