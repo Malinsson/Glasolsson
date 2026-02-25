@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
@@ -15,3 +16,4 @@ Route::get('logout', LogoutController::class);
 Route::get('dashboard', DashboardController::class)->middleware('auth');
 
 Route::resource('products', ProductController::class);
+Route::resource('categories', CategoryController::class);
