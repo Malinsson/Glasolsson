@@ -12,3 +12,5 @@
 
 <h3>Create new category</h3>
 <p><a href="{{ route('categories.create')}}">Create</a> </p>
+
+<p><a href="/dashboard">Till dashboard</a> </p>
