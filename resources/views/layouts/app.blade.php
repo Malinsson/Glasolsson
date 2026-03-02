@@ -8,8 +8,8 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body>
-    <div style="background-image: url('{{ asset('images/background.png') }}');" class="bg-cover bg-center bg-fixed min-h-screen">
-    <header class="bg-transparent h-24 text-white py-4 backdrop-blur-sm">
+
+    <header class="absolute w-full bg-transparent h-24 text-white py-4">
         <div class="container mx-auto flex justify-between items-center">
             <a href="/" class="text-lg font-bold">Glasolsson</a>
             <nav>
@@ -23,14 +23,13 @@
     </header>
 
 
-    <main class="mx-auto max-w-5xl px-4 py-8>
+    <main class="min-h-screen">
         @include('errors')
         @yield('content')
     </main>
 
-    </div>
 
-    <footer class="bg-cyan-500 text-white py-4 mt-8">
+    <footer class="bg-slate-700 text-white py-4">
         <div class="container mx-auto text-center">
             &copy; {{ date('Y') }} Glasolsson. All rights reserved.
         </div>
