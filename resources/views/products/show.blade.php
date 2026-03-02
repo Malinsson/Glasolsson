@@ -1,4 +1,8 @@
-@include('errors')
+@extends('layouts.app')
+
+@section('title', 'Redigera kategori')
+
+@section('content')
     
 <a href="{{ route('products.index') }}">back</a> 
 
@@ -9,3 +13,5 @@
 <p>color: {{$product->color}}</p>
 <p>cost: {{$product->price}} kr</p>
 <p>{{$product->description}}</p>
+
+@endsection
