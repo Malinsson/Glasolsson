@@ -1,4 +1,9 @@
-@include ('errors')
+@extends('layouts.app')
+
+@section('title', 'Redigera kategori')
+
+@section('content')
+
 
 <form method="post" action="/login">
     <div>
@@ -12,3 +17,5 @@
     <input type="hidden" name="_token" value="{{ csrf_token() }}" />
     <button type="submit">Login</button>
 </form>
+
+@endsection
