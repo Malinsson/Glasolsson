@@ -3,6 +3,7 @@
 @section('title', 'Redigera kategori')
 
 @section('content')
+
     <form action="{{ route('categories.update', ['category' => $category->id]) }}" method="POST" class="space-y-4 max-w-md">
         @csrf
         @method('PATCH')
@@ -15,4 +16,5 @@
     </form>
 
     <a class="inline-block mt-4 text-indigo-600 hover:underline" href="{{ route('categories.index') }}">Go back</a>
+    
 @endsection
