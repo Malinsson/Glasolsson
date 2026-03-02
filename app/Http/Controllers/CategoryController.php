@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class CategoryController extends Controller
 {
@@ -12,7 +13,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        $categories = Category::All();
+        return view('categories.index', ['categories' => $categories]);
     }
 
     /**
@@ -20,7 +22,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('categories.create');
     }
 
     /**
@@ -28,7 +30,16 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required|unique:categories|min:3|max:50',
+        ]);
+
+        $category = new Category();
+        $category->name = $request->input('name');
+        $category->slug = Str::slug($request->input('name'));
+        $category->save();
+
+        return redirect('categories')->with('success', 'Category created successfully!');
     }
 
     /**
@@ -36,7 +47,7 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        //
+        return view('categories.show', compact('category'));
     }
 
     /**
@@ -44,7 +55,7 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        //
+        return view('categories.edit', compact('category'));
     }
 
     /**
@@ -52,7 +63,15 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        //
+        $request->validate([
+            'name' => 'required|min:3|max:50|unique:categories,name,' . $category->id,
+        ]);
+
+        $category->name = $request->input('name');
+        $category->slug = Str::slug($request->input('name'));
+        $category->save();
+
+        return redirect('categories')->with('success', 'Category updated successfully!');
     }
 
     /**
@@ -60,6 +79,8 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        //
+        $category->delete();
+
+        return redirect('categories')->with('success', 'Category deleted successfully!');
     }
 }

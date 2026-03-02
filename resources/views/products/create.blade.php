@@ -1,0 +1,22 @@
+@include('errors')
+
+<form action="{{ route('products.store') }}" method="POST">
+    @csrf
+    <label for="name">Namn</label>
+    <input type="text" name="name" id="name">
+    <label for="color">Färg</label>
+    <input type="text" name="color" id="color">
+    <label for="material">Material</label>
+    <input type="text" name="material" id="material">
+    <label for="description">Produkt beskrivning</label>
+    <input type="text" name="description" id="description">
+    <label for="price">Pris</label>
+    <input type="number" name="price" id="price">
+    <label for="category">Tilldela kategori</label>
+    <select name="category_id" id="category">
+        @foreach ($categories as $category)
+            <option value="{{ $category->id }}">{{ $category->name }}</option>
+        @endforeach
+    </select>
+    <button type="submit">Skapa produkt</button>
+</form>
