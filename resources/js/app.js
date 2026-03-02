@@ -9,15 +9,11 @@ function toggleForm(e) {
     loginForm.classList.toggle('hidden');
 }
 
-if (loginToggle) {
-    loginToggle.addEventListener('click', toggleForm);
-}
+loginToggle.addEventListener('click', toggleForm);
+closeLogin.addEventListener('click', toggleForm);
 
-if (closeLogin) {
-    closeLogin.addEventListener('click', toggleForm);
-    closeLogin.addEventListener('keydown', function(e) {
-        if (e.key === 'Enter') {
-            toggleForm(e);
-        }
-    });
-}
+closeLogin.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') {
+        toggleForm(e);
+    }
+});
