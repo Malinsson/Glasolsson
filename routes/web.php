@@ -7,7 +7,7 @@ use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
-Route::view('/', 'index')->middleware('guest');
+Route::view('/', 'index');
 Route::view('login', 'index')->name('login')->middleware('guest');
 
 Route::post('login', LoginController::class)->middleware('guest');
