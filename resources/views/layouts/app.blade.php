@@ -31,10 +31,27 @@
     </main>
 
 
-    <footer class="bg-slate-700 text-white py-4">
+    <footer class="bg-slate-800 text-white py-6">
+
+    <div class="grid grid-cols-3 gap-4 mb-6 container mx-auto py-4">
+        <div class="container mx-auto text-center">
+            <h2 class="text-2xl font-logo">Glas Olsson</h2>
+            <p class="font-text text-sm mt-1">Din pålitliga partner för kvalitetsglas och speglar.</p>
+        </div>
+        <div class="container mx-auto text-center">
+            <h3 class="text-lg font-logo">Kontakt</h3>
+            <p class="font-text text-sm mt-1">E-post: kontakt@glasolsson.se</p>
+        </div>
+        <div class="container mx-auto text-center">
+            <h3 class="text-lg font-logo">Följ oss</h3>
+            <p class="font-text text-sm mt-1">Facebook | Instagram | LinkedIn</p>
+        </div>
+    </div>
+
         <div class="container mx-auto text-center">
             &copy; {{ date('Y') }} Glas Olsson. All rights reserved.
         </div>
+
     </footer>
 
 </body>
