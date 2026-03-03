@@ -16,7 +16,11 @@
                 <ul class="flex space-x-4">
 {{--                     <li><a href="{{ route('categories.index') }}" class="hover:underline">Kategorier</a></li>
                     <li><a href="{{ route('products.index') }}" class="hover:underline">Produkter</a></li> --}}
-                    <li><a href="#" id="login-toggle" class="font-text font-light text-xl hover:underline cursor-pointer">Login</a></li>
+                    @if(auth()->check())
+                        <li><a href="/logout" class="font-text font-light text-xl hover:underline cursor-pointer">Logout</a></li>
+                    @else
+                        <li><a href="#" id="login-toggle" class="font-text font-light text-xl hover:underline cursor-pointer">Login</a></li>
+                    @endif 
                 </ul>
             </nav>
         </div>
