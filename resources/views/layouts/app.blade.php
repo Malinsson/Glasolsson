@@ -9,17 +9,17 @@
 </head>
 <body>
 
-    <header class="absolute flex justify-center w-full bg-transparent h-24 text-white py-4">
+    <header class="{{ request()->is('/') ? 'absolute bg-transparent' : 'bg-slate-800' }} flex justify-center w-full h-24 text-white py-4">
         <div class="container mx-auto flex justify-between items-center">
             <a href="/" class="text-4xl font-logo">Glas Olsson</a>
             <nav>
                 <ul class="flex space-x-4">
-{{--                     <li><a href="{{ route('categories.index') }}" class="hover:underline">Kategorier</a></li>
-                    <li><a href="{{ route('products.index') }}" class="hover:underline">Produkter</a></li> --}}
+{{--                     <li><a href="{{ route('categories.index') }}" class="hover:underline">Kategorier</a></li>--}}
                     @if(auth()->check())
-                        <li><a href="/logout" class="font-text font-light text-xl hover:underline cursor-pointer">Logout</a></li>
+                        <li><a href="/dashboard" class="font-text font-light text-xl hover:underline">Dashboard</a></li> 
+                        <li><a href="/logout" class="font-text font-light text-xl hover:underline">Logout</a></li>
                     @else
-                        <li><a href="#" id="login-toggle" class="font-text font-light text-xl hover:underline cursor-pointer">Login</a></li>
+                        <li><a href="#" id="login-toggle" class="font-text font-light text-xl hover:underline">Login</a></li>
                     @endif 
                 </ul>
             </nav>
