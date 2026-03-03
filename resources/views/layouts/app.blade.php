@@ -9,14 +9,14 @@
 </head>
 <body>
 
-    <header class="absolute w-full bg-transparent h-24 text-white py-4">
+    <header class="absolute flex justify-center w-full bg-transparent h-24 text-white py-4">
         <div class="container mx-auto flex justify-between items-center">
-            <a href="/" class="text-lg font-bold">Glas Olsson</a>
+            <a href="/" class="text-4xl font-logo">Glas Olsson</a>
             <nav>
                 <ul class="flex space-x-4">
-                    <li><a href="{{ route('categories.index') }}" class="hover:underline">Kategorier</a></li>
-                    <li><a href="{{ route('products.index') }}" class="hover:underline">Produkter</a></li>
-                    <li><a href="#" id="login-toggle" class="hover:underline cursor-pointer">Login</a></li>
+{{--                     <li><a href="{{ route('categories.index') }}" class="hover:underline">Kategorier</a></li>
+                    <li><a href="{{ route('products.index') }}" class="hover:underline">Produkter</a></li> --}}
+                    <li><a href="#" id="login-toggle" class="font-text font-light text-xl hover:underline cursor-pointer">Login</a></li>
                 </ul>
             </nav>
         </div>
