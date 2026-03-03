@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Redigera kategori')
+@section('title', 'Index - Glas Olsson')
 
 @section('content')
 
