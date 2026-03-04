@@ -5,8 +5,11 @@
 @section('content')
 
 <section class="border p-3">
+    
+    <a href="/dashboard">Dashboard</a>
 
     <h2 class="p-3 text-2xl">Products</h2>
+
 
     <table class="w-full table-fixed border-collapse text-sm text-left" aria-label="navigation list for extended information about products">
         
