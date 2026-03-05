@@ -28,6 +28,8 @@
             <input type="checkbox" id="{{$product->color}}" name="{{$product->color}}" value="{{$product->color}}">
             <label for="{{$product->color}}">{{$product->color}}</label>
         @endforeach
+        <p>Pris:</p>
+        <input type="range" min="1" max="3000" value="50" class="slider" id="price">
     </form>
 
     <table class="w-full table-fixed border-collapse text-sm text-left" aria-label="navigation list for extended information about products">
