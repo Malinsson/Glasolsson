@@ -12,6 +12,13 @@
 
     <h2 class="p-3 text-2xl">Produkter</h2>
 
+    <form action="">
+        @foreach ($categories as $category)
+            <input type="checkbox" id="{{ $category->name }}" name="{{ $category->name }}" value="{{ $category->name }}">
+            <label for="{{ $category->name }}">{{ $category->name }}</label>
+        @endforeach
+    </form>
+
     <table class="w-full table-fixed border-collapse text-sm text-left" aria-label="navigation list for extended information about products">
         
         <thead>
