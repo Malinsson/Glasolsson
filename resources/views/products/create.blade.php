@@ -18,5 +18,6 @@
             <option value="{{ $category->id }}">{{ $category->name }}</option>
         @endforeach
     </select>
+    <input type="file" name="image" id="image" accept="image/jpg, image/webp, image/png, image/avif">
     <button type="submit">Skapa produkt</button>
 </form>

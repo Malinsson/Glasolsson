@@ -30,15 +30,15 @@
     </div>
 </div>
 
-<section id="products" class="flex flex-wrap justify-center pt-8 pb-16">
-    <h2 class="text-3xl font-logo font-bold mb-8 text-center w-full">Produkter</h2>
+<section id="products" class="flex flex-wrap justify-center pt-8 pb-16 bg-gray-200">
+    <h2 class="text-4xl font-logo font-bold mb-8 text-center w-full">Produkter</h2>
 
     @foreach ($products as $product)
-        <div class=" w-sm flex flex-col justify-between items-center py-10 px-4 shadow-md m-4">
+        <div class="bg-white w-sm flex flex-col justify-between items-center py-10 px-4 shadow-md m-4 hover:shadow-lg transition-shadow duration-300 rounded">
             <img src="{{ $product->image }}" alt="{{ $product->name }}" class="w-full h-auto object-cover">
             <h3 class="text-text font-bold mt-2">{{ $product->name }}</h3>
-            <p><span>{{ $product->color }}</span> <span>{{ $product->category->name }}</span></p>
-            <p class="text-lg font-bold">${{ number_format($product->price, 2) }}:-</p>
+            <p class="mt-2"><span>{{ $product->color }}</span> <span>{{ $product->category->name }}</span></p>
+            <p class="text-lg font-bold mt-2">${{ number_format($product->price, 2) }}:-</p>
         </div>
     @endforeach
 
