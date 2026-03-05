@@ -11,9 +11,10 @@ class CategoryController extends Controller
     /**
      * Display a listing of the resource.
      */
+
     public function index()
     {
-        $categories = Category::All();
+        $categories = Category::paginate(10);
         return view('categories.index', ['categories' => $categories]);
     }
 
