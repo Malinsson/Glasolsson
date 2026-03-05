@@ -6,11 +6,10 @@
 
 <section class="p-3">
     
-    <a href="/dashboard">Dashboard</a>
-
-    <a href="{{ route('products.create') }}">Skapa produkt</a>
-
-    <h2 class="p-3 text-2xl">Produkter</h2>
+    <div class="flex items-center justify-between">
+        <h2 class="p-3 text-2xl">Produkter</h2>
+        <a class="bg-slate-600 hover:bg-slate-800 text-white font-bold py-2 px-4 rounded cursor-pointer" href="{{ route('products.create') }}">Skapa ny produkt</a>
+    </div>
 
     <table class="w-full table-fixed border-collapse text-sm text-left" aria-label="navigation list for extended information about products">
         
