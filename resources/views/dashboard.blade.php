@@ -10,4 +10,6 @@
 <hr>
 <a href="/logout">Logout</a>
 
+<a href="/products">Products</a>
+<a href="/categories">Categories</a>
 @endsection
