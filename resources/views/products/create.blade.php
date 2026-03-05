@@ -28,5 +28,3 @@
 </form>
 
 @endsection
-
-@vite('resources/js/file-upload-validation.js')
