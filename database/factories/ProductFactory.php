@@ -24,6 +24,7 @@ class ProductFactory extends Factory
             'description' => fake()->sentences(1, true),
             'price' => fake()->randomFloat(2, 500, 5000),
             'category_id' => fake()->randomElement(Category::pluck('id')),
+            'image' => 'images/stock/stock' . fake()->numberBetween(1, 4) . '.avif',
         ];
     }
 }

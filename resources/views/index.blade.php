@@ -30,5 +30,16 @@
     </div>
 </div>
 
+<section id="products" class="flex flex-wrap">
+    @foreach ($products as $product)
+        <div class="w-sm flex">
+            <img src="{{ $product->image }}">
+            <h3>{{ $product->name }}</h3>
+            <p><span>{{ $product->color }}</span> <span>{{ $product->category->name }}</span></p>
+            <p>{{ $product->price }}:-</p>
+        </div>
+    @endforeach
+</section>
+
 
 @endsection

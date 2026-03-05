@@ -5,9 +5,13 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\ProductController;
+use App\Models\Product;
 use Illuminate\Support\Facades\Route;
 
-Route::view('/', 'index');
+Route::get('/', function () {
+    $products = Product::all();
+    return view('index', compact('products'));
+});
 Route::view('login', 'index')->name('login')->middleware('guest');
 
 Route::post('login', LoginController::class)->middleware('guest');

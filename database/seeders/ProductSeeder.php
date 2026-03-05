@@ -62,6 +62,13 @@ class ProductSeeder extends Seeder
             'Robust konstruktion med sofistikerad look.'
         ];
 
+        $stockImages = [
+            'images/stock/stock1.avif',
+            'images/stock/stock2.avif',
+            'images/stock/stock3.avif',
+            'images/stock/stock4.avif',
+        ];
+
         foreach (range(1, 20) as $index) {
             Product::factory()->create([
                 'name' => fake()->randomElement($names) . ' ' . fake()->unique()->numberBetween(100, 999),
@@ -70,6 +77,7 @@ class ProductSeeder extends Seeder
                 'description' => fake()->randomElement($descriptions),
                 'price' => fake()->randomFloat(2, 799, 3999),
                 'category_id' => Category::inRandomOrder()->first()->id,
+                'image' => fake()->randomElement($stockImages),
             ]);
         }
     }
