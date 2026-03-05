@@ -8,6 +8,8 @@
     
     <a href="/dashboard">Dashboard</a>
 
+    <a href="{{ route('products.create') }}">Skapa produkt</a>
+
     <h2 class="p-3 text-2xl">Produkter</h2>
 
     <table class="w-full table-fixed border-collapse text-sm text-left" aria-label="navigation list for extended information about products">
