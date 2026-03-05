@@ -1,4 +1,8 @@
-@include('errors')
+@extends('layouts.app')
+
+@section('title', 'Create product')
+
+@section('content')
 
 <form action="{{ route('products.store') }}" method="POST" enctype="multipart/form-data">
     @csrf
@@ -19,5 +23,10 @@
         @endforeach
     </select>
     <input type="file" name="image" id="image" accept="image/jpg, image/jpeg, image/webp, image/png, image/avif">
+    <p id="image-error" style="color: red; display: none;"></p>
     <button type="submit">Skapa produkt</button>
 </form>
+
+@endsection
+
+@vite('resources/js/file-upload-validation.js')

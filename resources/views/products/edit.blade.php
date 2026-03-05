@@ -1,4 +1,8 @@
-@include('errors')
+@extends('layouts.app')
+
+@section('title', 'Edit product')
+
+@section('content')
 
 <form action="{{ route('products.update', ['product' => $product->id]) }}" method="POST" enctype="multipart/form-data">
     @csrf
@@ -21,8 +25,13 @@
     </select>
     <label for="image">Bild</label>
     <input type="file" name="image" id="image" accept="image/jpg, image/webp, image/png, image/avif">
+    <p id="image-error" style="color: red; display: none;"></p>
     @if($product->image)
         <p>Nuvarande bild: {{ basename($product->image) }}</p>
     @endif
     <button type="submit">Uppdatera produkt</button>
 </form>
+
+@endsection
+
+@vite('resources/js/file-upload-validation.js')
