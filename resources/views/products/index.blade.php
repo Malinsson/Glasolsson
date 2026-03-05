@@ -13,9 +13,20 @@
     <h2 class="p-3 text-2xl">Produkter</h2>
 
     <form action="">
+        <p>Kategori:</p>
         @foreach ($categories as $category)
             <input type="checkbox" id="{{ $category->name }}" name="{{ $category->name }}" value="{{ $category->name }}">
             <label for="{{ $category->name }}">{{ $category->name }}</label>
+        @endforeach
+        <p>Material:</p>
+        @foreach ($products as $product)
+            <input type="checkbox" id="{{$product->material}}" name="{{$product->material}}" value="{{$product->material}}">
+            <label for="{{$product->material}}">{{$product->material}}</label>
+        @endforeach
+        <p>Färger:</p>
+        @foreach ($products as $product)
+            <input type="checkbox" id="{{$product->color}}" name="{{$product->color}}" value="{{$product->color}}">
+            <label for="{{$product->color}}">{{$product->color}}</label>
         @endforeach
     </form>
 
