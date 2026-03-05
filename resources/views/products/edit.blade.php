@@ -1,6 +1,6 @@
 @include('errors')
 
-<form action="{{ route('products.update', ['product' => $product->id]) }}" method="POST">
+<form action="{{ route('products.update', ['product' => $product->id]) }}" method="POST" enctype="multipart/form-data">
     @csrf
     @method('PATCH')
     <label for="name">Namn</label>
@@ -19,5 +19,10 @@
             <option value="{{ $category->id }}" {{ old('category_id', $product->category_id) == $category->id ? 'selected' : '' }}>{{ $category->name }}</option>
         @endforeach
     </select>
+    <label for="image">Bild</label>
+    <input type="file" name="image" id="image" accept="image/jpg, image/webp, image/png, image/avif">
+    @if($product->image)
+        <p>Nuvarande bild: {{ basename($product->image) }}</p>
+    @endif
     <button type="submit">Uppdatera produkt</button>
 </form>

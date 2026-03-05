@@ -1,6 +1,6 @@
 @include('errors')
 
-<form action="{{ route('products.store') }}" method="POST">
+<form action="{{ route('products.store') }}" method="POST" enctype="multipart/form-data">
     @csrf
     <label for="name">Namn</label>
     <input type="text" name="name" id="name">
@@ -18,6 +18,6 @@
             <option value="{{ $category->id }}">{{ $category->name }}</option>
         @endforeach
     </select>
-    <input type="file" name="image" id="image" accept="image/jpg, image/webp, image/png, image/avif">
+    <input type="file" name="image" id="image" accept="image/jpg, image/jpeg, image/webp, image/png, image/avif">
     <button type="submit">Skapa produkt</button>
 </form>
