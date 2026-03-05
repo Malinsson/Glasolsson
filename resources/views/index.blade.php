@@ -30,15 +30,22 @@
     </div>
 </div>
 
-<section id="products" class="flex flex-wrap">
+<section id="products" class="flex flex-wrap justify-center pt-8 pb-16">
+    <h2 class="text-3xl font-logo font-bold mb-8 text-center w-full">Produkter</h2>
+
     @foreach ($products as $product)
-        <div class="w-sm flex">
-            <img src="{{ $product->image }}">
-            <h3>{{ $product->name }}</h3>
+        <div class=" w-sm flex flex-col justify-between items-center py-10 px-4 shadow-md m-4">
+            <img src="{{ $product->image }}" alt="{{ $product->name }}" class="w-full h-auto object-cover">
+            <h3 class="text-text font-bold mt-2">{{ $product->name }}</h3>
             <p><span>{{ $product->color }}</span> <span>{{ $product->category->name }}</span></p>
-            <p>{{ $product->price }}:-</p>
+            <p class="text-lg font-bold">${{ number_format($product->price, 2) }}:-</p>
         </div>
     @endforeach
+
+    <div class="w-full flex justify-center mt-8">
+        {{ $products->links() }}
+    </div>
+
 </section>
 
 

@@ -9,7 +9,7 @@ use App\Models\Product;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    $products = Product::all();
+    $products = Product::paginate(9);
     return view('index', compact('products'));
 });
 Route::view('login', 'index')->name('login')->middleware('guest');
