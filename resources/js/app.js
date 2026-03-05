@@ -5,19 +5,21 @@ const loginForm = document.getElementById('login-form');
 const loginToggle = document.getElementById('login-toggle');
 const closeLogin = document.getElementById('close-login');
 
-function toggleForm(e) {
-    e.preventDefault();
-    loginForm.classList.toggle('hidden');
-}
-
-loginToggle.addEventListener('click', toggleForm);
-closeLogin.addEventListener('click', toggleForm);
-
-closeLogin.addEventListener('keydown', function(e) {
-    if (e.key === 'Enter') {
-        toggleForm(e);
+if (loginForm && loginToggle && closeLogin) {
+    function toggleForm(e) {
+        e.preventDefault();
+        loginForm.classList.toggle('hidden');
     }
-});
+
+    loginToggle.addEventListener('click', toggleForm);
+    closeLogin.addEventListener('click', toggleForm);
+
+    closeLogin.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter') {
+            toggleForm(e);
+        }
+    });
+};
 
 
 const menuToggle = document.getElementById('close-sidemenu');
@@ -54,3 +56,4 @@ if (menuToggle && menu && openMenu) {
         }
     });
 }
+
