@@ -8,5 +8,5 @@
     <button type="submit">Skapa</button>
 </form>
 
-<a href="{{ route('categories.index') }}">Go back</a>
+<a href="{{ route('categories.index') }}">Tillbaka</a>
 

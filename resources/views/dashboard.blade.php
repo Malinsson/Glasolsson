@@ -10,6 +10,6 @@
 <hr>
 <a href="/logout">Logout</a>
 
-<a href="/products">Products</a>
-<a href="/categories">Categories</a>
+<a href="/products">Produkter</a>
+<a href="/categories">Kategorier</a>
 @endsection
