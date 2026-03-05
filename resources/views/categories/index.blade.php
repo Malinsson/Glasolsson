@@ -37,7 +37,9 @@
 
     <h3>Skapa ny Kategori:</h3>
     <p><a href="{{ route('categories.create')}}">Skapa</a></p>
-    {{ $categories->links() }}
+    <div class="pagination-white">
+        {{ $categories->links() }}
+    </div>
 </section>
 
 @endsection
