@@ -6,7 +6,7 @@
     
 <a href="{{ route('products.index') }}"><- Tillbaka</a> 
 
-<section class="flex flex-col flex-wrap gap-3 m-4">
+<section class="font-text flex flex-col flex-wrap gap-3 m-4">
 
     <p>Id: {{$product->id}}</p>
     <h2 class="text-2xl">{{$product->name}}</h2> 
