@@ -113,7 +113,6 @@ class ProductController extends Controller
         $product->category_id = $request->category_id;
 
         if ($request->hasFile('image')) {
-            // Delete old image if it exists and is not a stock image
             if ($product->image && !str_starts_with($product->image, 'images/stock/')) {
                 Storage::disk('public')->delete($product->image);
             }

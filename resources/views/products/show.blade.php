@@ -22,7 +22,12 @@
 <div class="flex flex-row justify-between gap-3 m-8">
     <a href="{{ route('products.edit', $product->id) }}" class="bg-slate-600 hover:bg-slate-800 text-white font-bold py-2 px-4 rounded cursor-pointer">Redigera produkt</a>
 
-    <a href="{{ route('products.destroy', $product->id) }}" class="bg-red-600 hover:bg-red-800 text-white font-bold py-2 px-4 rounded cursor-pointer" onclick="event.preventDefault(); if(confirm('Är du säker på att du vill ta bort denna produkt?')) { document.getElementById('delete-form').submit(); }">Ta bort produkt</a>
+    <form action="{{ route('products.destroy', ['product' => $product->id]) }}" method="POST" style="display:inline;">
+        @method('DELETE')
+        @csrf
+        <button type="submit" class="bg-red-600 hover:bg-red-800 text-white font-bold py-2 px-4 rounded cursor-pointer"
+        onclick="return confirm('Är du säker på att du vill ta bort denna produkt?')">Radera produkt</button>
+    </form>
 
 </div>
 
