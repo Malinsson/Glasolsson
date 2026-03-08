@@ -13,12 +13,34 @@ class ProductController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
         $categories = Category::all();
-        $products = Product::paginate(10);
-        return view('products.index', ['products' => $products], ['categories' => $categories]);
-    }
+
+        $colors    = Product::select('color')->distinct()->pluck('color');
+        $materials = Product::select('material')->distinct()->pluck('material');
+
+        /** products filter query **/
+        $products = Product::query()
+            ->when($request->categories, function ($query) use ($request) {
+                $query->whereIn('category_id', $request->categories);
+            })
+            ->when($request->colors, function ($query) use ($request) {
+                $query->whereIn('color', $request->colors);
+            })
+            ->when($request->materials, function ($query) use ($request) {
+                $query->whereIn('material', $request->materials);
+            })
+            ->when($request->max_price, function ($query) use ($request) {
+                $query->where('price', '<=', $request->max_price);
+            })
+            ->with('category')
+            ->paginate(10)
+            ->withQueryString();
+
+        return view('products.index', compact('products', 'categories', 'colors', 'materials'));
+    }   
+    
 
     /**
      * Show the form for creating a new resource.

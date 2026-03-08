@@ -11,26 +11,63 @@
     <a href="{{ route('products.create') }}">Skapa produkt</a>
 
     <h2 class="p-3 text-2xl">Produkter</h2>
+    
+    <form method="GET" action="{{ route('products.index') }}">
 
-    <form action="">
-        <p>Kategori:</p>
-        @foreach ($categories as $category)
-            <input type="checkbox" id="{{ $category->name }}" name="{{ $category->name }}" value="{{ $category->name }}">
+        <div>
+            <p>Kategori:</p>
+            @foreach ($categories as $category)
+                <label>
+                    <input
+                        type="checkbox"
+                        name="categories[]"
+                        value="{{ $category->id }}"
+                        {{ in_array($category->id, request('categories', [])) ? 'checked' : '' }}>
+                    {{ $category->name }}
+                </label>
+            @endforeach
+        </div>
+
+        <div>
+            <p>Färg:</p>
+            @foreach ($colors as $color)
+                <label>
+                    <input
+                        type="checkbox"
+                        name="colors[]"
+                        value="{{ $color }}"
+                        {{ in_array($color, request('colors', [])) ? 'checked' : '' }}>
+                    {{ $color }}
+                </label>
+            @endforeach
+        </div>
+
+        <div>
+            <p>Material:</p>
+            @foreach ($materials as $material)
+                <label>
+                    <input
+                        type="checkbox"
+                        name="materials[]"
+                        value="{{ $material }}"
+                        {{ in_array($material, request('materials', [])) ? 'checked' : '' }}>
+                    {{ $material }}
+                </label>
+            @endforeach
+        </div>
+
+        <button> Apply </button>
+        <button> Reset </button>
+
             <label for="{{ $category->name }}">{{ $category->name }}</label>
         @endforeach
-        <p>Material:</p>
         @foreach ($products as $product)
-            <input type="checkbox" id="{{$product->material}}" name="{{$product->material}}" value="{{$product->material}}">
-            <label for="{{$product->material}}">{{$product->material}}</label>
-        @endforeach
-        <p>Färger:</p>
-        @foreach ($products as $product)
-            <input type="checkbox" id="{{$product->color}}" name="{{$product->color}}" value="{{$product->color}}">
-            <label for="{{$product->color}}">{{$product->color}}</label>
-        @endforeach
         <p>Pris:</p>
         <input type="range" min="1" max="3000" value="50" class="slider" id="price">
     </form>
+</section>
+
+<section class="flex-1">
 
     <table class="w-full table-fixed border-collapse text-sm text-left" aria-label="navigation list for extended information about products">
         
