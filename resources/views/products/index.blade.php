@@ -14,6 +14,7 @@
     
     <form method="GET" action="{{ route('products.index') }}">
 
+        {{-- Categories --}}
         <div>
             <p>Kategori:</p>
             @foreach ($categories as $category)
@@ -28,6 +29,7 @@
             @endforeach
         </div>
 
+        {{-- Colors --}}
         <div>
             <p>Färg:</p>
             @foreach ($colors as $color)
@@ -42,6 +44,7 @@
             @endforeach
         </div>
 
+        {{-- Materials --}}
         <div>
             <p>Material:</p>
             @foreach ($materials as $material)
@@ -56,6 +59,7 @@
             @endforeach
         </div>
 
+        {{-- Price --}}
         <div>
             <p>
                 Max Pris: <span id="priceDisplay"> {{ request('max_price', 3500) }} kr </span>
@@ -68,6 +72,8 @@
                 value="{{ request('max_price', 3500) }}"
                 id="priceSlider">
         </div>
+
+        {{-- button --}}
         <button> Apply </button>
         <button> Reset </button>
 
@@ -76,6 +82,10 @@
 
 <section class="flex-1">
 
+    {{-- Total products found --}}
+    <p> {{ $products->total() }} produkter hitades</p>
+    
+    {{-- Products table --}}
     <table class="w-full table-fixed border-collapse text-sm text-left" aria-label="navigation list for extended information about products">
         
         <thead>
@@ -108,10 +118,14 @@
             @endforeach
         </tbody>
     </table>
+
+    {{-- Pagination --}}
     <div class="pagination-white">
         {{ $products->links() }}
     </div>
 </section>
 
+{{-- Price slider --}}
 <script src="{{ asset('js/products-filter.js') }}" defer></script>
+
 @endsection
