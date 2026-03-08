@@ -97,28 +97,28 @@
         
         <thead>
             <tr>
-                <th class="border-b border-black-100 p-4 pl-8 text-left">ID</th>
-                <th class="border-b border-black-100 p-4 pl-8 text-left">Namn</th>
-                <th class="border-b border-black-100 p-4 pl-8 text-left">Material</th>
-                <th class="border-b border-black-100 p-4 pl-8 text-left">Färg</th>
-                <th class="border-b border-black-100 p-4 pl-8 text-left">Pris</th>
-                <th class="border-b border-black-100 p-4 pl-8 text-left">Kategori</th>
-                <th class="border-b border-black-100 p-4 pl-8 text-left"></th>
+                <th class="table-col">ID</th>
+                <th class="table-col">Namn</th>
+                <th class="table-col">Material</th>
+                <th class="table-col">Färg</th>
+                <th class="table-col">Pris</th>
+                <th class="table-col">Kategori</th>
+                <th class="table-col"></th>
             </tr>
         </thead>
 
         <tbody>
             @forelse ($products as $product)
-                <tr class="border-b border-black-200 p-4 pt-0 pr-8 pb-3 font-medium text-black-400" aria-label="a table list of the products"> 
-                    <td class="border-b border-black-100 p-4 pl-8 text-left text-black-500"> {{ $product->id }} </td>
-                    <td class="border-b border-black-100 p-4 pl-8 text-left text-black-500"> {{ $product->name }} </td> 
-                    <td class="border-b border-black-100 p-4 pl-8 text-left text-black-500"> {{ $product->material }} </td>  
-                    <td class="border-b border-black-100 p-4 pl-8 text-left text-black-500"> {{ $product->color }} </td> 
-                    <td class="border-b border-black-100 p-4 pl-8 text-left text-black-500"> {{ $product->price }} kr</td>  
-                    <td class="border-b border-black-100 p-4 pl-8 text-left text-black-500">
+                <tr class="table-row" aria-label="a table list of the products"> 
+                    <td class="table-cell"> {{ $product->id }} </td>
+                    <td class="table-cell"> {{ $product->name }} </td> 
+                    <td class="table-cell"> {{ $product->material }} </td>  
+                    <td class="table-cell"> {{ $product->color }} </td> 
+                    <td class="table-cell"> {{ $product->price }} kr</td>  
+                    <td class="table-cell">
                         {{ $product->category->name ?? 'Ingen kategori' }}
                     </td>
-                    <td class="border-b border-black-100 p-4 pl-8 text-left text-black-500 cursor-pointer" onclick="window.location='{{ route('products.show', $product->id) }}'">
+                    <td class="table-cell cursor-pointer" onclick="window.location='{{ route('products.show', $product->id) }}'">
                         <div class="flex items-center place-content-center gap-2">
                             <img src="{{ asset('icons/edit.svg')}}" alt="pen" class="w-6 h-6">
                             <span>Ändra</span>
@@ -127,7 +127,7 @@
                 </tr>
             @empty
                 <tr>
-                    <td colspan="6" class="text-gray-500 p-4">Inga produkter hittades som matchade din sökning.</td>
+                    <td colspan="7" class="text-gray-500 p-4">Inga produkter hittades som matchade din sökning.</td>
                 </tr>
             @endforelse
         </tbody>

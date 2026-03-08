@@ -15,6 +15,18 @@
     --font-text: "Chivo", sans-serif;
 }
 
+.table-cell {
+    @apply border-b border-black-100 p-4 pl-8 text-left text-black-500;
+}
+
+.table-col {
+    @apply border-b border-black-400 p-4 pl-8 text-left ;
+}
+
+.table-row {
+    @apply border-b border-black-200 p-4 pt-0 pr-8 pb-3 font-medium text-black-400;
+}
+
 /* text */
 .pagination-white :is(a, span) {
     color: #000000 !important;
