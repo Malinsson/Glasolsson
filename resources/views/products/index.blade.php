@@ -102,6 +102,7 @@
                 <th class="border-b border-black-100 p-4 pl-8 text-left">Material</th>
                 <th class="border-b border-black-100 p-4 pl-8 text-left">Färg</th>
                 <th class="border-b border-black-100 p-4 pl-8 text-left">Pris</th>
+                <th class="border-b border-black-100 p-4 pl-8 text-left">Kategori</th>
                 <th class="border-b border-black-100 p-4 pl-8 text-left"></th>
             </tr>
         </thead>
@@ -114,6 +115,9 @@
                     <td class="border-b border-black-100 p-4 pl-8 text-left text-black-500"> {{ $product->material }} </td>  
                     <td class="border-b border-black-100 p-4 pl-8 text-left text-black-500"> {{ $product->color }} </td> 
                     <td class="border-b border-black-100 p-4 pl-8 text-left text-black-500"> {{ $product->price }} kr</td>  
+                    <td class="border-b border-black-100 p-4 pl-8 text-left text-black-500">
+                        {{ $product->category->name ?? 'Ingen kategori' }}
+                    </td>
                     <td class="border-b border-black-100 p-4 pl-8 text-left text-black-500 cursor-pointer" onclick="window.location='{{ route('products.show', $product->id) }}'">
                         <div class="flex items-center place-content-center gap-2">
                             <img src="{{ asset('icons/edit.svg')}}" alt="pen" class="w-6 h-6">
