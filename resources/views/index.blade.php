@@ -7,8 +7,8 @@
 <div style="background-image: url('{{ asset('images/background.webp') }}');" class="bg-cover bg-center min-h-screen">
 
     <div id="login-form" class="hidden flex items-center justify-center h-screen">
-        <div class="bg-white bg-opacity-75 p-8 rounded shadow-md w-full max-w-md">
-            <span id="close-login" tabindex="0" class="focus:outline-2 focus:outline-indigo-500 rounded cursor-pointer float-right text-black text-xl hover:text-gray-600">×</span>
+        <div class="bg-white bg-opacity-75 p-8 rounded shadow-md mx-4 w-full max-w-md">
+            <span id="close-login" tabindex="0" class="focus:outline-2 focus:outline-indigo-500 rounded cursor-pointer float-right text-black text-4xl hover:text-gray-600">×</span>
             <h2 class="text-2xl font-bold mb-6 text-center">Login</h2>
             <form method="post" action="/login">
                 @csrf
@@ -38,7 +38,7 @@
             <img src="{{ str_starts_with($product->image, 'images/stock/') ? asset($product->image) : asset('storage/' . $product->image) }}" alt="{{ $product->name }}" class="w-full h-auto object-cover">
             <h3 class="text-text font-bold mt-2">{{ $product->name }}</h3>
             <p class="mt-2"><span>{{ $product->color }}</span> <span>{{ $product->category->name }}</span></p>
-            <p class="text-lg font-bold mt-2">${{ number_format($product->price, 2) }}:-</p>
+            <p class="text-lg font-bold mt-2">{{ number_format($product->price, 2) }}:-</p>
         </div>
     @endforeach
 
