@@ -56,14 +56,21 @@
             @endforeach
         </div>
 
+        <div>
+            <p>
+                Max Pris: <span id="priceDisplay"> {{ request('max_price', 3500) }} kr </span>
+            </p>
+            <input
+                type="range"
+                name="max_price"
+                min="1100"
+                max="3500"
+                value="{{ request('max_price', 3500) }}"
+                id="priceSlider">
+        </div>
         <button> Apply </button>
         <button> Reset </button>
 
-            <label for="{{ $category->name }}">{{ $category->name }}</label>
-        @endforeach
-        @foreach ($products as $product)
-        <p>Pris:</p>
-        <input type="range" min="1" max="3000" value="50" class="slider" id="price">
     </form>
 </section>
 
@@ -106,4 +113,5 @@
     </div>
 </section>
 
+<script src="{{ asset('js/products-filter.js') }}" defer></script>
 @endsection
