@@ -15,53 +15,56 @@
     <form method="GET" action="{{ route('products.index') }}">
 
         {{-- Categories --}}
-        <div>
-            <p>Kategori:</p>
+        <div class="mb-6">
+            <p class="font-bold mb-2">Kategori:</p>
             @foreach ($categories as $category)
-                <label>
+                <label class="flex items-center gap-2 mb-1">
                     <input
                         type="checkbox"
                         name="categories[]"
                         value="{{ $category->id }}"
-                        {{ in_array($category->id, request('categories', [])) ? 'checked' : '' }}>
+                        {{ in_array($category->id, request('categories', [])) ? 'checked' : '' }}
+                        class="rounded">
                     {{ $category->name }}
                 </label>
             @endforeach
         </div>
 
         {{-- Colors --}}
-        <div>
-            <p>Färg:</p>
+        <div class="mb-6">
+            <p class="font-bold mb-2">Färg:</p>
             @foreach ($colors as $color)
-                <label>
+                <label class="flex items-center gap-2 mb-1">
                     <input
                         type="checkbox"
                         name="colors[]"
                         value="{{ $color }}"
-                        {{ in_array($color, request('colors', [])) ? 'checked' : '' }}>
+                        {{ in_array($color, request('colors', [])) ? 'checked' : '' }}
+                        class="rounded">
                     {{ $color }}
                 </label>
             @endforeach
         </div>
 
         {{-- Materials --}}
-        <div>
-            <p>Material:</p>
+        <div class="mb-6">
+            <p class="font-bold mb-2">Material:</p>
             @foreach ($materials as $material)
-                <label>
+                <label class="flex items-center gap-2 mb-1">
                     <input
                         type="checkbox"
                         name="materials[]"
                         value="{{ $material }}"
-                        {{ in_array($material, request('materials', [])) ? 'checked' : '' }}>
+                        {{ in_array($material, request('materials', [])) ? 'checked' : '' }}
+                        class="rounded">
                     {{ $material }}
                 </label>
             @endforeach
         </div>
 
         {{-- Price --}}
-        <div>
-            <p>
+        <div class="mb-6">
+            <p class="font-bold mb-2">
                 Max Pris: <span id="priceDisplay"> {{ request('max_price', 3500) }} kr </span>
             </p>
             <input
@@ -74,8 +77,12 @@
         </div>
 
         {{-- button --}}
-        <button> Apply </button>
-        <button> Reset </button>
+        <button type="submit" class="p-3 bg-blue-500 text-white py-2 rounded hover:bg-blue-600">
+            Apply
+        </button>
+        <a href="{{ route('products.index') }}" class="p-3 text-center mt-2 text-gray-500 hover:underline">
+            Reset
+        </a>
 
     </form>
 </section>
@@ -83,7 +90,7 @@
 <section class="flex-1">
 
     {{-- Total products found --}}
-    <p> {{ $products->total() }} produkter hitades</p>
+    <p class="text-gray-500 mb-4"> {{ $products->total() }} products found</p>
     
     {{-- Products table --}}
     <table class="w-full table-fixed border-collapse text-sm text-left" aria-label="navigation list for extended information about products">
@@ -116,7 +123,7 @@
                 </tr>
             @empty
                 <tr>
-                    <td colspan="6">Inga produkter hittades som matchade din sökning.</td>
+                    <td colspan="6" class="text-gray-500 p-4">Inga produkter hittades som matchade din sökning.</td>
                 </tr>
             @endforelse
         </tbody>
