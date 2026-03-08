@@ -15,10 +15,9 @@ class LoginController extends Controller
     {
 
         $credentials = $request->only('email', 'password');
-        
+
         if (Auth::attempt($credentials)) {
             return redirect('/dashboard');
-        } else return back()->withErrors('Try Again!');
-    
+        } else return back()->withErrors('Fel användarnamn eller lösenord, försök igen!');
     }
 }
