@@ -1,13 +1,6 @@
 import './bootstrap';
 import './file-upload-validation';
 
-const CheckScreenSize = () => {
-    if (window.innerWidth < 768) {
-        document.body.classList.add('mobile');
-    } else {
-        document.body.classList.remove('mobile');
-    }
-};
 
 window.addEventListener('resize', CheckScreenSize);
 CheckScreenSize();
