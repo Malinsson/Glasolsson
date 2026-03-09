@@ -1,17 +1,7 @@
 import './bootstrap';
 import './file-upload-validation';
 
-const CheckScreenSize = () => {
-    if (window.innerWidth < 768) {
-        document.body.classList.add('mobile');
-    } else {
-        document.body.classList.remove('mobile');
-    }
-};
-
-window.addEventListener('resize', CheckScreenSize);
-CheckScreenSize();
-
+// Login Form Toggle
 const loginForm = document.getElementById('login-form');
 const loginToggle = document.getElementById('login-toggle');
 const closeLogin = document.getElementById('close-login');
@@ -33,7 +23,7 @@ if (loginForm && loginToggle && closeLogin) {
     });
 };
 
-
+// Side Menu Toggle
 const menuToggle = document.getElementById('close-sidemenu');
 const openMenu = document.getElementById('open-sidemenu');
 const menu = document.getElementById('menu');
@@ -88,6 +78,7 @@ if (menuToggle && menu && openMenu) {
     });
 }
 
+// Delete Confirmation Modal
 const openDeleteModal = document.getElementById('open-delete-modal');
 const deleteDialog = document.getElementById('delete-confirmation');
 const confirmDelete = document.getElementById('confirm-delete');
