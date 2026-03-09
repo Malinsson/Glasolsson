@@ -69,14 +69,13 @@
     
             {{-- Price --}}
             <div class="mb-6">
-                <p class="font-bold mb-2">
-                    Max Pris: <span id="priceDisplay"> {{ request('max_price', 3500) }} kr </span>
-                </p>
+                <p class="font-bold mb-2">Max Pris: <span id="priceDisplay">{{ request('max_price', 3500) }} kr</span></p>
                 <input
                     type="range"
                     name="max_price"
                     min="1100"
                     max="3500"
+                    step="100"
                     value="{{ request('max_price', 3500) }}"
                     id="priceSlider"
                 >
@@ -145,8 +144,5 @@
         </div>
     </section>
 </main>
-
-{{-- Price slider --}}
-<script src="{{ asset('js/products-filter.js') }}" defer></script>
 
 @endsection
