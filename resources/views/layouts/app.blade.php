@@ -56,6 +56,8 @@
 
         @include('errors')
 
+        @include('layouts.partials.delete-modal')
+
         <div class="{{ $showDesktopAside ? 'container md:flex md:items-start md:gap-6' : '' }}">
             @if($showDesktopAside)
                 <aside class="hidden md:flex md:w-64 md:shrink-0 md:min-h-[calc(100vh)] md:bg-slate-800 md:text-white md:flex-col md:justify-between md:sticky md:top-24">

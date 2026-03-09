@@ -83,3 +83,23 @@ if (menuToggle && menu && openMenu) {
     });
 }
 
+const openDeleteCategoryModal = document.getElementById('open-delete-category-modal');
+const deleteCategoryDialog = document.getElementById('delete-confirmation');
+const confirmDeleteCategory = document.getElementById('confirm-delete-category');
+const cancelDeleteCategory = document.getElementById('cancel-delete-category');
+const deleteCategoryForm = document.getElementById('delete-category-form');
+
+if (openDeleteCategoryModal && deleteCategoryDialog && confirmDeleteCategory && cancelDeleteCategory && deleteCategoryForm) {
+    openDeleteCategoryModal.addEventListener('click', function () {
+        deleteCategoryDialog.showModal();
+    });
+
+    cancelDeleteCategory.addEventListener('click', function () {
+        deleteCategoryDialog.close();
+    });
+
+    confirmDeleteCategory.addEventListener('click', function () {
+        deleteCategoryForm.submit();
+    });
+}
+
