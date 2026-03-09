@@ -4,7 +4,7 @@
 
 @section('content')
     
-<section class="font-text flex flex-col gap-3 m-4 mt-12 w-full md:flex-row md:gap-6">
+<section class="font-text flex flex-col gap-3 p-4 mt-12 w-full md:flex-row md:gap-6">
 
     <div class="w-full md:w-1/2 flex flex-col gap-3">
         <p>Id: {{$product->id}}</p>
@@ -19,9 +19,9 @@
         <p>{{$product->category->name}}</p>
     </div>
 
-    <div class="w-full md:w-1/2 flex flex-col gap-3">
+    <div class="md:w-1/2 flex flex-col gap-3">
         <p class="font-bold md:text-xl">Produktbild:</p>
-        <img src="{{ str_starts_with($product->image, 'images/stock/') ? asset($product->image) : asset('storage/' . $product->image) }}" alt="{{ $product->name }}" class="w-full h-auto object-cover">
+        <img src="{{ str_starts_with($product->image, 'images/stock/') ? asset($product->image) : asset('storage/' . $product->image) }}" alt="{{ $product->name }}" class=" object-cover">
         <p class="font-bold md:text-xl">Beskrivning:</p>
         <p>{{$product->description}}</p>
     </div>
