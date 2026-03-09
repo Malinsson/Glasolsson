@@ -1,6 +1,13 @@
 import './bootstrap';
 import './file-upload-validation';
 
+const CheckScreenSize = () => {
+    if (window.innerWidth < 768) {
+        document.body.classList.add('mobile');
+    } else {
+        document.body.classList.remove('mobile');
+    }
+};
 
 window.addEventListener('resize', CheckScreenSize);
 CheckScreenSize();
@@ -13,6 +20,7 @@ if (loginForm && loginToggle && closeLogin) {
     function toggleForm(e) {
         e.preventDefault();
         loginForm.classList.toggle('hidden');
+        document.body.classList.toggle('overflow-hidden');
     }
 
     loginToggle.addEventListener('click', toggleForm);
@@ -39,6 +47,7 @@ if (menuToggle && menu && openMenu) {
         menu.classList.remove('opacity-100');
         menu.classList.remove('pointer-events-auto');
         openMenu.classList.remove('hidden');
+        document.body.classList.remove('overflow-hidden');
     });
 
     menuToggle.addEventListener('keydown', function(e) {
@@ -50,6 +59,7 @@ if (menuToggle && menu && openMenu) {
             menu.classList.remove('opacity-100');
             menu.classList.remove('pointer-events-auto');
             openMenu.classList.remove('hidden');
+            document.body.classList.remove('overflow-hidden');
         }
     });
 
@@ -61,6 +71,7 @@ if (menuToggle && menu && openMenu) {
         menu.classList.add('opacity-100');
         menu.classList.add('pointer-events-auto');
         openMenu.classList.add('hidden');
+        document.body.classList.add('overflow-hidden');
     });
 
     openMenu.addEventListener('keydown', function(e) {
@@ -72,6 +83,7 @@ if (menuToggle && menu && openMenu) {
             menu.classList.add('opacity-100');
             menu.classList.add('pointer-events-auto');
             openMenu.classList.add('hidden');
+            document.body.classList.add('overflow-hidden');
         }
     });
 }
@@ -85,13 +97,16 @@ const deleteForm = document.getElementById('delete-form');
 if (openDeleteModal && deleteDialog && confirmDelete && cancelDelete && deleteForm) {
     openDeleteModal.addEventListener('click', function () {
         deleteDialog.showModal();
+        document.body.classList.add('overflow-hidden');
     });
 
     cancelDelete.addEventListener('click', function () {
         deleteDialog.close();
+        document.body.classList.remove('overflow-hidden');
     });
 
     confirmDelete.addEventListener('click', function () {
+        document.body.classList.remove('overflow-hidden');
         deleteForm.submit();
     });
 }
