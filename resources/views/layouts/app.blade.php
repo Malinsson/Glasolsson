@@ -56,9 +56,9 @@
 
         @include('errors')
 
-        <div class="{{ $showDesktopAside ? 'container mx-auto px-4 py-6 md:flex md:items-start md:gap-6' : '' }}">
+        <div class="{{ $showDesktopAside ? 'container md:flex md:items-start md:gap-6' : '' }}">
             @if($showDesktopAside)
-                <aside class="hidden md:flex md:w-72 md:shrink-0 md:min-h-[calc(100vh-13rem)] md:bg-slate-800 md:text-white md:rounded-lg md:px-4 md:py-6 md:flex-col md:justify-between md:sticky md:top-28">
+                <aside class="hidden md:flex md:w-64 md:shrink-0 md:min-h-[calc(100vh)] md:bg-slate-800 md:text-white md:flex-col md:justify-between md:sticky md:top-24">
                     @include('layouts.partials.admin-menu', ['showMobileClose' => false])
                 </aside>
             @endif
