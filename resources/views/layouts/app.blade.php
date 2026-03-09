@@ -10,6 +10,10 @@
 
 <body class="">
 
+    @php
+        $showDesktopAside = auth()->check() && !$isMobile && request()->is('dashboard', 'products*', 'categories*');
+    @endphp
+
     <header class="{{ request()->is('/') ? 'absolute bg-transparent' : 'bg-slate-800' }} flex justify-center w-full h-24 text-white py-4">
         <div class="container mx-auto flex justify-between items-center px-4">
             <a href="/" class="text-4xl font-logo">Glas Olsson</a>
@@ -23,38 +27,46 @@
                             </svg>
                         </button>
 
-                        <aside id="menu" class="absolute flex justify-between left-0 top-0 py-8 px-4 flex-col h-screen bg-slate-800 w-80 transform -translate-x-full opacity-0 transition-all duration-300 z-40 pointer-events-none md:block md:relative md:translate-x-0 md:opacity-100 md:pointer-events-auto">
-                            
-                            <div class="flex flex-col gap-4 mt-8 text-center text-lg">
-                            <span id="close-sidemenu" tabindex="0" class="text-right px-4 focus:outline-2 focus:outline-indigo-500 rounded cursor-pointer float-right text-white text-3xl hover:text-gray-600">×</span>
-                                <div class="text-white font-logo text-2xl align-middle p-4">Hej, {{ auth()->user()->name }}</div>
-                                <a class="text-white font-text align-middle p-4 hover:bg-gray-950 active:bg-gray-950" href="/dashboard">Översikt</a>
-                                <a class="text-white font-text align-middle p-4 hover:bg-gray-950 active:bg-gray-950" href="{{ route('products.index') }}">Produkter</a>
-                                <a class="text-white font-text align-middle p-4 hover:bg-gray-950 active:bg-gray-950" href="{{ route('categories.index') }}">Kategorier</a>
-                            </div>
-                            <div class="flex flex-col gap-4 mt-8 text-center text-lg">
+                        <aside id="menu" class="absolute flex justify-between left-0 top-0 py-8 px-4 flex-col h-screen bg-slate-800 w-80 transform -translate-x-full opacity-0 transition-all duration-300 z-40 pointer-events-none">
+                            @include('layouts.partials.admin-menu', ['showMobileClose' => true])
+                        </aside>
+
+                    @elseif(auth()->check() && !$isMobile)
+                        
+                            <li><a href="/dashboard" class="font-text font-light text-xl hover:underline">Dashboard</a></li>
+                            <li>
                                 <form method="get" action="/logout">
                                     @csrf
-                                    <button type="submit" class="w-full bg-slate-600 hover:bg-slate-800 text-white font-bold py-2 px-4 rounded cursor-pointer">Logout</button>
+                                    <button type="submit" class="font-text font-light text-xl hover:underline">Logout</button>
                                 </form>
-
-                            </div>
-                        </aside>
-                    @else
+                            </li>
+                        @else
                         <li><a href="#" id="login-toggle" class="font-text font-light text-xl hover:underline">Login</a></li>
-                    @endif 
+                    
+
+                    @endif
 
                 </ul>
             </nav>
         </div>
     </header>
-
+    
 
     <main class="min-h-screen">
 
         @include('errors')
-        @yield('content')
 
+        <div class="{{ $showDesktopAside ? 'container mx-auto px-4 py-6 md:flex md:items-start md:gap-6' : '' }}">
+            @if($showDesktopAside)
+                <aside class="hidden md:flex md:w-72 md:shrink-0 md:min-h-[calc(100vh-13rem)] md:bg-slate-800 md:text-white md:rounded-lg md:px-4 md:py-6 md:flex-col md:justify-between md:sticky md:top-28">
+                    @include('layouts.partials.admin-menu', ['showMobileClose' => false])
+                </aside>
+            @endif
+
+            <div class="{{ $showDesktopAside ? 'flex-1 min-w-0' : '' }}">
+                @yield('content')
+            </div>
+        </div>
     </main>
 
 
