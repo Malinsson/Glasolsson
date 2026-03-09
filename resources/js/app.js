@@ -29,53 +29,25 @@ const openMenu = document.getElementById('open-sidemenu');
 const menu = document.getElementById('menu');
 
 if (menuToggle && menu && openMenu) {
-    menuToggle.addEventListener('click', function() {
-        menu.classList.add('-translate-x-full');
-        menu.classList.add('opacity-0');
-        menu.classList.add('pointer-events-none');
-        menu.classList.remove('translate-x-0');
-        menu.classList.remove('opacity-100');
-        menu.classList.remove('pointer-events-auto');
+    const closeMenu = () => {
+        menu.classList.add('-translate-x-full', 'opacity-0', 'pointer-events-none');
+        menu.classList.remove('translate-x-0', 'opacity-100', 'pointer-events-auto');
         openMenu.classList.remove('hidden');
         document.body.classList.remove('overflow-hidden');
-    });
+    };
 
-    menuToggle.addEventListener('keydown', function(e) {
-        if (e.key === 'Enter') {
-            menu.classList.add('-translate-x-full');
-            menu.classList.add('opacity-0');
-            menu.classList.add('pointer-events-none');
-            menu.classList.remove('translate-x-0');
-            menu.classList.remove('opacity-100');
-            menu.classList.remove('pointer-events-auto');
-            openMenu.classList.remove('hidden');
-            document.body.classList.remove('overflow-hidden');
-        }
-    });
-
-    openMenu.addEventListener('click', function() {
-        menu.classList.remove('-translate-x-full');
-        menu.classList.remove('opacity-0');
-        menu.classList.remove('pointer-events-none');
-        menu.classList.add('translate-x-0');
-        menu.classList.add('opacity-100');
-        menu.classList.add('pointer-events-auto');
+    const openSideMenu = () => {
+        menu.classList.remove('-translate-x-full', 'opacity-0', 'pointer-events-none');
+        menu.classList.add('translate-x-0', 'opacity-100', 'pointer-events-auto');
         openMenu.classList.add('hidden');
         document.body.classList.add('overflow-hidden');
-    });
+    };
 
-    openMenu.addEventListener('keydown', function(e) {
-        if (e.key === 'Enter') {
-            menu.classList.remove('-translate-x-full');
-            menu.classList.remove('opacity-0');
-            menu.classList.remove('pointer-events-none');
-            menu.classList.add('translate-x-0');
-            menu.classList.add('opacity-100');
-            menu.classList.add('pointer-events-auto');
-            openMenu.classList.add('hidden');
-            document.body.classList.add('overflow-hidden');
-        }
-    });
+    menuToggle.addEventListener('click', closeMenu);
+    menuToggle.addEventListener('keydown', (e) => e.key === 'Enter' && closeMenu());
+
+    openMenu.addEventListener('click', openSideMenu);
+    openMenu.addEventListener('keydown', (e) => e.key === 'Enter' && openSideMenu());
 }
 
 // Delete Confirmation Modal
