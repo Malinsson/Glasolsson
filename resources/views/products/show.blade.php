@@ -31,11 +31,10 @@
 <div class="flex flex-row justify-between gap-3 m-8 md:justify-start">
     <a href="{{ route('products.edit', $product->id) }}" class="bg-slate-600 hover:bg-slate-800 text-white font-bold py-2 px-4 rounded cursor-pointer">Redigera produkt</a>
 
-    <form action="{{ route('products.destroy', ['product' => $product->id]) }}" method="POST" style="display:inline;">
+    <form id="delete-form" action="{{ route('products.destroy', ['product' => $product->id]) }}" method="POST" style="display:inline;">
         @method('DELETE')
         @csrf
-        <button type="submit" class="bg-red-600 hover:bg-red-800 text-white font-bold py-2 px-4 rounded cursor-pointer"
-        onclick="return confirm('Är du säker på att du vill ta bort denna produkt?')">Radera produkt</button>
+        <button id="open-delete-modal" type="button" class="bg-red-600 hover:bg-red-800 text-white font-bold py-2 px-4 rounded cursor-pointer">Radera produkt</button>
     </form>
 
 </div>

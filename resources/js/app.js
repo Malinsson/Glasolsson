@@ -83,23 +83,23 @@ if (menuToggle && menu && openMenu) {
     });
 }
 
-const openDeleteCategoryModal = document.getElementById('open-delete-category-modal');
-const deleteCategoryDialog = document.getElementById('delete-confirmation');
-const confirmDeleteCategory = document.getElementById('confirm-delete-category');
-const cancelDeleteCategory = document.getElementById('cancel-delete-category');
-const deleteCategoryForm = document.getElementById('delete-category-form');
+const openDeleteModal = document.getElementById('open-delete-modal');
+const deleteDialog = document.getElementById('delete-confirmation');
+const confirmDelete = document.getElementById('confirm-delete');
+const cancelDelete = document.getElementById('cancel-delete');
+const deleteForm = document.getElementById('delete-form');
 
-if (openDeleteCategoryModal && deleteCategoryDialog && confirmDeleteCategory && cancelDeleteCategory && deleteCategoryForm) {
-    openDeleteCategoryModal.addEventListener('click', function () {
-        deleteCategoryDialog.showModal();
+if (openDeleteModal && deleteDialog && confirmDelete && cancelDelete && deleteForm) {
+    openDeleteModal.addEventListener('click', function () {
+        deleteDialog.showModal();
     });
 
-    cancelDeleteCategory.addEventListener('click', function () {
-        deleteCategoryDialog.close();
+    cancelDelete.addEventListener('click', function () {
+        deleteDialog.close();
     });
 
-    confirmDeleteCategory.addEventListener('click', function () {
-        deleteCategoryForm.submit();
+    confirmDelete.addEventListener('click', function () {
+        deleteForm.submit();
     });
 }
 

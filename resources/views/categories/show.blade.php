@@ -20,10 +20,10 @@ class="bg-slate-600 hover:bg-slate-800 text-white font-bold py-2 px-4 rounded cu
 <div class="flex flex-row justify-between gap-3 m-8">
     <a href="{{ route('categories.edit', $category->id) }}" class="bg-slate-600 hover:bg-slate-800 text-white font-bold py-2 px-4 rounded cursor-pointer">Redigera kategori</a>
 
-    <form id="delete-category-form" action="{{ route('categories.destroy', ['category' => $category->id]) }}" method="POST" style="display:inline;">
+    <form id="delete-form" action="{{ route('categories.destroy', ['category' => $category->id]) }}" method="POST" style="display:inline;">
         @method('DELETE')
         @csrf
-        <button id="open-delete-category-modal" type="button" class="bg-red-600 hover:bg-red-800 text-white font-bold py-2 px-4 rounded cursor-pointer">Radera kategori</button>
+        <button id="open-delete-modal" type="button" class="bg-red-600 hover:bg-red-800 text-white font-bold py-2 px-4 rounded cursor-pointer">Radera kategori</button>
     </form>
 
 </div>
