@@ -16,7 +16,6 @@ class ProductController extends Controller
     public function index(Request $request)
     {
         $categories = Category::all();
-
         $colors    = Product::select('color')->distinct()->pluck('color');
         $materials = Product::select('material')->distinct()->pluck('material');
 
@@ -31,7 +30,7 @@ class ProductController extends Controller
             ->when($request->materials, function ($query) use ($request) {
                 $query->whereIn('material', $request->materials);
             })
-            ->when($request->max_price, function ($query) use ($request) {
+            ->when($request->max_price && $request->max_price < 3500, function ($query) use ($request) {
                 $query->where('price', '<=', $request->max_price);
             })
             ->with('category')

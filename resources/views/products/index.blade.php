@@ -78,7 +78,8 @@
                     min="1100"
                     max="3500"
                     value="{{ request('max_price', 3500) }}"
-                    id="priceSlider">
+                    id="priceSlider"
+                >
             </div>
     
             {{-- button --}}
