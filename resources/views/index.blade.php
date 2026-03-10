@@ -4,7 +4,7 @@
 
 @section('content')
 
-<div style="background-image: url('{{ asset('images/background.webp') }}');" class="bg-cover bg-center min-h-screen">
+<div style="background-image: url('{{ asset('images/background.webp') }}');" class="bg-cover bg-center aspect-video min-h-screen hero-bg-shift">
 
     <div id="login-form" class="hidden flex items-center justify-center h-screen">
         <div class="bg-white bg-opacity-75 p-8 rounded shadow-md mx-4 w-full max-w-md">
