@@ -27,7 +27,7 @@
                             </svg>
                         </button>
 
-                        <aside id="menu" class="absolute flex justify-between left-0 top-0 py-8 px-4 flex-col h-screen bg-slate-800 w-80 transform -translate-x-full opacity-0 transition-all duration-300 z-40 pointer-events-none">
+                        <aside id="menu" class="fixed flex justify-between left-0 top-0 py-8 px-4 flex-col h-screen bg-slate-800 w-80 transform -translate-x-full opacity-0 transition-all duration-300 z-40 pointer-events-none">
                             @include('layouts.partials.admin-menu', ['showMobileClose' => true])
                         </aside>
 
@@ -59,8 +59,9 @@
         @include('layouts.partials.delete-modal')
 
         <div class="{{ $showDesktopAside ? 'container md:flex md:items-start md:gap-6' : '' }}">
+
             @if($showDesktopAside)
-                <aside class="hidden md:flex md:w-64 md:shrink-0 md:min-h-[calc(100vh)] md:bg-slate-800 md:text-white md:flex-col md:justify-between md:sticky md:top-24">
+                <aside class="hidden md:flex md:w-64 md:shrink-0 md:min-h-[calc(100vh)] md:bg-slate-800 md:text-white md:flex-col md:justify-between md:sticky md:top-0">
                     @include('layouts.partials.admin-menu', ['showMobileClose' => false])
                 </aside>
             @endif
@@ -68,6 +69,7 @@
             <div class="{{ $showDesktopAside ? 'flex-1 min-w-0' : '' }}">
                 @yield('content')
             </div>
+
         </div>
     </main>
 

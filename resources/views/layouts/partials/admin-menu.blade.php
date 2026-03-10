@@ -1,10 +1,10 @@
-<div class="flex flex-col gap-4 mt-8 text-center text-lg">
+<div class="flex flex-col mt-8 text-center text-lg">
     @if(isset($showMobileClose) && $showMobileClose)
         <span id="close-sidemenu" tabindex="0" class="text-right px-4 focus:outline-2 focus:outline-indigo-500 rounded cursor-pointer float-right text-white text-3xl hover:text-gray-600">×</span>
     @endif
 
     @php
-        $baseLinkClasses = 'text-white font-text align-middle p-4 hover:bg-gray-950 active:bg-gray-950';
+        $baseLinkClasses = 'text-white font-text align-middle py-6 hover:bg-gray-950 active:bg-gray-950';
         $activeLinkClasses = 'bg-gray-950 font-semibold';
     @endphp
 
