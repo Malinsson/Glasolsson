@@ -14,10 +14,17 @@
 
 }
 
+
+
 @media (min-width: 1200px) {
-.hero-bg-shift {
-    background-position: center 28%;
-}
+    .hero-bg-shift {
+        background-position: center 28%;
+    }
+    
+/* CUSTOM STYLES */
+
+
+/* Table: */
 
 .table-cell {
     @apply border-b border-gray-300 p-4 pl-8 text-left text-gray-700;
@@ -30,6 +37,9 @@
 .table-row {
     @apply border-b border-gray-200 font-medium text-gray-700 hover:bg-gray-50;
 }
+
+
+/* pagination: */
 
 /* text */
 .pagination-white :is(a, span) {
@@ -56,4 +66,10 @@
 .pagination-white .text-gray-600,
 .pagination-white .text-gray-500 {
     color: #606060 !important;
+}
+}
+
+/* price slider: */
+input[type="range"] {
+    accent-color: #475569;
 }

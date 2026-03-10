@@ -4,104 +4,109 @@
 
 @section('content')
 
-<section class="p-3">
+<section class="pb-3 pt-3">
     
-    <div class="flex items-center justify-between">
-        <h2 class="p-3 text-2xl">Produkter</h2>
-        <a class="bg-slate-600 hover:bg-slate-800 text-white font-bold py-2 px-4 rounded cursor-pointer" href="{{ route('products.create') }}">Skapa ny produkt</a>
-    </div>
+    
+    <section class="pb-1">
         
-    <section class="p-3">
-    
-        <h2 class="p-3 text-2xl">Produkter</h2>
+        <div class="flex items-center justify-between pt-3 pb-12">
+            <h2 class="text-2xl">Produkter</h2>
+            
+            <a class="bg-slate-600 hover:bg-slate-800 text-white font-bold py-2 px-4 rounded cursor-pointer" href="{{ route('products.create') }}">Skapa ny produkt</a>
+        </div>
+
+        {{-- Total products found --}}
         
         <form method="GET" action="{{ route('products.index') }}">
+
+            <p class="text-gray-500">{{ $products->total() }} produkter hittades</p>
     
-            <div class="flex flex-row gap-8">
+            <div class="flex flex-row justify-between items-end">
+
                 {{-- Categories --}}
-                <div class="mb-6">
-                    <p class="font-bold mb-2">Kategori:</p>
-                    <select name="categories[]">
+                <div class="flex flex-col gap-1">
+                    <label class="text-sm font-bold text-gray-700">Kategori</label>
+                    <select name="categories[]" class="text-gray-500 border border-gray-400 bg-white font-bold py-2 px-4 rounded cursor-pointer">
                         <option value="" disabled selected hidden>Välj kategori</option>
                         @foreach ($categories as $category)
-                            <label>
-                                <option
-                                    value="{{ $category->id }}"
-                                    {{ in_array($category->id, request('categories', [])) ? 'selected' : '' }}
-                                    >
+                            <option
+                                value="{{ $category->id }}"
+                                {{ in_array($category->id, request('categories', [])) ? 'selected' : '' }}
+                            >
                                 {{ $category->name }}
-                            </label>
+                            </option>
                         @endforeach
                     </select>
                 </div>
-                
+            
                 {{-- Materials --}}
-                <div class="mb-6">
-                    <p class="font-bold mb-2">Material:</p>
-                    <select name="materials[]">
+                <div class="flex flex-col gap-1">
+                    <label class="text-sm font-bold text-gray-700">Material</label>
+                    <select name="materials[]" class="text-gray-500 border border-gray-400 bg-white font-bold py-2 px-4 rounded cursor-pointer">
                         <option value="" disabled selected hidden>Välj material</option>
                         @foreach ($materials as $material)
-                        <label>
                             <option
-                            value="{{ $material }}" 
-                            {{ in_array($material, request('materials', [])) ? 'selected' : '' }}
+                                value="{{ $material }}"
+                                {{ in_array($material, request('materials', [])) ? 'selected' : '' }}
                             >
-                            {{ $material }}
-                        </label>
+                                {{ $material }}
+                            </option>
                         @endforeach
                     </select>
                 </div>
-                
+            
                 {{-- Colors --}}
-                <div class="mb-6">
-                    <p class="font-bold mb-2">Färg:</p>
-                    <select name="colors[]">
+                <div class="flex flex-col gap-1">
+                    <label class="text-sm font-bold text-gray-700">Färg</label>
+                    <select name="colors[]" class="text-gray-500 border border-gray-400 bg-white font-bold py-2 px-4 rounded cursor-pointer">
                         <option value="" disabled selected hidden>Välj färg</option>
                         @foreach ($colors as $color)
-                        <label>
                             <option
-                            value="{{ $color }}" 
-                            {{ in_array($color, request('colors', [])) ? 'selected' : '' }}
+                                value="{{ $color }}"
+                                {{ in_array($color, request('colors', [])) ? 'selected' : '' }}
                             >
-                            {{ $color }}
-                        </label>
+                                {{ $color }}
+                            </option>
                         @endforeach
                     </select>
                 </div>
+            
+                {{-- Price --}}
+                <div class="flex flex-col gap-1">
+                    <label class="text-sm font-bold text-gray-700">
+                        Max Pris: <span id="priceDisplay">{{ request('max_price', 3500) }} kr</span>
+                    </label>
+                    <input
+                        type="range"
+                        name="max_price"
+                        min="1100"
+                        max="3500"
+                        step="100"
+                        value="{{ request('max_price', 3500) }}"
+                        id="priceSlider"
+                        class="w-48 cursor-pointer"
+                    >
+                </div>
+            
+                {{-- Buttons --}}
+                <div class="flex gap-2 items-center">
+                    <button type="submit" class="bg-slate-600 hover:bg-slate-800 text-white font-bold py-2 px-4 rounded">
+                        Applicera
+                    </button>
+                    <a href="{{ route('products.index') }}" class="text-gray-500 hover:underline px-2">
+                        Återställ
+                    </a>
+                </div>
+            
             </div>
-    
-            {{-- Price --}}
-            <div class="mb-6">
-                <p class="font-bold mb-2">Max Pris: <span id="priceDisplay">{{ request('max_price', 3500) }} kr</span></p>
-                <input
-                    type="range"
-                    name="max_price"
-                    min="1100"
-                    max="3500"
-                    step="100"
-                    value="{{ request('max_price', 3500) }}"
-                    id="priceSlider"
-                >
-            </div>
-    
-            {{-- button --}}
-            <button type="submit" class="p-3 bg-blue-500 text-white py-2 rounded hover:bg-blue-600">
-                Apply
-            </button>
-            <a href="{{ route('products.index') }}" class="p-3 text-center mt-2 text-gray-500 hover:underline">
-                Reset
-            </a>
-    
+            
         </form>
     </section>
     
-    <section class="flex-1">
-    
-        {{-- Total products found --}}
-        <p class="text-gray-500 mb-4"> {{ $products->total() }} products found</p>
+    <section class="border border-gray-400 flex-1 bg-white p-4">
         
         {{-- Products table --}}
-        <table class="w-full table-fixed border-collapse text-sm text-left" aria-label="navigation list for extended information about products">
+        <table class="w-full border-collapse text-sm text-left " aria-label="navigation list for extended information about products">
             
             <thead>
                 <tr>
