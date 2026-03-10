@@ -27,7 +27,7 @@ class UploadController extends Controller
                 'name' => "{$name}",
                 'file_name' => $file->getClientOriginalName(),
                 'mime_type' => $file->getClientMimeType(),
-                'path' => "avatars/{$name}",
+                'path' => "products/{$name}",
                 'disk' => config('app.uploads.disk'),
                 'file_hash' => hash_file(
                     config('app.uploads.hash'),

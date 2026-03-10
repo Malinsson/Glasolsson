@@ -12,6 +12,7 @@ Route::get('/', function () {
     $products = Product::paginate(9);
     return view('index', compact('products'));
 });
+
 Route::view('login', 'index')->name('login')->middleware('guest');
 
 Route::post('login', LoginController::class)->middleware('guest');
