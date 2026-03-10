@@ -54,6 +54,7 @@ class ProductController extends Controller
         $product->price = $request->input('price');
         $product->description = $request->input('description');
         $product->category_id = $request->input('category_id');
+        $product->image = 'images/stock/no-default-thumbnail.png';
 
         if ($request->hasFile('image')) {
             $imagePath = $request->file('image')->store('images/products', 'public');
