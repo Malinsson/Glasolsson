@@ -4,7 +4,7 @@
 
 @section('content')
 
-<section class="relative aspect-video min-h-screen overflow-hidden bg-slate-800">
+<section class="relative min-h-screen overflow-hidden bg-slate-800">
     <img
         src="{{ asset('images/background.webp') }}"
         alt=""
@@ -19,19 +19,15 @@
         @include('layouts.partials.login-form')
     </div>
 
-    <div class="absolute inset-0 ">
-        <h1 class="text-white align-bottom text-5xl font-logo text-center px-4">
-            Välkommen till Glas Olsson
-        </h1>
-    </div>
+
 </section>
 
 <section id="products" class="flex flex-wrap justify-center pt-8 pb-16 bg-gray-200 ">
     <h2 class="text-4xl font-logo mb-8 text-center w-full"><strong>Produkter</strong></h2>
-    <div class="flex flex-wrap justify-center pt-4 max-w-7xl mx-auto" >
+    <div class="w-full max-w-6xl mx-auto px-4 md:px-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-4" >
         @foreach ($products as $product)
-            <div tabindex="0" class="bg-white w-sm flex flex-col justify-between items-center py-10 px-4 shadow-md m-4 hover:shadow-lg transition-shadow duration-300 rounded">
-                <div class="w-full h-64 flex items-center justify-center rounded overflow-hidden">
+            <div tabindex="0" class="bg-white w-full flex flex-col justify-between items-center py-10 px-4 shadow-md hover:shadow-lg transition-shadow duration-300 rounded">
+                <div class="w-full h-55 flex items-center justify-center rounded overflow-hidden">
                     <img src="{{ str_starts_with($product->image, 'images/stock/') ? asset($product->image) : asset('storage/' . $product->image) }}" alt="{{ $product->name }}" class="w-full h-auto object-cover">
                 </div>
                 <h3 class="text-text mt-2"><strong>{{ $product->name }}</strong></h3>
