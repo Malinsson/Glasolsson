@@ -7,8 +7,8 @@
 <div class="bg-white p-6 rounded shadow-md m-4">
 
     <div class="flex items-center justify-between font-text my-4">
-        <h2 class="p-3 text-xl font-bold font-text">Redigera produkt</h2>
-        <a href="{{ route('products.index') }}" class="bg-slate-600 hover:bg-slate-800 text-white font-bold py-2 px-4 rounded cursor-pointer">Tillbaka till produkter</a>
+        <h2 class="p-3 text-xl"><strong>Redigera produkt</strong></h2>
+        <a href="{{ route('products.index') }}" class="bg-slate-600 hover:bg-slate-800 text-white py-2 px-4 rounded cursor-pointer"><strong>Tillbaka till produkter</strong></a>
     </div>
 
     <form action="{{ route('products.update', ['product' => $product->id]) }}" method="POST" enctype="multipart/form-data" class="flex flex-col gap-4 font-text">
@@ -46,8 +46,8 @@
             <p>Nuvarande bild: {{ basename($product->image) }}</p>
         @endif
 
-        <button type="submit"class="bg-slate-500 hover:bg-slate-700 text-white font-bold py-2 px-4 rounded">
-            Uppdatera produkt
+        <button type="submit"class="bg-slate-500 hover:bg-slate-700 text-white py-2 px-4 rounded">
+            <strong>Uppdatera produkt</strong>
         </button>
 
     </form>

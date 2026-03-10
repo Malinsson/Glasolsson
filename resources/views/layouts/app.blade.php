@@ -18,7 +18,7 @@
         <div class="container mx-auto flex justify-between items-center px-4">
             <a href="/" class="text-4xl font-logo">Glas Olsson</a>
             <nav>
-                <ul class="flex space-x-4">
+                <ul class="flex space-x-8">
 
                     @if(auth()->check() && $isMobile)
                         <button id="open-sidemenu" class="fixed top-4 right-4 z-50 bg-slate-800 text-white p-3 rounded hover:bg-slate-700 focus:outline-2 focus:outline-indigo-500">

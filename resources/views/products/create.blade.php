@@ -5,8 +5,8 @@
 @section('content')
 
 <div class="flex items-center justify-between font-text my-4">
-    <h2 class="p-3 text-xl font-bold font-text">Skapa ny produkt</h2>
-    <a href="{{ route('products.index') }}" class="bg-slate-600 hover:bg-slate-800 text-white font-bold py-2 px-4 rounded cursor-pointer">Tillbaka till produkter</a>
+    <h2 class="p-3 text-xl font-text"><strong>Skapa ny produkt</strong></h2>
+    <a href="{{ route('products.index') }}" class="bg-slate-600 hover:bg-slate-800 text-white py-2 px-4 rounded cursor-pointer"><strong>Tillbaka till produkter</strong></a>
 </div>
 
 <div class="bg-white p-6 rounded shadow-md m-4">
@@ -42,8 +42,8 @@
 
         <p id="image-error" style="color: red; display: none;"></p>
 
-        <button type="submit" class="bg-slate-500 hover:bg-slate-700 text-white font-bold py-2 px-4 rounded">
-            Skapa produkt
+        <button type="submit" class="bg-slate-500 hover:bg-slate-700 text-white py-2 px-4 rounded">
+            <strong>Skapa produkt</strong>
         </button>
     </form>
     

@@ -7,8 +7,8 @@
 <section class="p-3">
     
     <div class="flex items-center justify-between">
-        <h2 class="p-3 text-2xl">Produkter</h2>
-        <a class="bg-slate-600 hover:bg-slate-800 text-white font-bold py-2 px-4 rounded cursor-pointer" href="{{ route('products.create') }}">Skapa ny produkt</a>
+        <h2 class="p-3 text-2xl"><strong>Produkter</strong></h2>
+        <a class="bg-slate-600 hover:bg-slate-800 text-white  py-2 px-4 rounded cursor-pointer" href="{{ route('products.create') }}"><strong>Skapa ny produkt</strong></a>
     </div>
 
     <table class="w-full table-fixed border-collapse text-sm text-left md: my-6" aria-label="navigation list for extended information about products">
