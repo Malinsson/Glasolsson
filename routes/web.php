@@ -13,7 +13,7 @@ Route::get('/', function () {
     return view('index', compact('products'));
 });
 
-Route::view('index', ['products' => Product::paginate(10)])->name('login')->middleware('guest');
+Route::view('index', 'index', ['products' => Product::paginate(10)])->name('login')->middleware('guest');
 
 Route::post('login', LoginController::class)->middleware('guest');
 Route::get('logout', LogoutController::class);
