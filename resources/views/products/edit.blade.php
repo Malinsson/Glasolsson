@@ -15,21 +15,21 @@
         @csrf
         @method('PATCH')
 
-        <label for="name">Namn</label>
+        <label for="name">Namn <span class="text-red-600" aria-hidden="true">*</span></label>
         <input type="text" name="name" id="name" value="{{ old('name', $product->name) }}" required class="border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500"">
 
-        <label for="color">Färg</label>
+        <label for="color">Färg <span class="text-red-600" aria-hidden="true">*</span></label>
         <input type="text" name="color" id="color" value="{{ old('color', $product->color) }}" required class="border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500">
 
-        <label for="material">Material</label>
+        <label for="material">Material <span class="text-red-600" aria-hidden="true">*</span></label>
         <input type="text" name="material" id="material" value="{{ old('material', $product->material) }}" required class="border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500">
 
-        <label for="description">Produkt beskrivning</label>
+        <label for="description">Produkt beskrivning <span class="text-red-600" aria-hidden="true">*</span></label>
         <textarea name="description" id="description" rows="3" required class="border border-gray-300 rounded-md py-2 px-4 overflow-y-auto focus:outline-none focus:ring-2 focus:ring-blue-500">{{ old('description', $product->description) }}</textarea>
 
-        <label for="price">Pris</label>
+        <label for="price">Pris <span class="text-red-600" aria-hidden="true">*</span></label>
         <input type="number" name="price" id="price" value="{{ old('price', $product->price) }}" required class="border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500">
-        <label for="category">Tilldela kategori</label>
+        <label for="category">Tilldela kategori <span class="text-red-600" aria-hidden="true">*</span></label>
 
         <select name="category_id" id="category" required class="border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500">
             @foreach ($categories as $category)

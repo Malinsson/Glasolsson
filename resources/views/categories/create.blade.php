@@ -13,7 +13,7 @@
 
     <form action="{{ route('categories.store')}}" method="POST" class="flex flex-col gap-4 font-text">
         @csrf
-        <label for="name"><strong>Namn</strong></label>
+        <label for="name"><strong>Namn</strong> <span class="text-red-600" aria-hidden="true">*</span></label>
         <input type="text" name="name" id="name" required class="border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500">
         <button type="submit" class="bg-slate-500 hover:bg-slate-700 text-white py-2 px-4 rounded"><strong>Skapa</strong></button>
     </form>

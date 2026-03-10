@@ -14,13 +14,13 @@
             <form method="post" action="{{ route('login') }}" class="space-y-6">
                 @csrf
                 <div>
-                    <label for="email" class="block text-sm/6 font-medium text-black">Email</label>
+                    <label for="email" class="block text-sm/6 font-medium text-black">Email <span class="text-red-600" aria-hidden="true">*</span></label>
                     <div class="mt-2">
                         <input name="email" id="email" type="email" class="block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-black outline-2 -outline-offset-1 outline-black/10 placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500 sm:text-sm/6 invalid:border-red-500"/>
                     </div>
                 </div>
                 <div class="mt-4">
-                    <label for="password" class="block text-sm/6 font-medium text-black">Lösenord</label>
+                    <label for="password" class="block text-sm/6 font-medium text-black">Lösenord <span class="text-red-600" aria-hidden="true">*</span></label>
                     <input name="password" id="password" type="password" class="block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-black outline-2 -outline-offset-1 outline-black/10 placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500 sm:text-sm/6"/>
                 </div>
                 <input type="hidden" name="_token" value="{{ csrf_token() }}" />
