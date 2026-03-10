@@ -4,7 +4,7 @@
 
 @section('content')
 
-<div class="relative aspect-video min-h-screen overflow-hidden bg-slate-800">
+<section class="relative aspect-video min-h-screen overflow-hidden bg-slate-800">
     <img
         src="{{ asset('images/background.webp') }}"
         alt=""
@@ -18,7 +18,13 @@
     <div class="relative z-10 h-full">
         @include('layouts.partials.login-form')
     </div>
-</div>
+
+    <div class="absolute inset-0 ">
+        <h1 class="text-white align-bottom text-5xl font-logo text-center px-4">
+            Välkommen till Glas Olsson
+        </h1>
+    </div>
+</section>
 
 <section id="products" class="flex flex-wrap justify-center pt-8 pb-16 bg-gray-200 ">
     <h2 class="text-4xl font-logo mb-8 text-center w-full"><strong>Produkter</strong></h2>
