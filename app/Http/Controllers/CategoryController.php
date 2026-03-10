@@ -72,7 +72,7 @@ class CategoryController extends Controller
         $category->slug = Str::slug($request->input('name'));
         $category->save();
 
-        return redirect('categories')->with('success', 'Category updated successfully!');
+        return redirect('categories')->with('succe', 'Kategori har uppdaterats!');
     }
 
     /**
@@ -82,6 +82,6 @@ class CategoryController extends Controller
     {
         $category->delete();
 
-        return redirect('categories')->with('success', 'Category deleted successfully!');
+        return redirect('categories')->with('succe', 'Kategori har tagits bort!');
     }
 }

@@ -100,9 +100,9 @@ class ProductController extends Controller
             'category_id' => 'required|exists:categories,id',
             'image' => 'nullable|file|mimetypes:image/jpeg,image/png,image/webp,image/avif|max:2048',
         ], [
-            'image.file' => 'The image must be a valid file.',
-            'image.mimetypes' => 'The image must be a JPEG, PNG, WebP, or AVIF file.',
-            'image.max' => 'The image may not be greater than 2 MB.',
+            'image.file' => 'Bilden måste vara en giltig fil.',
+            'image.mimetypes' => 'Bilden måste vara en JPEG, PNG, WebP, eller AVIF fil.',
+            'image.max' => 'Bilden får inte vara större än 2 MB.',
         ]);
 
         $product->name = $request->name;
@@ -123,7 +123,7 @@ class ProductController extends Controller
 
         $product->save();
 
-        return redirect('products')->with('success', 'Product updated successfully!');
+        return redirect('products')->with('succe', 'Produkten har uppdaterats!');
     }
 
     /**
@@ -133,6 +133,6 @@ class ProductController extends Controller
     {
         $product->delete();
 
-        return redirect('products')->with('success', 'Product deleted successfully!');
+        return redirect('products')->with('succe', 'Produkten har tagits bort!');
     }
 }
