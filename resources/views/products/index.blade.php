@@ -19,52 +19,51 @@
         
         <form method="GET" action="{{ route('products.index') }}">
     
-            {{-- Categories --}}
-            <div class="mb-6">
-                <p class="font-bold mb-2">Kategori:</p>
-                @foreach ($categories as $category)
-                    <label class="flex items-center gap-2 mb-1">
-                        <input
-                            type="checkbox"
-                            name="categories[]"
-                            value="{{ $category->id }}"
-                            {{ in_array($category->id, request('categories', [])) ? 'checked' : '' }}
-                            class="rounded">
-                        {{ $category->name }}
-                    </label>
-                @endforeach
-            </div>
-    
-            {{-- Colors --}}
-            <div class="mb-6">
-                <p class="font-bold mb-2">Färg:</p>
-                @foreach ($colors as $color)
-                    <label class="flex items-center gap-2 mb-1">
-                        <input
-                            type="checkbox"
-                            name="colors[]"
-                            value="{{ $color }}"
-                            {{ in_array($color, request('colors', [])) ? 'checked' : '' }}
-                            class="rounded">
-                        {{ $color }}
-                    </label>
-                @endforeach
-            </div>
-    
-            {{-- Materials --}}
-            <div class="mb-6">
-                <p class="font-bold mb-2">Material:</p>
-                @foreach ($materials as $material)
-                    <label class="flex items-center gap-2 mb-1">
-                        <input
-                            type="checkbox"
-                            name="materials[]"
-                            value="{{ $material }}"
-                            {{ in_array($material, request('materials', [])) ? 'checked' : '' }}
-                            class="rounded">
-                        {{ $material }}
-                    </label>
-                @endforeach
+            <div class="flex flex-row gap-8">
+                {{-- Categories --}}
+                <div class="mb-6">
+                    <p class="font-bold mb-2">Kategori:</p>
+                    <select name="categories[]">
+                        <option value="" disabled selected hidden>Välj kategori</option>
+                        @foreach ($categories as $category)
+                            <label>
+                                <option
+                                    value="{{ $category->id }}">
+                                {{ $category->name }}
+                            </label>
+                        @endforeach
+                    </select>
+                </div>
+                
+                {{-- Materials --}}
+                <div class="mb-6">
+                    <p class="font-bold mb-2">Material:</p>
+                    <select name="materials[]">
+                        <option value="" disabled selected hidden>Välj material</option>
+                        @foreach ($materials as $material)
+                        <label>
+                            <option
+                            value="{{ $material }}">
+                            {{ $material }}
+                        </label>
+                        @endforeach
+                    </select>
+                </div>
+                
+                {{-- Colors --}}
+                <div class="mb-6">
+                    <p class="font-bold mb-2">Färg:</p>
+                    <select name="colors[]">
+                        <option value="" disabled selected hidden>Välj färg</option>
+                        @foreach ($colors as $color)
+                        <label>
+                            <option
+                            value="{{ $color }}">
+                            {{ $color }}
+                        </label>
+                        @endforeach
+                    </select>
+                </div>
             </div>
     
             {{-- Price --}}
