@@ -54,7 +54,7 @@
 
     <main class="min-h-screen">
 
-        @include('errors')
+        @include('layouts.partials.errors')
 
         @include('layouts.partials.delete-modal')
 
