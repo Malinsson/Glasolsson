@@ -37,7 +37,7 @@
         <div tabindex="0" class="bg-white w-sm flex flex-col justify-between items-center py-10 px-4 shadow-md m-4 hover:shadow-lg transition-shadow duration-300 rounded">
             <img src="{{ str_starts_with($product->image, 'images/stock/') ? asset($product->image) : asset('storage/' . $product->image) }}" alt="{{ $product->name }}" class="w-full h-auto object-cover">
             <h3 class="text-text font-bold mt-2">{{ $product->name }}</h3>
-            <p class="mt-2"><span>{{ $product->color }}</span> <span>{{ $product->category->name }}</span></p>
+            <p class="mt-2"><span>{{ $product->color }}</span> <span>{{ $product->category?->name ?? 'Ingen kategori' }}</span></p>
             <p class="text-lg font-bold mt-2">{{ number_format($product->price, 2) }}:-</p>
         </div>
     @endforeach

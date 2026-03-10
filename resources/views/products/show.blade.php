@@ -16,7 +16,7 @@
         <p class="font-bold md:text-xl">Pris:</p>
         <p>{{$product->price}} kr</p>
         <p class="font-bold md:text-xl">Kategori:</p>
-        <p>{{$product->category->name}}</p>
+        <p>{{ $product->category?->name ?? 'Ingen kategori' }}</p>
     </div>
 
     <div class="md:w-1/2 flex flex-col gap-3">
