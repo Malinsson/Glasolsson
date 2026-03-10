@@ -1,18 +1,16 @@
 @extends('layouts.app')
 
-@section('title', 'Redigera kategori')
+@section('title', 'Produkter')
 
 @section('content')
 
-<header>
-    <nav>
-        <a href="/dashboard">Dashboard</a>
+<section class="p-3">
+    
+    <div class="flex items-center justify-between">
+        <h2 class="p-3 text-2xl">Produkter</h2>
+        <a class="bg-slate-600 hover:bg-slate-800 text-white font-bold py-2 px-4 rounded cursor-pointer" href="{{ route('products.create') }}">Skapa ny produkt</a>
+    </div>
         
-            <a href="{{ route('products.create') }}">Skapa produkt</a>
-    </nav>
-</header>
-
-<main class="p-3">
     <section class="p-3">
     
         <h2 class="p-3 text-2xl">Produkter</h2>
@@ -148,6 +146,5 @@
             {{ $products->links() }}
         </div>
     </section>
-</main>
 
 @endsection
