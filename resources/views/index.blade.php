@@ -6,7 +6,7 @@
 
 <div style="background-image: url('{{ asset('images/background.webp') }}');" class="bg-cover bg-center aspect-video min-h-screen hero-bg-shift">
 
-    <div id="login-form" class="hidden flex items-center justify-center h-screen">
+    <div id="login-form" class="hidden items-center justify-center h-screen">
         <div class="bg-white bg-opacity-75 p-8 rounded shadow-md mx-4 w-full max-w-md">
             <span id="close-login" tabindex="0" class="focus:outline-2 focus:outline-indigo-500 rounded cursor-pointer float-right text-black text-4xl hover:text-gray-600">×</span>
             <h2 class="text-2xl mb-6 text-center"><strong>Login</strong></h2>
