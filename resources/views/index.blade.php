@@ -15,10 +15,14 @@
         class="absolute inset-0 h-full w-full object-cover hero-bg-shift"
     >
 
-    <div class="relative z-10 h-full">
+    <div class="relative z-50 h-full">
         @include('layouts.partials.login-form')
     </div>
 
+    <div class="absolute z-10 flex flex-col justify-end-safe h-full px-8">
+        <h1 class="text-5xl md:text-8xl font-logo text-white mb-6">Glas Olsson</h1>
+        <p class="font-text text-lg md:text-xl text-white mb-8 max-w-2xl">Din pålitliga partner för kvalitetsglas och speglar.</p>
+    </div>
 
 </section>
 
