@@ -10,7 +10,8 @@
         <div class="bg-white bg-opacity-75 p-8 rounded shadow-md mx-4 w-full max-w-md">
             <span id="close-login" tabindex="0" class="focus:outline-2 focus:outline-indigo-500 rounded cursor-pointer float-right text-black text-4xl hover:text-gray-600">×</span>
             <h2 class="text-2xl font-bold mb-6 text-center">Login</h2>
-            <form method="post" action="/login">
+
+            <form method="post" action="{{ route('login') }}" class="space-y-6">
                 @csrf
                 <div>
                     <label for="email" class="block text-sm/6 font-medium text-black">Email</label>
@@ -19,11 +20,11 @@
                     </div>
                 </div>
                 <div class="mt-4">
-                    <label for="password" class="block text-sm/6 font-medium text-black">Password</label>
+                    <label for="password" class="block text-sm/6 font-medium text-black">Lösenord</label>
                     <input name="password" id="password" type="password" class="block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-black outline-2 -outline-offset-1 outline-black/10 placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500 sm:text-sm/6"/>
                 </div>
-            <input type="hidden" name="_token" value="{{ csrf_token() }}" />
-            <button type="submit" class="mt-4 w-full bg-slate-600 hover:bg-slate-800 text-white font-bold py-2 px-4 rounded cursor-pointer">Login</button>
+                <input type="hidden" name="_token" value="{{ csrf_token() }}" />
+                <button type="submit" class="mt-4 w-full bg-slate-600 hover:bg-slate-800 text-white font-bold py-2 px-4 rounded cursor-pointer">Login</button>
             
             </form>
         </div>
