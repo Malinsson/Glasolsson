@@ -28,7 +28,9 @@
                         @foreach ($categories as $category)
                             <label>
                                 <option
-                                    value="{{ $category->id }}">
+                                    value="{{ $category->id }}"
+                                    {{ in_array($category->id, request('categories', [])) ? 'selected' : '' }}
+                                    >
                                 {{ $category->name }}
                             </label>
                         @endforeach
@@ -43,7 +45,9 @@
                         @foreach ($materials as $material)
                         <label>
                             <option
-                            value="{{ $material }}">
+                            value="{{ $material }}" 
+                            {{ in_array($material, request('materials', [])) ? 'selected' : '' }}
+                            >
                             {{ $material }}
                         </label>
                         @endforeach
@@ -58,7 +62,9 @@
                         @foreach ($colors as $color)
                         <label>
                             <option
-                            value="{{ $color }}">
+                            value="{{ $color }}" 
+                            {{ in_array($color, request('colors', [])) ? 'selected' : '' }}
+                            >
                             {{ $color }}
                         </label>
                         @endforeach
