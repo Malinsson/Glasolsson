@@ -9,7 +9,7 @@ if (fileInput && errorMessage && form) {
             const file = this.files[0];
         
             if (file.size > MAX_FILE_SIZE) {
-                errorMessage.textContent = `File is too large. Maximum size is 2 MB, but you selected ${(file.size / 1024 / 1024).toFixed(2)} MB.`;
+                errorMessage.textContent = `Filen du valt är för stor. Maximal storlek är 2 MB, men du valde ${(file.size / 1024 / 1024).toFixed(2)} MB.`;
                 errorMessage.style.display = 'block';
                 this.value = '';
             } else {
@@ -23,7 +23,7 @@ if (fileInput && errorMessage && form) {
             const file = fileInput.files[0];
             if (file.size > MAX_FILE_SIZE) {
                 e.preventDefault();
-                errorMessage.textContent = `File is too large. Maximum size is 2 MB, but you selected ${(file.size / 1024 / 1024).toFixed(2)} MB.`;
+                errorMessage.textContent = `Filen du valt är för stor. Maximal storlek är 2 MB, men du valde ${(file.size / 1024 / 1024).toFixed(2)} MB.`;
                 errorMessage.style.display = 'block';
             }
         }
