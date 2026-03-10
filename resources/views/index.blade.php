@@ -4,8 +4,20 @@
 
 @section('content')
 
-<div style="background-image: url('{{ asset('images/background.webp') }}');" class="bg-cover bg-center aspect-video min-h-screen hero-bg-shift">
-    @include('layouts.partials.login-form')
+<div class="relative aspect-video min-h-screen overflow-hidden bg-slate-800">
+    <img
+        src="{{ asset('images/background.webp') }}"
+        alt=""
+        aria-hidden="true"
+        fetchpriority="high"
+        loading="eager"
+        decoding="sync"
+        class="absolute inset-0 h-full w-full object-cover hero-bg-shift"
+    >
+
+    <div class="relative z-10 h-full">
+        @include('layouts.partials.login-form')
+    </div>
 </div>
 
 <section id="products" class="flex flex-wrap justify-center pt-8 pb-16 bg-gray-200 ">

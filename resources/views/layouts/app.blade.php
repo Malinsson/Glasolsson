@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>@yield('title', 'Glasolsson')</title>
+    @if(request()->is('/'))
+        <link rel="preload" as="image" href="{{ asset('images/background.webp') }}" type="image/webp">
+    @endif
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
@@ -14,7 +17,7 @@
         $showDesktopAside = auth()->check() && !$isMobile && request()->is('dashboard', 'products*', 'categories*');
     @endphp
 
-    <header class="{{ request()->is('/') ? 'absolute bg-transparent' : 'bg-slate-800' }} flex justify-center w-full h-24 text-white py-4">
+    <header class="{{ request()->is('/') ? 'absolute bg-transparent' : 'bg-slate-800' }} flex justify-center w-full h-24 text-white py-4 z-50">
         <div class="container mx-auto flex justify-between items-center px-4">
             <a href="/" class="text-4xl font-logo">Glas Olsson</a>
             <nav>
