@@ -36,7 +36,9 @@
         </tbody>
     </table>
 
-    {{ $categories->links() }}
+    <div class="pagination-white">
+        {{ $categories->links() }}
+    </div>
 </section>
 
 @endsection

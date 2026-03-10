@@ -43,7 +43,9 @@
             @endforeach
         </tbody>
     </table>
-    {{ $products->links() }}
+    <div class="pagination-white">
+        {{ $products->links() }}
+    </div>
 </section>
 
 @endsection

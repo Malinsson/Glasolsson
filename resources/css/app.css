@@ -1,5 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Chivo:ital,wght@0,100..900;1,100..900&family=Staatliches&display=swap');
-@import 'tailwindcss';
+@import url("https://fonts.googleapis.com/css2?family=Chivo:ital,wght@0,100..900;1,100..900&family=Staatliches&display=swap");
+@import "tailwindcss";
 
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 @source '../../storage/framework/views/*.php';
@@ -19,4 +19,30 @@
     background-position: center 28%;
 }
 
+
+/* text */
+.pagination-white :is(a, span) {
+    color: #000000 !important;
+}
+
+/* arrows */
+.pagination-white svg {
+    color: #000000; 
+    fill: currentColor !important;
+}
+
+/* bg color */
+.pagination-white .bg-white {
+    background-color: transparent !important;
+}
+.pagination-white .bg-gray-200 {
+    background-color: #dbdbdb !important; /* desktop currently selected */
+    border-color: 1px solid rgba(0, 0, 0, 0.08) !important; /* desktop currently selected border */
+}
+
+/* mobile currect selected text color, desktop general text color */
+.pagination-white .text-gray-700,
+.pagination-white .text-gray-600,
+.pagination-white .text-gray-500 {
+    color: #606060 !important;
 }
