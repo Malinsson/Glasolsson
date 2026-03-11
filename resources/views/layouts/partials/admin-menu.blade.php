@@ -1,10 +1,12 @@
-<div class="flex flex-col mt-8 text-lg" role="navigation" aria-label="Adminnavigation">
+
+
+<div class="flex flex-col sm:mt-0 md:mt-8 text-lg" role="navigation" aria-label="Adminnavigation">
     @if(isset($showMobileClose) && $showMobileClose)
         <span id="close-sidemenu" role="button" aria-label="Stäng meny" tabindex="0" class="text-left px-4 focus:outline-2 focus:outline-indigo-500 rounded cursor-pointer float-center text-white text-3xl hover:text-gray-600">×</span>
     @endif
 
     @php
-    $baseLinkClasses = 'p-4 flex gap-2 flex-row items-center text-white font-text py-6 hover:bg-gray-950 active:bg-gray-950';
+    $baseLinkClasses = 'sm:p-4 md:p-4 py-6 flex gap-2 flex-row items-center text-white font-text  hover:bg-gray-950 active:bg-gray-950';
 
     $activeLinkClasses = 'flex gap-2 flex-row items-center bg-gray-950 font-semibold';
     @endphp 
