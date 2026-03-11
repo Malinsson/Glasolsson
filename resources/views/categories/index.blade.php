@@ -17,6 +17,7 @@
     
             <thead>
                 <tr>
+                    <th scope="col" class="th-col">ID</th>
                     <th scope="col" class="th-col">Namn</th>
                     <th scope="col" class="th-col"></th>
                 </tr>
@@ -25,6 +26,7 @@
             <tbody>
                 @foreach ($categories as $category)
                 <tr class="tr-row" aria-label="Rad för kategori: {{ $category->name }}"> 
+                    <td class="td-cell">{{ $category->id }}</td>
                     <td class="td-cell">{{ $category->name }}</td>
                     <td class="td-cell" onclick="window.location='{{ route('categories.show', $category->id)}}'">
                         <button class="flex items-center place-content-center gap-2" aria-label="Redigera kategori">
