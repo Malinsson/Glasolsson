@@ -5,20 +5,17 @@
 @section('content')
 
 <section class="size-full pb-3 pt-3">
-    {{-- 285 --}}
     
     <section class="p-3 pb-1">
         
         <div class="flex items-center justify-between pt-3 pb-12">
             <h2 class="text-2xl">Produkter</h2>
-            
             <a class="bg-slate-600 hover:bg-slate-800 text-white font-bold py-2 px-4 rounded cursor-pointer" href="{{ route('products.create') }}">Skapa ny produkt</a>
         </div>
 
-        {{-- Total products found --}}
-        
         <form method="GET" action="{{ route('products.index') }}">
 
+            {{-- Total products found --}}
             <p class="text-gray-500">{{ $products->total() }} produkter hittades</p>
     
             <div class="hidden sm:flex flex-row justify-between items-end">
@@ -102,6 +99,7 @@
             
         </form>
     </section>
+
     <section class="border border-gray-400 flex-1 bg-white p-4 ">
         
         {{-- Products table --}}
