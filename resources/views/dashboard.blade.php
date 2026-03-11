@@ -18,10 +18,28 @@
     
 </section>
 
-<article>
-    <div>
-        <canvas id="myChart"></canvas>
+<article class="grid grid-cols-1 md:grid-cols-2 gap-6 my-6 mx-4">
+
+    <div class="bg-white p-6 rounded-xl shadow">
+        <h4 class="font-logo text-2xl mb-4">Försäljning över tid</h4>
+        <canvas id="salesChart"></canvas>
     </div>
+
+    <div class="bg-white p-6 rounded-xl shadow">
+        <h4 class="font-logo text-2xl mb-4">Vinst per kvartal</h4>
+        <canvas id="profitChart"></canvas>
+    </div>
+
+    <div class="bg-white p-6 rounded-xl shadow">
+        <h4 class="font-logo text-2xl mb-4">Fördelning av användar enheter</h4>
+        <canvas id="deviceChart"></canvas>
+    </div>
+
+    <div class="bg-white p-6 rounded-xl shadow">
+        <h4 class="font-logo text-2xl mb-4">Fördelning av produktkategorier</h4>
+        <canvas id="categoryChart"></canvas>
+    </div>
+
 </article>
 
 @endsection
