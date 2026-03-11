@@ -8,10 +8,10 @@
 
     <div class="flex items-center justify-between font-text my-4">
         <h2 class="p-3 text-xl"><strong>Redigera produkt</strong></h2>
-        <a href="{{ route('products.index') }}" class="bg-slate-600 hover:bg-slate-800 text-white py-2 px-4 rounded cursor-pointer"><strong>Tillbaka till produkter</strong></a>
+        <a href="{{ route('products.index') }}" aria-label="Gå tillbaka till produkter" class="bg-slate-600 hover:bg-slate-800 text-white py-2 px-4 rounded cursor-pointer"><strong>Tillbaka till produkter</strong></a>
     </div>
 
-    <form action="{{ route('products.update', ['product' => $product->id]) }}" method="POST" enctype="multipart/form-data" class="flex flex-col gap-4 font-text">
+    <form action="{{ route('products.update', ['product' => $product->id]) }}" method="POST" enctype="multipart/form-data" aria-label="Redigera produkt-formulär" class="flex flex-col gap-4 font-text">
         @csrf
         @method('PATCH')
 
@@ -40,13 +40,13 @@
         <label for="image">Bild</label>
         <input type="file" name="image" id="image" accept="image/jpg, image/jpeg, image/webp, image/png, image/avif" class="text-white bg-slate-500 border border-gray-300 hover:bg-slate-800 rounded-md py-2 px-4 cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-500" onchange="validateImage()">
 
-        <p id="image-error" style="color: red; display: none;"></p>
+        <p id="image-error" role="alert" aria-live="polite" style="color: red; display: none;"></p>
 
         @if($product->image)
             <p>Nuvarande bild: {{ basename($product->image) }}</p>
         @endif
 
-        <button type="submit"class="bg-slate-700 hover:bg-slate-800 text-white py-2 px-4 rounded">
+        <button type="submit" aria-label="Uppdatera produkt" class="bg-slate-700 hover:bg-slate-800 text-white py-2 px-4 rounded">
             <strong>Uppdatera produkt</strong>
         </button>
 
