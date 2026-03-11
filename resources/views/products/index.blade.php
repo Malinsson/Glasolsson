@@ -145,9 +145,10 @@
         </table>
     
         {{-- Pagination --}}
-        <div class="pagination-white">
+        <nav role="navigation" aria-label="Pagination Navigering" class="pagination-white">
             {{ $products->links() }}
-        </div>
+        </nav>
     </section>
+</section>
 
 @endsection

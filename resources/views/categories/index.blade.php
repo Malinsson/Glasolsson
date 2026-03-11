@@ -38,9 +38,9 @@
             </tbody>
         </table>
     
-        <div class="pagination-white">
+        <nav role="navigation" aria-label="Pagination Navigering" class="pagination-white">
             {{ $categories->links() }}
-        </div>
+        </nav>
     </div>
 </section>
 

@@ -4,7 +4,7 @@
 
 @section('content')
 
-<div style="background-image: url('{{ asset('images/background.webp') }}');" class="bg-cover bg-center aspect-video min-h-screen hero-bg-shift">
+<section style="background-image: url('{{ asset('images/background.webp') }}');" class="bg-cover bg-center aspect-video min-h-screen hero-bg-shift">
 
     <div id="login-form" class="hidden flex items-center justify-center h-screen">
         <div class="bg-white bg-opacity-75 p-8 rounded shadow-md mx-4 w-full max-w-md">
@@ -28,23 +28,23 @@
             </form>
         </div>
     </div>
-</div>
+</section>
 
 <section id="products" aria-label="Produktöversikt" class="flex flex-wrap justify-center pt-8 pb-16 bg-gray-200">
     <h2 class="text-4xl font-logo font-bold mb-8 text-center w-full">Produkter</h2>
 
     @foreach ($products as $product)
         <div tabindex="0" aria-label="{{ $product->name }}" class="bg-white w-sm flex flex-col justify-between items-center py-10 px-4 shadow-md m-4 hover:shadow-lg transition-shadow duration-300 rounded">
-            <img src="{{ str_starts_with($product->image, 'images/stock/') ? asset($product->image) : asset('storage/' . $product->image) }}" alt="{{ $product->name }}" class="w-full h-auto object-cover">
+            <img src="{{ str_starts_with($product->image, 'images/stock/') ? asset($product->image) : asset('storage/' . $product->image) }}" alt="{{ $product->name }}" class="w-full h-auto object-cover" aria-label="bild som visar {{ $product->name }} glasögon frammifrån">
             <h3 class="text-text font-bold mt-2">{{ $product->name }}</h3>
             <p class="mt-2"><span>{{ $product->color }}</span> <span>{{ $product->category->name }}</span></p>
             <p class="text-lg font-bold mt-2">{{ number_format($product->price, 2) }}:-</p>
         </div>
     @endforeach
 
-    <div class="w-full flex justify-center mt-8">
+    <nav role="navigation" aria-label="Pagination Navigering" class="w-full flex justify-center mt-8">
         {{ $products->links() }}
-    </div>
+    </nav>
 
 </section>
 
