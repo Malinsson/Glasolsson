@@ -8,17 +8,9 @@
     
     <div class="flex items-center justify-between">
         <h2 class="p-3 text-2xl"><strong>Produkter</strong></h2>
-        <a class="bg-slate-600 hover:bg-slate-800 text-white  py-2 px-4 rounded cursor-pointer focus:outline-2 focus:outline-indigo-500" href="{{ route('products.create') }}"><strong>Skapa ny produkt</strong></a>
+        <a class="bg-slate-600 hover:bg-slate-800 text-white  py-2 px-4 rounded cursor-pointer focus:outline-2 focus:outline-indigo-500" href="{{ route('products.create') }}" aria-label="Skapa ny produkt"><strong>Skapa ny produkt</strong></a>
     </div>
         
-    <section class="p-3">
-    
-        <h2 class="p-3 text-2xl">Produkter</h2>
-        
-        <div class="flex items-center justify-between pt-3 pb-12">
-            <h2 class="text-2xl">Produkter</h2>
-            <a class="bg-slate-600 hover:bg-slate-800 text-white font-bold py-2 px-4 rounded cursor-pointer" aria-label="Skapa ny produkt" href="{{ route('products.create') }}">Skapa ny produkt</a>
-        </div>
 
         <form aria-label="Filtrera produkter" method="GET" action="{{ route('products.index') }}">
 
@@ -97,10 +89,10 @@
             
                 {{-- Buttons --}}
                 <div class="flex flex-wrap-reverse items-center">
-                    <button type="submit" aria-label="Applicera filter" class="bg-slate-600 hover:bg-slate-800 text-white font-bold py-2 px-4 rounded">
+                    <button type="submit" aria-label="Applicera filter" class="bg-slate-600 hover:bg-slate-800 text-white font-bold py-2 px-4 rounded focus:outline-2 focus:outline-indigo-500">
                         Applicera
                     </button>
-                    <a href="{{ route('products.index') }}" aria-label="Återställ filter" class="text-gray-500 hover:underline py-3 px-4 text-">
+                    <a href="{{ route('products.index') }}" aria-label="Återställ filter" class="text-gray-500 hover:underline py-3 px-4 text- focus:outline-2 focus:outline-indigo-500">
                         Återställ
                     </a>
                 </div>
