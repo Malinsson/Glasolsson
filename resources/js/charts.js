@@ -35,35 +35,46 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    new Chart(document.getElementById('profitChart'), {
-    type: 'bar',
+new Chart(document.getElementById('profitChart'), {
     data: {
         labels: ['Q1','Q2','Q3','Q4'],
-        datasets: [{
-            label: 'Vinstmarginal',
-            data: [30, 45, 20, 35],
-            backgroundColor: [
-                '#6366f1',
-                '#10b981',
-                '#f59e0b',
-                '#ef4444'
-            ]
-        }]
+        datasets: [
+            {
+                type: 'bar',
+                label: 'Vinstmarginal',
+                data: [30, 45, 20, 35],
+                backgroundColor: [
+                    'rgb(59,130,246,0.4)',
+                    'rgb(16,185,129,0.4)',
+                    'rgb(245,158,11,0.4)',
+                    'rgb(239,68,68,0.4)'
+                ]
+            },
+            {
+                type: 'line',
+                label: 'Målvinst',
+                data: [30, 35, 30, 45],
+                borderColor: '#8b5cf6',
+                backgroundColor: 'rgba(139,92,246,0.2)',
+                tension: 0.4,
+                fill: false
+            }
+        ]
     },
     options: {
         scales: {
             y: {
                 beginAtZero: true,
-                    ticks: {
-                        stepSize: 1,
-                        callback: function(value) {
-                            return value + ' mkr';
-                        }
+                ticks: {
+                    stepSize: 10,
+                    callback: function(value) {
+                        return value + ' mkr';
                     }
                 }
             }
         }
-    });
+    }
+});
 
 
     new Chart(document.getElementById('deviceChart'), {
