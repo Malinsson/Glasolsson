@@ -13,13 +13,13 @@
     --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
     --font-logo: 'Staatliches', sans-serif;
     --font-text: 'Chivo', sans-serif;
+} 
 
 html,
 body {
     @apply max-w-full overflow-x-hidden;
 }
 
-} 
 main {
     @apply overflow-x-hidden;
 }
