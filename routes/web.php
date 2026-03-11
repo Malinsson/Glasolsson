@@ -13,9 +13,13 @@ Route::get('/', function () {
     return view('index', compact('products'));
 });
 
-Route::view('index', 'index', ['products' => Product::paginate(10)])->name('login')->middleware('guest');
+Route::get('index', function () {
+    $products = Product::paginate(9);
+    return view('index', compact('products'));
+})->name('index')->middleware('guest');
+Route::view('login', 'auth.login')->name('login')->middleware('guest');
 
-Route::post('login', LoginController::class)->middleware('guest');
+Route::post('login', LoginController::class)->name('login.attempt')->middleware('guest');
 Route::get('logout', LogoutController::class);
 
 Route::get('dashboard', DashboardController::class)->middleware('auth');
