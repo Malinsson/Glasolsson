@@ -34,6 +34,6 @@
 <div class="flex flex-col gap-4 mx-4 my-6 text-center text-lg">
     <form method="get" action="/logout">
         @csrf
-        <button type="submit" class="w-full bg-slate-600 hover:bg-slate-800 text-white font-bold py-2 px-4 rounded cursor-pointer">Logout</button>
+        <button type="submit" class="w-full bg-slate-600 hover:bg-slate-800 text-white py-2 px-4 rounded cursor-pointer"><strong>Logout</strong></button>
     </form>
 </div>

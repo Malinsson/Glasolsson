@@ -10,6 +10,7 @@ if (loginForm && loginToggle && closeLogin) {
     function toggleForm(e) {
         e.preventDefault();
         loginForm.classList.toggle('hidden');
+        loginForm.classList.add('flex');
         document.body.classList.toggle('overflow-hidden');
     }
 
