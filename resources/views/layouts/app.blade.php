@@ -84,16 +84,16 @@
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-6 container mx-auto py-4 md:px-4">
         <div class="container mx-auto text-center">
-            <h2 class="text-2xl font-logo">Glas Olsson</h2>
-            <p class="font-text text-sm mt-1">Din pålitliga partner för kvalitetsglas och speglar.</p>
+            <h3 class="text-2xl font-logo md:text-3xl">Glas Olsson</h3>
+            <p class="font-text text-sm mt-1 md:text-base">Din pålitliga partner för kvalitetsglas och speglar.</p>
         </div>
         <div class="container mx-auto text-center">
-            <h3 class="text-lg font-logo">Kontakt</h3>
-            <p class="font-text text-sm mt-1">E-post: kontakt@glasolsson.se</p>
+            <h3 class="text-lg font-logo md:text-3xl">Kontakt</h3>
+            <p class="font-text text-sm mt-1 md:text-base">E-post: kontakt@glasolsson.se</p>
         </div>
         <div class="container mx-auto text-center">
-            <h3 class="text-lg font-logo">Följ oss</h3>
-            <p class="font-text text-sm mt-1">Facebook | Instagram | LinkedIn</p>
+            <h3 class="text-lg font-logo md:text-3xl">Följ oss</h3>
+            <p class="font-text text-sm mt-1 md:text-base">Facebook | Instagram | LinkedIn</p>
         </div>
     </div>
 
