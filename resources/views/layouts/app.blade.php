@@ -14,7 +14,7 @@
 <body class="">
 
     @php
-        $showDesktopAside = auth()->check() && !$isMobile && request()->is('dashboard', 'products*', 'categories*');
+        $showDesktopAside = auth()->check() && request()->is('dashboard', 'products*', 'categories*');
     @endphp
 
     <header class="{{ request()->is('/') || request()->is('index') ? 'absolute bg-transparent' : 'bg-slate-800' }} flex justify-center w-full h-24 text-white py-4 z-50">
@@ -23,33 +23,29 @@
             <nav aria-label="Huvudnavigation">
                 <ul class="flex space-x-8">
 
-                    @if(auth()->check() && $isMobile)
+                    @if(auth()->check())
                         <li>
-                            <button id="open-sidemenu" aria-label="Öppna meny" aria-expanded="false" aria-controls="menu" class="fixed top-4 right-4 z-50 bg-slate-800 text-white p-3 rounded hover:bg-slate-700 focus:outline-2 focus:outline-indigo-500">
+                            <button id="open-sidemenu" aria-label="Öppna meny" aria-expanded="false" aria-controls="menu" class="fixed top-4 right-4 z-50 bg-slate-800 text-white p-3 rounded hover:bg-slate-700 focus:outline-2 focus:outline-indigo-500 md:hidden">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
                                 </svg>
                             </button>
                         </li>
 
-                        <aside id="menu" aria-label="Navigationsmeny" aria-hidden="true" class="fixed flex justify-between left-0 top-0 py-8 px-4 flex-col h-screen bg-slate-800 w-80 transform -translate-x-full opacity-0 transition-all duration-300 z-40 pointer-events-none">
+                        <aside id="menu" aria-label="Navigationsmeny" aria-hidden="true" class="fixed flex justify-between left-0 top-0 py-8 px-4 flex-col h-screen bg-slate-800 w-80 transform -translate-x-full opacity-0 transition-all duration-300 z-40 pointer-events-none md:hidden">
                             @include('layouts.partials.admin-menu', ['showMobileClose' => true])
                         </aside>
 
-                    @elseif(auth()->check() && !$isMobile)
-                        
-                            <li><a href="/dashboard" aria-label="Gå till dashboard" class="font-text font-light text-xl hover:underline">Dashboard</a></li>
-                            <li>
-                                <form method="get" action="/logout">
-                                    @csrf
-                                    <button type="submit" aria-label="Logga ut" class="flex gap-2 flex-row place-items-center
-                                    font-text font-light text-xl hover:underline">Logga ut<img src="{{ asset('icons/logout.svg')}}" alt="logga ut" class="w-6 h-6"></button>
-                                </form>
-                            </li>
-                        @else
+                        <li class="hidden md:block"><a href="/dashboard" aria-label="Gå till dashboard" class="font-text font-light text-xl hover:underline">Dashboard</a></li>
+                        <li class="hidden md:block">
+                            <form method="get" action="/logout">
+                                @csrf
+                                <button type="submit" aria-label="Logga ut" class="flex gap-2 flex-row place-items-center
+                                font-text font-light text-xl hover:underline">Logga ut<img src="{{ asset('icons/logout.svg')}}" alt="logga ut" class="w-6 h-6"></button>
+                            </form>
+                        </li>
+                    @else
                         <li><a href="#" id="login-toggle" aria-label="Öppna inloggningsformulär" class="flex place-items-center gap-2 flex-row font-text font-light text-xl hover:underline">Logga in <img src="{{ asset('icons/login.svg')}}" alt="logga in" class="w-6 h-6"></a></li>
-                    
-
                     @endif
 
                 </ul>

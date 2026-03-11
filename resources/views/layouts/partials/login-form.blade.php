@@ -4,7 +4,7 @@
             <span id="close-login" aria-label="Stäng loginformulär" tabindex="0" class="focus:outline-2 focus:outline-indigo-500 rounded cursor-pointer float-right text-black text-4xl hover:text-gray-600">×</span>
             <h2 class="text-2xl mb-6 text-center"><strong>Login</strong></h2>
 
-            <form method="post" action="{{ route('login.attempt') }}" class="space-y-6">
+            <form method="post" action="{{ route('login') }}" class="space-y-6">
                 @csrf
                 <div>
                     <label for="email" class="block text-sm/6 font-medium text-black">Email <span class="text-red-600" aria-hidden="true">*</span></label>
