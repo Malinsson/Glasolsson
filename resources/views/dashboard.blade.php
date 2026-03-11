@@ -15,7 +15,13 @@
         
     </article>
 
+    
 </section>
 
+<article>
+    <div>
+        <canvas id="myChart"></canvas>
+    </div>
+</article>
 
 @endsection
