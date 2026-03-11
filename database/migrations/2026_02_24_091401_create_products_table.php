@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('material');
             $table->mediumText('description');
             $table->float('price');
-            $table->foreignId('category_id')->constrained('categories')->onDelete('cascade');
+            $table->foreignId('category_id')->nullable()->constrained('categories')->nullOnDelete();
         });
     }
 

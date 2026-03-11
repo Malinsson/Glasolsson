@@ -5,7 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>@yield('title', 'Glasolsson')</title>
-    @vite(['resources/css/app.css', 'resources/js/app.js', 'resources/js/product-filter.js'])
+    @if(request()->is('/'))
+        <link rel="preload" as="image" href="{{ asset('images/background.webp') }}" type="image/webp">
+    @endif
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
 <body class="">
@@ -14,11 +17,11 @@
         $showDesktopAside = auth()->check() && !$isMobile && request()->is('dashboard', 'products*', 'categories*');
     @endphp
 
-    <header class="{{ request()->is('/') ? 'absolute bg-transparent' : 'bg-slate-800' }} flex justify-center w-full h-24 text-white py-4">
+    <header class="{{ request()->is('/') ? 'absolute bg-transparent' : 'bg-slate-800' }} flex justify-center w-full h-24 text-white py-4 z-50">
         <div class="container mx-auto flex justify-between items-center px-4">
             <a href="/" class="text-4xl font-logo">Glas Olsson</a>
             <nav>
-                <ul class="flex space-x-4">
+                <ul class="flex space-x-8">
 
                     @if(auth()->check() && $isMobile)
                         <button id="open-sidemenu" class="fixed top-4 right-4 z-50 bg-slate-800 text-white p-3 rounded hover:bg-slate-700 focus:outline-2 focus:outline-indigo-500">
@@ -54,14 +57,14 @@
 
     <main class="min-h-scree bg-gray-200">
 
-        @include('errors')
+        @include('layouts.partials.errors')
 
         @include('layouts.partials.delete-modal')
 
         <div class="{{ $showDesktopAside ? 'container md:flex md:items-start md:gap-6' : '' }}">
 
             @if($showDesktopAside)
-                <aside class="hidden md:flex md:w-64 md:shrink-0 md:min-h-[calc(100vh)] md:bg-slate-800 md:text-white md:flex-col md:justify-between md:sticky md:top-0">
+                <aside class="hidden md:flex md:w-50 lg:w-64 md:shrink-0 md:min-h-[calc(100vh)] md:bg-slate-800 md:text-white md:flex-col md:justify-between md:sticky md:top-0">
                     @include('layouts.partials.admin-menu', ['showMobileClose' => false])
                 </aside>
             @endif
@@ -96,6 +99,6 @@
         </div>
 
     </footer>
-
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </body>
 </html>
