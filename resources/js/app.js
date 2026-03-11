@@ -1,5 +1,6 @@
 import './bootstrap';
 import './file-upload-validation';
+import './product-filter';
 
 // Login Form Toggle
 const loginForm = document.getElementById('login-form');
