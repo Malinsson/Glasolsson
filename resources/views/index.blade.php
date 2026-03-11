@@ -28,9 +28,9 @@
 
 <section id="products" class="flex flex-wrap justify-center pt-8 pb-16 bg-gray-200 ">
     <h2 class="text-4xl font-logo mb-8 text-center w-full"><strong>Produkter</strong></h2>
-    <div class="w-full max-w-6xl mx-auto px-4 md:px-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-4" >
+    <div class="w-full max-w-6xl mx-auto px-8 md:px-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-4" >
         @foreach ($products as $product)
-            <div tabindex="0" class="bg-white w-full flex flex-col justify-between items-center py-10 px-4 shadow-md hover:shadow-lg transition-shadow duration-300 rounded">
+            <div tabindex="0" class="bg-white w-full flex flex-col justify-between items-center py-6 px- shadow-md hover:shadow-lg transition-shadow duration-300 rounded">
                 <div class="w-full h-55 flex items-center justify-center rounded overflow-hidden">
                     <img src="{{ str_starts_with($product->image, 'images/stock/') ? asset($product->image) : asset('storage/' . $product->image) }}" alt="{{ $product->name }}" class="w-full h-auto object-cover">
                 </div>
