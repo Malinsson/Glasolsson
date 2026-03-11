@@ -7,8 +7,8 @@
 <section class="p-3">
 
     <div class="flex items-center justify-between">
-        <h2 class="p-3 text-2xl">Kategorier</h2>
-        <a class="bg-slate-600 hover:bg-slate-800 text-white font-bold py-2 px-4 rounded cursor-pointer" href="{{ route('categories.create') }}">Skapa ny kategori</a>
+        <h2 class="p-3 text-2xl"><strong>Kategorier</strong></h2>
+        <a class="bg-slate-600 hover:bg-slate-800 text-white  py-2 px-4 rounded cursor-pointer focus:outline-2 focus:outline-indigo-500" href="{{ route('categories.create') }}"><strong>Skapa ny kategori</strong></a>
     </div>
 
     <table class="w-full table-fixed border-collapse text-sm text-left" aria-label="navigation list for extended information about products">

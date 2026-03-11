@@ -13,11 +13,33 @@ class ProductController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $products = Product::paginate(10);
-        return view('products.index', ['products' => $products]);
-    }
+        $categories = Category::all();
+        $colors    = Product::select('color')->distinct()->pluck('color');
+        $materials = Product::select('material')->distinct()->pluck('material');
+
+        /** products filter query **/
+        $products = Product::query()
+            ->when($request->categories, function ($query) use ($request) {
+                $query->whereIn('category_id', $request->categories);
+            })
+            ->when($request->colors, function ($query) use ($request) {
+                $query->whereIn('color', $request->colors);
+            })
+            ->when($request->materials, function ($query) use ($request) {
+                $query->whereIn('material', $request->materials);
+            })
+            ->when($request->max_price && $request->max_price < 3500, function ($query) use ($request) {
+                $query->where('price', '<=', $request->max_price);
+            })
+            ->with('category')
+            ->paginate(10)
+            ->withQueryString();
+
+        return view('products.index', compact('products', 'categories', 'colors', 'materials'));
+    }   
+    
 
     /**
      * Show the form for creating a new resource.
@@ -54,6 +76,7 @@ class ProductController extends Controller
         $product->price = $request->input('price');
         $product->description = $request->input('description');
         $product->category_id = $request->input('category_id');
+        $product->image = 'images/stock/no-default-thumbnail.png';
 
         if ($request->hasFile('image')) {
             $imagePath = $request->file('image')->store('images/products', 'public');
@@ -68,10 +91,6 @@ class ProductController extends Controller
     /**
      * Display the specified resource.
      */
-    // public function show(Product $product)
-    // {
-    //     //
-    // }
     public function show(Product $product)
     {
         return view('products.show', compact('product'));
@@ -100,9 +119,9 @@ class ProductController extends Controller
             'category_id' => 'required|exists:categories,id',
             'image' => 'nullable|file|mimetypes:image/jpeg,image/png,image/webp,image/avif|max:2048',
         ], [
-            'image.file' => 'The image must be a valid file.',
-            'image.mimetypes' => 'The image must be a JPEG, PNG, WebP, or AVIF file.',
-            'image.max' => 'The image may not be greater than 2 MB.',
+            'image.file' => 'Bilden måste vara en giltig fil.',
+            'image.mimetypes' => 'Bilden måste vara en JPEG, PNG, WebP, eller AVIF fil.',
+            'image.max' => 'Bilden får inte vara större än 2 MB.',
         ]);
 
         $product->name = $request->name;
@@ -123,7 +142,7 @@ class ProductController extends Controller
 
         $product->save();
 
-        return redirect('products')->with('success', 'Product updated successfully!');
+        return redirect('products')->with('succe', 'Produkten har uppdaterats!');
     }
 
     /**
@@ -133,6 +152,6 @@ class ProductController extends Controller
     {
         $product->delete();
 
-        return redirect('products')->with('success', 'Product deleted successfully!');
+        return redirect('products')->with('succe', 'Produkten har tagits bort!');
     }
 }

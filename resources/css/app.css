@@ -14,11 +14,26 @@
 
 }
 
-@media (min-width: 1200px) {
 .hero-bg-shift {
-    background-position: center 28%;
+    object-position: center center;
 }
 
+@media (min-width: 1200px) {
+    .hero-bg-shift {
+        object-position: center 28%;
+    }
+
+.table-cell {
+    @apply border-b border-gray-300 p-4 pl-8 text-left text-gray-700;
+}
+
+.table-col {
+    @apply border-b border-gray-400 p-4 pl-8 text-left font-semibold text-gray-900;
+}
+
+.table-row {
+    @apply border-b border-gray-200 font-medium text-gray-700 hover:bg-gray-50;
+}
 
 /* text */
 .pagination-white :is(a, span) {
@@ -45,4 +60,5 @@
 .pagination-white .text-gray-600,
 .pagination-white .text-gray-500 {
     color: #606060 !important;
+}
 }
