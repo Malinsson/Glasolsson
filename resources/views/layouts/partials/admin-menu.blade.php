@@ -11,6 +11,7 @@
     $activeLinkClasses = 'flex gap-2 flex-row items-center bg-gray-950 font-semibold';
     @endphp 
 
+    {{-- Routes and icons --}}
     <div class="text-white font-logo text-2xl align-middle p-4">Hej, {{ auth()->user()->name }}</div>
     <a
         class="{{ $baseLinkClasses }} {{ request()->is('/') ? $activeLinkClasses : '' }}"
@@ -34,6 +35,7 @@
     ><img src="{{ asset('icons/category.svg')}}" alt="kategori" class="w-6 h-6"> Kategorier</a>
 </div>
 
+{{-- Log out --}}
 <div class="flex flex-col gap-4 mx-4 my-6 text-lg">
     <form method="get" action="/logout">
         @csrf

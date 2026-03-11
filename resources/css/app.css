@@ -10,12 +10,19 @@
 @source '../**/*.js';
 
 @theme {
-    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-        'Segoe UI Symbol', 'Noto Color Emoji';
+    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
     --font-logo: 'Staatliches', sans-serif;
     --font-text: 'Chivo', sans-serif;
 
+html,
+body {
+    @apply max-w-full overflow-x-hidden;
+}
+
 } 
+main {
+    @apply overflow-x-hidden;
+}
 
 @media (min-width: 1200px) {
     .hero-bg-shift {
@@ -36,21 +43,20 @@
 /* Table: */
 
 .table {
-    @apply w-full table-auto grow border-collapse text-sm;
+    @apply w-full table-auto grow border-collapse text-sm p-4;
 }
 
 .td-cell {
-    @apply border-b border-gray-300 p-4 pl-8 text-left text-gray-700;
+    @apply border-b border-gray-300 p-2 pl-2 sm:p-4 sm:pl-8 text-left text-gray-700;
 }
 
 .th-col {
-    @apply border-b border-gray-400 p-4 pl-8 text-left font-semibold text-gray-900;
+    @apply border-b border-gray-400 p-2 pl-2 sm:p-4 sm:pl-8 text-left font-semibold text-gray-900;
 }
 
-.tr-row  {
+.tr-row {
     @apply border-b border-gray-200 text-left font-medium text-gray-700 hover:bg-gray-50;
 }
-
 
 /* Pagination: */
 
@@ -80,7 +86,6 @@
 .pagination-white .text-gray-500 {
     color: #606060 !important; 
 }
-
 
 /* Price slider: */
 input[type="range"] {

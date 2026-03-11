@@ -54,21 +54,21 @@
     </header>
     
 
-    <main aria-label="Huvudinnehåll" class="min-h-scree bg-gray-200">
+    <main aria-label="Huvudinnehåll" class="min-h-screen bg-gray-200">
 
         @include('layouts.partials.errors')
 
         @include('layouts.partials.delete-modal')
 
-        <div class="{{ $showDesktopAside ? 'container md:flex md:items-start md:gap-6' : '' }}">
+        <div class="{{ $showDesktopAside ? 'flex items-start' : '' }}">
 
             @if($showDesktopAside)
-                <aside aria-label="Adminmeny" class="hidden md:flex md:w-50 lg:w-64 md:shrink-0 md:min-h-[calc(100vh)] md:bg-slate-800 md:text-white md:flex-col md:justify-between md:sticky md:top-0">
+                <aside aria-label="Adminmeny" class="hidden md:flex md:w-50 lg:w-64 md:shrink-0 md:min-h-screen md:bg-slate-800 md:text-white md:flex-col md:justify-between md:sticky md:top-0">
                     @include('layouts.partials.admin-menu', ['showMobileClose' => false])
                 </aside>
             @endif
 
-            <div class="{{ $showDesktopAside ? 'flex-1 min-w-0' : '' }}">
+            <div class="{{ $showDesktopAside ? 'flex-1 min-w-0 w-full' : '' }}">
                 @yield('content')
             </div>
 
