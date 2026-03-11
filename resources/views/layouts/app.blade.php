@@ -17,7 +17,7 @@
         $showDesktopAside = auth()->check() && !$isMobile && request()->is('dashboard', 'products*', 'categories*');
     @endphp
 
-    <header class="{{ request()->is('/') ? 'absolute bg-transparent' : 'bg-slate-800' }} flex justify-center w-full h-24 text-white py-4 z-50">
+    <header class="{{ request()->is('/') || request()->is('index') ? 'absolute bg-transparent' : 'bg-slate-800' }} flex justify-center w-full h-24 text-white py-4 z-50">
         <div class="container mx-auto flex justify-between items-center px-4">
             <a href="/" class="text-4xl font-logo">Glas Olsson</a>
             <nav aria-label="Huvudnavigation">
