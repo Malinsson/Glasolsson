@@ -23,7 +23,7 @@
           </div>
         </div>
         <div class="bg-slate-800 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
-          <button type="button" command="close" commandfor="dialog" class="mt-3 inline-flex w-full justify-center rounded-md bg-white/10 px-3 py-2 text-sm font-semibold text-white inset-ring inset-ring-white/5 hover:bg-white/20 sm:mt-0 sm:w-auto">Stäng</button>
+          <button type="button" aria-label="Stäng felmeddelande" command="close" commandfor="dialog" class="mt-3 inline-flex w-full justify-center rounded-md bg-white/10 px-3 py-2 text-sm font-semibold text-white inset-ring inset-ring-white/5 hover:bg-white/20 sm:mt-0 sm:w-auto">Stäng</button>
         </div>
       </el-dialog-panel>
     </div>
