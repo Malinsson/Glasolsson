@@ -1,5 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Chivo:ital,wght@0,100..900;1,100..900&family=Staatliches&display=swap");
 @import "tailwindcss";
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/preflight.css" layer(base);
+@import "tailwindcss/utilities.css" layer(utilities);
 
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 @source '../../storage/framework/views/*.php';
@@ -12,8 +15,14 @@
     --font-logo: 'Staatliches', sans-serif;
     --font-text: 'Chivo', sans-serif;
 
-}
+} 
 
+@media (min-width: 1200px) {
+    .hero-bg-shift {
+        background-position: center 28%;
+    }
+}
+    
 .hero-bg-shift {
     object-position: center center;
 }
@@ -22,27 +31,37 @@
     .hero-bg-shift {
         object-position: center 28%;
     }
+}
 
-.table-cell {
+/* Table: */
+
+.table {
+    @apply w-full table-auto grow border-collapse text-sm;
+}
+
+.td-cell {
     @apply border-b border-gray-300 p-4 pl-8 text-left text-gray-700;
 }
 
-.table-col {
+.th-col {
     @apply border-b border-gray-400 p-4 pl-8 text-left font-semibold text-gray-900;
 }
 
-.table-row {
-    @apply border-b border-gray-200 font-medium text-gray-700 hover:bg-gray-50;
+.tr-row  {
+    @apply border-b border-gray-200 text-left font-medium text-gray-700 hover:bg-gray-50;
 }
+
+
+/* Pagination: */
 
 /* text */
 .pagination-white :is(a, span) {
-    color: #000000 !important;
+    color: #1e293b!important;
 }
 
 /* arrows */
 .pagination-white svg {
-    color: #000000; 
+    color: #1e293b; 
     fill: currentColor !important;
 }
 
@@ -52,13 +71,18 @@
 }
 .pagination-white .bg-gray-200 {
     background-color: #dbdbdb !important; /* desktop currently selected */
-    border-color: 1px solid rgba(0, 0, 0, 0.08) !important; /* desktop currently selected border */
+    border-color: 1px solid #1e293b !important; /* desktop currently selected border */
 }
 
 /* mobile currect selected text color, desktop general text color */
 .pagination-white .text-gray-700,
 .pagination-white .text-gray-600,
 .pagination-white .text-gray-500 {
-    color: #606060 !important;
+    color: #606060 !important; 
 }
+
+
+/* Price slider: */
+input[type="range"] {
+    accent-color: #475569;
 }

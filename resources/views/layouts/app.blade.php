@@ -55,7 +55,7 @@
     </header>
     
 
-    <main class="min-h-screen">
+    <main class="min-h-scree bg-gray-200">
 
         @include('layouts.partials.errors')
 
