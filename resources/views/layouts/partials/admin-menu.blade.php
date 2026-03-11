@@ -35,6 +35,6 @@
 <div class="flex flex-col gap-4 mx-4 my-6 text-lg">
     <form method="get" action="/logout">
         @csrf
-        <button type="submit" aria-label="Logga ut" class="w-full bg-slate-600 hover:bg-slate-800 text-white font-bold py-2 px-4 rounded cursor-pointer flex gap-2 flex-row place-items-center"><img src="{{ asset('icons/logout.svg')}}" alt="logout" class="w-6 h-6">Logout</button>
+        <button type="submit" aria-label="Logga ut" class="w-full bg-slate-600 hover:bg-slate-800 text-white py-2 px-4 rounded cursor-pointer flex gap-2 flex-row place-items-center"><img src="{{ asset('icons/logout.svg')}}" alt="logout" class="w-6 h-6"><strong>Logout</strong></button>
     </form>
 </div>

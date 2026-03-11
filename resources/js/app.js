@@ -1,5 +1,7 @@
 import './bootstrap';
 import './file-upload-validation';
+import './product-filter';
+import './charts';
 
 // Login Form Toggle
 const loginForm = document.getElementById('login-form');
@@ -10,6 +12,7 @@ if (loginForm && loginToggle && closeLogin) {
     function toggleForm(e) {
         e.preventDefault();
         loginForm.classList.toggle('hidden');
+        loginForm.classList.add('flex');
         document.body.classList.toggle('overflow-hidden');
     }
 

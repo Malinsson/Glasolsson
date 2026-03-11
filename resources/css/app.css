@@ -15,9 +15,7 @@
     --font-logo: 'Staatliches', sans-serif;
     --font-text: 'Chivo', sans-serif;
 
-}
-
-
+} 
 
 @media (min-width: 1200px) {
     .hero-bg-shift {
@@ -25,8 +23,15 @@
     }
 }
     
-/* CUSTOM STYLES */
+.hero-bg-shift {
+    object-position: center center;
+}
 
+@media (min-width: 1200px) {
+    .hero-bg-shift {
+        object-position: center 28%;
+    }
+}
 
 /* Table: */
 
