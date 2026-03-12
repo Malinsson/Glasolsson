@@ -4,7 +4,7 @@
 
 @section('content')
 
-<div class="flex items-center justify-between font-text my-4">
+<div class="flex items-center justify-between font-text m-4">
     <h2 class="p-3 text-xl font-text"><strong>Skapa ny produkt</strong></h2>
     <a href="{{ route('products.index') }}" aria-label="Gå tillbaka till produkter" class="bg-slate-600 hover:bg-slate-800 text-white py-2 px-4 rounded cursor-pointer"><strong>Tillbaka till produkter</strong></a>
 </div>
