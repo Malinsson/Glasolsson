@@ -4,8 +4,8 @@
 
 @section('content')
 
-<div class="flex items-center justify-between font-text my-4">
-    <h2 class="p-3 text-xl font-text"><strong>Skapa ny kategori</strong></h2>
+<div class="flex items-center justify-between font-text m-4">
+    <h2 class="py-3 text-xl font-text"><strong>Skapa ny kategori</strong></h2>
     <a href="{{ route('categories.index') }}" aria-label="Gå tillbaka till kategorier" class="bg-slate-600 hover:bg-slate-800 text-white py-2 px-4 rounded cursor-pointer"><strong>Tillbaka till kategorier</strong></a>
 </div>
 
