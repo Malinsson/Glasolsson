@@ -13,7 +13,7 @@
             <h2 class=" text-2xl"><strong>Produkt</strong></h2>
             <a href="{{ route('products.index') }}"
             aria-label="Gå tillbaka till produkter"
-            class="bg-slate-600 hover:bg-slate-800 text-white py-2 px-4 rounded cursor-pointer focus:outline-2 focus:outline-indigo-500"><strong>Tillbaka</strong></a>
+            class="bg-slate-600 hover:bg-slate-800 text-white py-2 px-4 rounded cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-500">Tillbaka</a>
         </div>
     </section>
     
@@ -42,7 +42,7 @@
 
 </section>
 <div class="flex flex-row justify-between gap-3 pb-3">
-    <a href="{{ route('products.edit', $product->id) }}" aria-label="Redigera produkt" class="bg-slate-600 hover:bg-slate-800 text-white py-2 px-4 rounded cursor-pointer focus:outline-2 focus:outline-indigo-500"><strong>Redigera produkt</strong></a>
+    <a href="{{ route('products.edit', $product->id) }}" aria-label="Redigera produkt" class="bg-slate-600 hover:bg-slate-800 text-white py-2 px-4 rounded cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-500">Redigera produkt</a>
 
     <form id="delete-form" action="{{ route('products.destroy', ['product' => $product->id]) }}" method="POST" style="display:inline;">
         @method('DELETE')

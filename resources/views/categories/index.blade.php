@@ -10,10 +10,10 @@
     <div class="flex items-center justify-between pb-6 pt-6">
         <h2 class="text-2xl"><strong>Kategorier</strong></h2>
         <a 
-        class="bg-slate-700 hover:bg-slate-900 text-white text-sm font-semibold py-2 px-4 rounded transition-colors duration-150 focus:outline-2" 
+        class="bg-slate-700 hover:bg-slate-900 text-white text-sm font-semibold py-2 px-4 rounded transition-colors duration-150 focus:outline-none focus:ring-2 focus:ring-blue-500" 
         aria-label="Skapa ny kategori" 
         href="{{ route('categories.create') }}">
-        <strong>Skapa ny kategori</strong>
+        Skapa ny kategori
         </a>
     </div>
 
