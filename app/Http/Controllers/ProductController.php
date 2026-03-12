@@ -67,9 +67,9 @@ class ProductController extends Controller
             'category_id' => 'required|exists:categories,id',
             'image' => 'nullable|file|mimetypes:image/jpeg,image/png,image/webp,image/avif|max:2048',
         ], [
-            'image.file' => 'The image must be a valid file.',
-            'image.mimetypes' => 'The image must be a JPEG, PNG, WebP, or AVIF file.',
-            'image.max' => 'The image may not be greater than 2 MB.',
+            'image.file' => 'Bilden måste vara en giltig fil.',
+            'image.mimetypes' => 'Bilden måste vara en JPEG, PNG, WebP, eller AVIF fil.',
+            'image.max' => 'Bilden får inte vara större än 2 MB.',
         ]);
 
         $product = new Product();
