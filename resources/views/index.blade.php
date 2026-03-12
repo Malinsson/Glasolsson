@@ -32,12 +32,13 @@
 
     <div class="w-full max-w-6xl mx-auto px-8 md:px-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-4" >
         @foreach ($products as $product)
-            <div tabindex="0" aria-label="{{ $product->name }}" class="bg-white w-full flex flex-col justify-between items-center py-6 px- shadow-md hover:shadow-lg transition-shadow duration-300 rounded">
+            <div tabindex="0" aria-label="{{ $product->name }}" class="font-text bg-white w-full flex flex-col justify-between items-center py-6 px- shadow-md hover:shadow-lg transition-shadow duration-300 rounded">
                 <div class="w-full h-55 flex items-center justify-center rounded overflow-hidden">
                     <img src="{{ str_starts_with($product->image, 'images/stock/') ? asset($product->image) : asset('storage/' . $product->image) }}" alt="{{ $product->name }}" aria-label="bild som visar {{ $product->name }} glasögon framifrån" class="w-full h-auto object-cover">
                 </div>
-                <h3 class="text-text mt-2"><strong>{{ $product->name }}</strong></h3>
-                <p class="mt-2"><span>{{ $product->color }}</span> <span>{{ $product->category?->name ?? 'Ingen kategori' }}</span></p>
+                <h3 class="mt-2"><strong>{{ $product->name }}</strong></h3>
+                <p class="mt-2">{{ $product->color }}</p>
+                <p class="mt-2">{{ $product->category?->name ?? 'Ingen kategori' }}</p>
                 <p class="text-lg mt-2"><strong>{{ number_format($product->price, 2) }}:-</strong></p>
             </div>
         @endforeach
