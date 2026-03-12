@@ -14,7 +14,7 @@ class CategorySeeder extends Seeder
      */
     public function run(): void
     {
-        collect(['Solglasögon', 'Läsglasögon', 'Progressiva glasögon', 'Barnglasögon', 'Standard'])
+        collect(['Solglasögon', 'Läsglasögon', 'Progressiva glasögon', 'Barnglasögon', 'Standardglasögon'])
             ->each(function ($name) {
                 Category::factory()->create([
                     'name' => $name,
