@@ -47,8 +47,8 @@ class ProductController extends Controller
     public function create()
     {
         $categories = Category::all();
-        $materials = Product::All()->pluck('material')->unique()->filter()->values();
-        $colors = Product::All()->pluck('color')->unique()->filter()->values();
+        $colors    = Product::select('color')->distinct()->pluck('color');
+        $materials = Product::select('material')->distinct()->pluck('material');
         return view('products.create', compact('categories', 'materials', 'colors'));
     }
 
@@ -88,7 +88,7 @@ class ProductController extends Controller
 
         $product->save();
 
-        return redirect('products')->with('success', 'Product created successfully!');
+        return redirect('products')->with('Succe', 'Din produkt har skapats!');
     }
 
     /**
@@ -104,8 +104,8 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        $materials = Product::All()->pluck('material')->unique()->filter()->values();
-        $colors = Product::All()->pluck('color')->unique()->filter()->values();
+        $colors    = Product::select('color')->distinct()->pluck('color');
+        $materials = Product::select('material')->distinct()->pluck('material');
         $categories = Category::all();
         return view('products.edit', compact('product', 'categories', 'materials', 'colors'));
     }
