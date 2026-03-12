@@ -36,7 +36,7 @@
         <textarea name="description" id="description" rows="3" required class="border border-gray-300 rounded-md py-2 px-4 overflow-y-auto focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
 
         <label for="price">Pris <span class="text-red-600" aria-hidden="true">*</span></label>
-        <input type="number" name="price" id="price" required class="border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500">
+        <input type="number" name="price" id="price" min="0" step="0.01" inputmode="decimal" required class="border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500">
 
         <label for="category">Tilldela kategori <span class="text-red-600" aria-hidden="true">*</span></label>
         <select name="category_id" id="category" required class="border border-gray-300 rounded-md py-2 px-4 cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-500">
