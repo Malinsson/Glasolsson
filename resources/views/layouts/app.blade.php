@@ -60,10 +60,10 @@
 
         @include('layouts.partials.delete-modal')
 
-        <div class="{{ $showDesktopAside ? 'flex items-start' : '' }}">
+        <div class="{{ $showDesktopAside ? 'flex items-stretch' : '' }}">
 
             @if($showDesktopAside)
-                <aside aria-label="Adminmeny" class="hidden md:flex md:w-50 lg:w-64 md:shrink-0 md:min-h-screen md:bg-slate-800 md:text-white md:flex-col md:justify-between md:sticky md:top-0">
+                <aside aria-label="Adminmeny" class="hidden md:flex md:w-50 lg:w-64 md:shrink-0 md:bg-slate-800 md:text-white md:flex-col md:justify-between">
                     @include('layouts.partials.admin-menu', ['showMobileClose' => false])
                 </aside>
             @endif
