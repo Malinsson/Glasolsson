@@ -47,8 +47,9 @@ class ProductController extends Controller
     public function create()
     {
         $categories = Category::all();
-        $products = Product::all();
-        return view('products.create', compact('categories', 'products'));
+        $materials = Product::All()->pluck('material')->unique()->filter()->values();
+        $colors = Product::All()->pluck('color')->unique()->filter()->values();
+        return view('products.create', compact('categories', 'materials', 'colors'));
     }
 
     /**
@@ -56,6 +57,7 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
+
         $request->validate([
             'name' => 'required|unique:products|min:3|max:100',
             'color' => 'required|min:3|max:50',
@@ -102,9 +104,10 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        $products = Product::all();
+        $materials = Product::All()->pluck('material')->unique()->filter()->values();
+        $colors = Product::All()->pluck('color')->unique()->filter()->values();
         $categories = Category::all();
-        return view('products.edit', compact('product', 'categories', 'products'));
+        return view('products.edit', compact('product', 'categories', 'materials', 'colors'));
     }
 
     /**

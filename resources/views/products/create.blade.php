@@ -17,18 +17,18 @@
         <input type="text" name="name" id="name" required class="border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500">
 
         <label for="color">Färg <span class="text-red-600" aria-hidden="true">*</span></label>
-        <input list="color" name="color" id="color" required class="border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500">
-        <datalist id="color">
-            @foreach ($products as $item)
-                <option value="{{ $item->color }}">
+        <input list="color-options" name="color" id="color" required class="border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500">
+        <datalist id="color-options">
+            @foreach ($colors as $color)
+                <option value="{{ $color }}">
             @endforeach
         </datalist>
 
         <label for="material">Material <span class="text-red-600" aria-hidden="true">*</span></label>
-        <input list="material" name="material" id="material" required class="border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500">
-        <datalist id="material">
-            @foreach ($products as $item)
-                <option value="{{ $item->material }}">
+        <input list="material-options" name="material" id="material" required class="border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500">
+        <datalist id="material-options">
+            @foreach ($materials as $material)
+                <option value="{{ $material }}">
             @endforeach
         </datalist>
 
