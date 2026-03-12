@@ -38,8 +38,8 @@ class ProductController extends Controller
             ->withQueryString();
 
         return view('products.index', compact('products', 'categories', 'colors', 'materials'));
-    }   
-    
+    }
+
 
     /**
      * Show the form for creating a new resource.
@@ -47,7 +47,8 @@ class ProductController extends Controller
     public function create()
     {
         $categories = Category::all();
-        return view('products.create', compact('categories'));
+        $products = Product::all();
+        return view('products.create', compact('categories', 'products'));
     }
 
     /**
@@ -101,8 +102,9 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
+        $products = Product::all();
         $categories = Category::all();
-        return view('products.edit', compact('product', 'categories'));
+        return view('products.edit', compact('product', 'categories', 'products'));
     }
 
     /**

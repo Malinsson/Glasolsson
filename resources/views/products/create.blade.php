@@ -17,10 +17,20 @@
         <input type="text" name="name" id="name" required class="border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500">
 
         <label for="color">Färg <span class="text-red-600" aria-hidden="true">*</span></label>
-        <input type="text" name="color" id="color" required class="border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500">
+        <input list="color" name="color" id="color" required class="border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500">
+        <datalist id="color">
+            @foreach ($products as $item)
+                <option value="{{ $item->color }}">
+            @endforeach
+        </datalist>
 
         <label for="material">Material <span class="text-red-600" aria-hidden="true">*</span></label>
-        <input type="text" name="material" id="material" required class="border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500">
+        <input list="material" name="material" id="material" required class="border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500">
+        <datalist id="material">
+            @foreach ($products as $item)
+                <option value="{{ $item->material }}">
+            @endforeach
+        </datalist>
 
         <label for="description">Produkt beskrivning <span class="text-red-600" aria-hidden="true">*</span></label>
         <textarea name="description" id="description" rows="3" required class="border border-gray-300 rounded-md py-2 px-4 overflow-y-auto focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
