@@ -13,15 +13,20 @@
 
 <body class="">
 
+    {{-- Header --}}
+
     @php
         $showDesktopAside = auth()->check() && request()->is('dashboard', 'products*', 'categories*');
     @endphp
 
+    {{-- Navbar --}}
     <header class="{{ request()->is('/') || request()->is('index') ? 'absolute bg-transparent' : 'bg-slate-800' }} flex justify-center w-full h-24 text-white py-4 z-50">
         <div class="container mx-auto flex justify-between items-center px-4">
             <a href="/" class="text-4xl font-logo">Glas Olsson</a>
             <nav aria-label="Huvudnavigation">
                 <ul class="flex space-x-8">
+
+                    {{-- Admin nav menu button --}}
 
                     @if(auth()->check())
                         <li>
@@ -32,7 +37,9 @@
                             </button>
                         </li>
 
-                        <aside id="menu" aria-label="Navigationsmeny" aria-hidden="true" class="fixed flex justify-between left-0 top-0 py-8 px-4 flex-col h-screen bg-slate-800 w-80 transform -translate-x-full opacity-0 transition-all duration-300 z-40 pointer-events-none md:hidden">
+                        {{-- Navbar navigation links --}}
+
+                        <aside id="menu" aria-label="Navigationsmeny" aria-hidden="true" class="fixed left-0 top-0 z-40 flex h-dvh max-h-dvh w-80 flex-col justify-between overflow-y-auto bg-slate-800 px-4 py-8 transform -translate-x-full opacity-0 transition-all duration-300 pointer-events-none overscroll-contain md:hidden">
                             @include('layouts.partials.admin-menu', ['showMobileClose' => true])
                         </aside>
 
@@ -60,10 +67,12 @@
 
         @include('layouts.partials.delete-modal')
 
+        {{-- Admin menu container --}}
         <div class="{{ $showDesktopAside ? 'flex items-stretch' : '' }}">
 
+            {{-- Admin menu container --}}
             @if($showDesktopAside)
-                <aside aria-label="Adminmeny" class="hidden md:flex md:w-50 lg:w-64 md:shrink-0 md:bg-slate-800 md:text-white md:flex-col md:justify-between">
+                <aside aria-label="Adminmeny" class="hidden md:flex md:w-50 lg:w-64 md:shrink-0 md:min-h-screen md:bg-slate-800 md:text-white md:flex-col md:justify-between md:sticky md:top-0 md:overflow-y-auto">
                     @include('layouts.partials.admin-menu', ['showMobileClose' => false])
                 </aside>
             @endif
@@ -76,6 +85,7 @@
     </main>
 
 
+    {{-- Footer --}}
     <footer aria-label="Sidfot" class="bg-slate-800 text-white py-6">
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-6 container mx-auto py-4 md:px-4">

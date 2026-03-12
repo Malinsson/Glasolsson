@@ -5,13 +5,13 @@
         <span id="close-sidemenu" role="button" aria-label="Stäng meny" tabindex="0" class="text-left px-4 focus:outline-2 focus:outline-indigo-500 rounded cursor-pointer float-center text-white text-3xl hover:text-gray-600">×</span>
     @endif
 
+    {{-- Routes and icons --}}
     @php
     $baseLinkClasses = 'sm:p-4 md:p-4 py-6 flex gap-2 flex-row items-center text-white font-text  hover:bg-gray-950 active:bg-gray-950';
 
     $activeLinkClasses = 'flex gap-2 flex-row items-center bg-gray-950 font-semibold';
     @endphp 
 
-    {{-- Routes and icons --}}
     <div class="text-white font-logo text-2xl align-middle p-4">Hej, {{ auth()->user()->name }}</div>
     <a
         class="{{ $baseLinkClasses }} {{ request()->is('/') ? $activeLinkClasses : '' }}"
