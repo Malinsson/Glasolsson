@@ -77,3 +77,14 @@ if (openDeleteModal && deleteDialog && confirmDelete && cancelDelete && deleteFo
     });
 }
 
+document.addEventListener('DOMContentLoaded', function() {
+        const closeButton = document.querySelector('[data-close-success]');
+        const successDialog = document.getElementById('success-dialog');
+
+        if (closeButton && successDialog) {
+                closeButton.addEventListener('click', function() {
+                        successDialog.closest('.fixed').remove();
+                });
+        }
+    });
+

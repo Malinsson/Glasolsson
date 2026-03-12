@@ -65,6 +65,8 @@
 
         @include('layouts.partials.errors')
 
+        @include('layouts.partials.success')
+        
         @include('layouts.partials.delete-modal')
 
         {{-- Admin menu container --}}

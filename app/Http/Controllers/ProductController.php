@@ -88,7 +88,7 @@ class ProductController extends Controller
 
         $product->save();
 
-        return redirect('products')->with('Succe', 'Din produkt har skapats!');
+        return redirect('products')->with('success', 'Din produkt har skapats!');
     }
 
     /**
@@ -147,7 +147,7 @@ class ProductController extends Controller
 
         $product->save();
 
-        return redirect('products')->with('succe', 'Produkten har uppdaterats!');
+        return redirect('products')->with('success', 'Produkten har uppdaterats!');
     }
 
     /**
@@ -157,6 +157,6 @@ class ProductController extends Controller
     {
         $product->delete();
 
-        return redirect('products')->with('succe', 'Produkten har tagits bort!');
+        return redirect('products')->with('success', 'Produkten har tagits bort!');
     }
 }
