@@ -37,18 +37,17 @@ class ProductSeeder extends Seeder
             'Transparent',
             'Grön',
             'Brun',
-            'Rosa'
+            'Rosa',
+            'Grå'
         ];
 
         $materials = [
             'Acetat',
             'Metall',
-            'Titan',
+            'Plast',
             'Rostfritt stål',
             'TR90',
-            'Trä',
-            'Aluminium',
-            'Bambu'
+            'Titan',
         ];
 
         $descriptions = [
@@ -67,9 +66,11 @@ class ProductSeeder extends Seeder
             'images/stock/stock2.avif',
             'images/stock/stock3.avif',
             'images/stock/stock4.avif',
+            'images/stock/stock5.avif',
+            'images/stock/stock6.avif',
         ];
 
-        foreach (range(1, 20) as $index) {
+        foreach (range(1, 40) as $index) {
             Product::factory()->create([
                 'name' => fake()->randomElement($names) . ' ' . fake()->unique()->numberBetween(100, 999),
                 'color' => fake()->randomElement($colors),

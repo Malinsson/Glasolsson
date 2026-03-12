@@ -38,8 +38,8 @@ class ProductController extends Controller
             ->withQueryString();
 
         return view('products.index', compact('products', 'categories', 'colors', 'materials'));
-    }   
-    
+    }
+
 
     /**
      * Show the form for creating a new resource.
@@ -47,7 +47,9 @@ class ProductController extends Controller
     public function create()
     {
         $categories = Category::all();
-        return view('products.create', compact('categories'));
+        $materials = Product::All()->pluck('material')->unique()->filter()->values();
+        $colors = Product::All()->pluck('color')->unique()->filter()->values();
+        return view('products.create', compact('categories', 'materials', 'colors'));
     }
 
     /**
@@ -55,6 +57,7 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
+
         $request->validate([
             'name' => 'required|unique:products|min:3|max:100',
             'color' => 'required|min:3|max:50',
@@ -101,8 +104,10 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
+        $materials = Product::All()->pluck('material')->unique()->filter()->values();
+        $colors = Product::All()->pluck('color')->unique()->filter()->values();
         $categories = Category::all();
-        return view('products.edit', compact('product', 'categories'));
+        return view('products.edit', compact('product', 'categories', 'materials', 'colors'));
     }
 
     /**

@@ -45,7 +45,6 @@ php artisan serve
 
 ## Notes
 
-- When switching between diffrent device views (desktop, tablet, mobile), refresh the page!
 - Products keep existing records when a category is deleted (`category_id` is set to `NULL`).
 - Default product thumbnail: `public/images/stock/no-default-thumbnail.png`.
 

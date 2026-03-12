@@ -4,75 +4,80 @@
 
 @section('content')
 
-<section class="p-3">
-    
-    <div class="flex items-center justify-between">
-        <h2 class="p-3 text-2xl"><strong>Produkter</strong></h2>
-        <a class="bg-slate-600 hover:bg-slate-800 text-white  py-2 px-4 rounded cursor-pointer focus:outline-2 focus:outline-indigo-500" href="{{ route('products.create') }}"><strong>Skapa ny produkt</strong></a>
+<div class="w-full max-w-6xl mx-auto px-3 pb-3 pt-3">
+
+    {{-- Header --}}
+    <div class="flex items-center justify-between pb-6 pt-6">
+        <h2 class="text-2xl font-bold text-gray-900">Produkter</h2>
+        <a 
+            class="bg-slate-700 hover:bg-slate-900 text-white text-sm font-semibold py-2 px-4 rounded transition-colors duration-150 focus:outline-2" 
+            href="{{ route('products.create') }}"
+            aria-label="Skapa ny produkt">
+            <strong>Skapa ny produkt</strong>
+        </a>
     </div>
-        
-    <section class="p-3">
-    
-        <h2 class="p-3 text-2xl">Produkter</h2>
-        
-        <form method="GET" action="{{ route('products.index') }}">
-    
-            <div class="flex flex-row gap-8">
-                {{-- Categories --}}
-                <div class="mb-6">
-                    <p class="font-bold mb-2">Kategori:</p>
-                    <select name="categories[]">
-                        <option value="" disabled selected hidden>Välj kategori</option>
-                        @foreach ($categories as $category)
-                            <label>
-                                <option
-                                    value="{{ $category->id }}"
-                                    {{ in_array($category->id, request('categories', [])) ? 'selected' : '' }}
-                                    >
-                                {{ $category->name }}
-                            </label>
-                        @endforeach
-                    </select>
-                </div>
-                
-                {{-- Materials --}}
-                <div class="mb-6">
-                    <p class="font-bold mb-2">Material:</p>
-                    <select name="materials[]">
-                        <option value="" disabled selected hidden>Välj material</option>
-                        @foreach ($materials as $material)
-                        <label>
-                            <option
-                            value="{{ $material }}" 
-                            {{ in_array($material, request('materials', [])) ? 'selected' : '' }}
-                            >
-                            {{ $material }}
-                        </label>
-                        @endforeach
-                    </select>
-                </div>
-                
-                {{-- Colors --}}
-                <div class="mb-6">
-                    <p class="font-bold mb-2">Färg:</p>
-                    <select name="colors[]">
-                        <option value="" disabled selected hidden>Välj färg</option>
-                        @foreach ($colors as $color)
-                        <label>
-                            <option
-                            value="{{ $color }}" 
-                            {{ in_array($color, request('colors', [])) ? 'selected' : '' }}
-                            >
-                            {{ $color }}
-                        </label>
-                        @endforeach
-                    </select>
-                </div>
+
+    {{-- Filter --}}
+    <form 
+    aria-label="Filtrera produkter" 
+    method="GET" 
+    action="{{ route('products.index') }}"
+    class="bg-white border border-gray-200 rounded-lg p-4 shadow-sm mb-6">
+        <div class="flex flex-wrap gap-3 items-end">
+
+            {{-- Categories --}}
+            <div class="flex flex-col gap-1 min-w-35">
+                <label class="text-xs font-semibold text-gray-500 uppercase tracking-wide">Kategori</label>
+                <select 
+                name="categories[]" 
+                aria-label="Filtrera på kategori" 
+                class="text-sm text-gray-700 border border-gray-300 bg-white py-2 px-3 rounded cursor-pointer">
+                    <option value="" disabled selected hidden>Välj...</option>
+                    @foreach ($categories as $category)
+                        <option value="{{ $category->id }}" {{ in_array($category->id, request('categories', [])) ? 'selected' : '' }}>
+                            {{ $category->name }}
+                        </option>
+                    @endforeach
+                </select>
             </div>
-    
+
+            {{-- Materials --}}
+            <div class="hidden md:flex flex-col gap-1 min-w-35">
+                <label class="text-xs font-semibold text-gray-500 uppercase tracking-wide">Material</label>
+                <select 
+                name="materials[]" 
+                aria-label="Filtrera på material" 
+                class="text-sm text-gray-700 border border-gray-300 bg-white py-2 px-3 rounded cursor-pointer">
+                    <option value="" disabled selected hidden>Välj...</option>
+                    @foreach ($materials as $material)
+                        <option value="{{ $material }}" {{ in_array($material, request('materials', [])) ? 'selected' : '' }}>
+                            {{ $material }}
+                        </option>
+                    @endforeach
+                </select>
+            </div>
+
+            {{-- Colors --}}
+            <div class="hidden md:flex flex-col gap-1 min-w-35">
+                <label class="text-xs font-semibold text-gray-500 uppercase tracking-wide">Färg</label>
+                <select 
+                name="colors[]" 
+                aria-label="Filtrera på färg" 
+                class="text-sm text-gray-700 border border-gray-300 bg-white py-2 px-3 rounded cursor-pointer">
+                    <option value="" disabled selected hidden>Välj...</option>
+                    @foreach ($colors as $color)
+                        <option value="{{ $color }}" {{ in_array($color, request('colors', [])) ? 'selected' : '' }}>
+                            {{ $color }}
+                        </option>
+                    @endforeach
+                </select>
+            </div>
+
             {{-- Price --}}
-            <div class="mb-6">
-                <p class="font-bold mb-2">Max Pris: <span id="priceDisplay">{{ request('max_price', 3500) }} kr</span></p>
+            <div class="hidden lg:flex flex-col gap-1">
+                <label class="text-xs font-semibold text-gray-500 uppercase tracking-wide">
+                    Max Pris: <span id="priceDisplay" class="text-gray-800 normal-case">{{ request('max_price', 3500) }} kr</span>
+                </label>
                 <input
                     type="range"
                     name="max_price"
@@ -81,70 +86,87 @@
                     step="100"
                     value="{{ request('max_price', 3500) }}"
                     id="priceSlider"
-                >
+                    aria-label="Filtrera på maxpris"
+                    aria-valuemin="1100"
+                    aria-valuemax="3500"
+                    class="w-40 cursor-pointer accent-slate-600">
             </div>
-    
-            {{-- button --}}
-            <button type="submit" class="p-3 bg-blue-500 text-white py-2 rounded hover:bg-blue-600">
-                Apply
-            </button>
-            <a href="{{ route('products.index') }}" class="p-3 text-center mt-2 text-gray-500 hover:underline">
-                Reset
-            </a>
-    
-        </form>
-    </section>
-    
-    <section class="flex-1">
-    
-        {{-- Total products found --}}
-        <p class="text-gray-500 mb-4"> {{ $products->total() }} products found</p>
-        
-        {{-- Products table --}}
-        <table class="w-full table-fixed border-collapse text-sm text-left" aria-label="navigation list for extended information about products">
-            
+
+            {{-- Buttons --}}
+            <div class="flex items-center gap-2 ml-auto">
+                <a 
+                    href="{{ route('products.index') }}" 
+                    aria-label="Återställ filter" 
+                    class="text-sm text-gray-500 hover:text-gray-800 hover:underline px-2 py-2 focus:outline-2">
+                    Återställ
+                </a>
+                <button 
+                    type="submit" 
+                    aria-label="Applicera filter" 
+                    class="bg-slate-700 hover:bg-slate-900 text-white text-sm font-semibold py-2 px-4 rounded transition-colors duration-150 focus:outline-2">
+                    Applicera
+                </button>
+            </div>
+
+        </div>
+    </form>
+
+    {{-- Total products found --}}
+    <p class="text-sm text-gray-500">{{ $products->total() }} produkter hittades </p>
+
+    {{-- Products table --}}
+    <div class="bg-white border border-gray-200 p-4 rounded-lg shadow-sm overflow-x-auto">
+        <table class="table" aria-label="Navigeringslista för utökad information om produkter" aria-rowcount="{{ $products->total() + 1 }}">
             <thead>
                 <tr>
-                    <th class="table-col">ID</th>
-                    <th class="table-col">Namn</th>
-                    <th class="table-col">Material</th>
-                    <th class="table-col">Färg</th>
-                    <th class="table-col">Pris</th>
-                    <th class="table-col">Kategori</th>
-                    <th class="table-col"></th>
+                    <th scope="col" class="th-col">ID</th>
+                    <th scope="col" class="th-col">Namn</th>
+                    <th scope="col" class="th-col hidden sm:table-cell">Kategori</th>
+                    <th scope="col" class="th-col hidden lg:table-cell">Pris</th>
+                    <th scope="col" class="th-col hidden lg:table-cell">Material</th>
+                    <th scope="col" class="th-col hidden lg:table-cell">Färg</th>
+                    <th scope="col" class="th-col"></th>
                 </tr>
             </thead>
-    
+            
             <tbody>
                 @forelse ($products as $product)
-                    <tr class="table-row" aria-label="a table list of the products"> 
-                        <td class="table-cell"> {{ $product->id }} </td>
-                        <td class="table-cell"> {{ $product->name }} </td> 
-                        <td class="table-cell"> {{ $product->material }} </td>  
-                        <td class="table-cell"> {{ $product->color }} </td> 
-                        <td class="table-cell"> {{ $product->price }} kr</td>  
-                        <td class="table-cell">
-                            {{ $product->category->name ?? 'Ingen kategori' }}
-                        </td>
-                        <td class="table-cell cursor-pointer" onclick="window.location='{{ route('products.show', $product->id) }}'">
-                            <div class="flex items-center place-content-center gap-2">
-                                <img src="{{ asset('icons/edit.svg')}}" alt="pen" class="w-6 h-6">
-                                <span>Ändra</span>
-                            </div>
+                    <tr class="tr-row" aria-label="Produktrad">
+                        <td class="td-cell text-gray-400 text-xs">{{ $product->id }}</td>
+                        <td class="td-cell font-medium">{{ $product->name }}</td>
+                        <td class="td-cell hidden sm:table-cell">{{ $product->category->name ?? 'Ingen kategori' }}</td>
+                        <td class="td-cell hidden lg:table-cell font-medium text-slate-700">{{ $product->price }} kr</td>
+                        <td class="td-cell hidden lg:table-cell">{{ $product->material }}</td>
+                        <td class="td-cell hidden lg:table-cell">{{ $product->color }}</td>
+                        <td class="td-cell">
+                            <a 
+                                href="{{ route('products.show', $product->id) }}"
+                                class="inline-flex items-center gap-1 text-sm text-slate-600 hover:text-slate-900 font-medium hover:underline focus:outline-2"
+                                aria-label="Ändra {{ $product->name }}">
+                                <img src="{{ asset('icons/edit.svg')}}" alt="" class="w-4 h-4">
+                                Ändra
+                            </a>
                         </td>
                     </tr>
                 @empty
                     <tr>
-                        <td colspan="7" class="text-gray-500 p-4">Inga produkter hittades som matchade din sökning.</td>
+                        <td colspan="7" class="text-center text-gray-400 py-12">
+                            Inga produkter hittades som matchade din sökning.
+                        </td>
                     </tr>
                 @endforelse
             </tbody>
         </table>
-    
-        {{-- Pagination --}}
-        <div class="pagination-white">
-            {{ $products->links() }}
-        </div>
-    </section>
+    </div>
+
+    {{-- Pagination --}}
+    <nav 
+    role="navigation" 
+    aria-label="Pagination Navigering" 
+    class="pagination-white pt-1">
+        {{ $products->links() }}
+    </nav>
+
+</div>
 
 @endsection

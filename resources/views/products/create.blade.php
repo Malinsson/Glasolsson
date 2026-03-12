@@ -4,23 +4,33 @@
 
 @section('content')
 
-<div class="flex items-center justify-between font-text my-4">
+<div class="flex items-center justify-between font-text m-4">
     <h2 class="p-3 text-xl font-text"><strong>Skapa ny produkt</strong></h2>
-    <a href="{{ route('products.index') }}" class="bg-slate-600 hover:bg-slate-800 text-white py-2 px-4 rounded cursor-pointer"><strong>Tillbaka till produkter</strong></a>
+    <a href="{{ route('products.index') }}" aria-label="Gå tillbaka till produkter" class="bg-slate-600 hover:bg-slate-800 text-white py-2 px-4 rounded cursor-pointer"><strong>Tillbaka till produkter</strong></a>
 </div>
 
 <div class="bg-white p-6 rounded shadow-md m-4">
 
-    <form action="{{ route('products.store') }}" method="POST" enctype="multipart/form-data" class="flex flex-col gap-4 font-text">
+    <form action="{{ route('products.store') }}" method="POST" enctype="multipart/form-data" aria-label="Skapa produkt-formulär" class="flex flex-col gap-4 font-text">
         @csrf
         <label for="name">Namn <span class="text-red-600" aria-hidden="true">*</span></label>
         <input type="text" name="name" id="name" required class="border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500">
 
         <label for="color">Färg <span class="text-red-600" aria-hidden="true">*</span></label>
-        <input type="text" name="color" id="color" required class="border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500">
+        <input list="color-options" name="color" id="color" required class="border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500">
+        <datalist id="color-options">
+            @foreach ($colors as $color)
+                <option value="{{ $color }}">
+            @endforeach
+        </datalist>
 
         <label for="material">Material <span class="text-red-600" aria-hidden="true">*</span></label>
-        <input type="text" name="material" id="material" required class="border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500">
+        <input list="material-options" name="material" id="material" required class="border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500">
+        <datalist id="material-options">
+            @foreach ($materials as $material)
+                <option value="{{ $material }}">
+            @endforeach
+        </datalist>
 
         <label for="description">Produkt beskrivning <span class="text-red-600" aria-hidden="true">*</span></label>
         <textarea name="description" id="description" rows="3" required class="border border-gray-300 rounded-md py-2 px-4 overflow-y-auto focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
@@ -40,9 +50,9 @@
         <label for="image">Produktbild</label>
         <input type="file" name="image" id="image" accept="image/jpg, image/jpeg, image/webp, image/png, image/avif" class="text-white bg-slate-500 border border-gray-300 hover:bg-slate-800 rounded-md py-2 px-4 cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-500" onchange="validateImage()">
 
-        <p id="image-error" style="color: red; display: none;"></p>
+        <p id="image-error" role="alert" aria-live="polite" style="color: red; display: none;"></p>
 
-        <button type="submit" class="bg-slate-700 hover:bg-slate-800 text-white py-2 px-4 cursor-pointer rounded">
+        <button type="submit" aria-label="Skapa ny produkt" class="bg-slate-700 hover:bg-slate-800 text-white py-2 px-4 cursor-pointer rounded">
             <strong>Skapa produkt</strong>
         </button>
     </form>

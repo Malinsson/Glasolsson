@@ -4,7 +4,7 @@
 
 @section('content')
     
-<section class="font-text flex flex-col gap-3 p-4 mt-12 w-full md:flex-row md:gap-6">
+<section aria-label="Produktinformation" class="font-text flex flex-col gap-3 p-4 mt-12 w-full md:flex-row md:gap-6">
 
     <div class="w-full md:w-1/2 flex flex-col gap-3">
         <p>Id: {{$product->id}}</p>
@@ -29,12 +29,12 @@
 </section>
 
 <div class="flex flex-row justify-between gap-3 m-8 md:justify-start">
-    <a href="{{ route('products.edit', $product->id) }}" class="bg-slate-600 hover:bg-slate-800 text-white py-2 px-4 rounded cursor-pointer"><strong>Redigera produkt</strong></a>
+    <a href="{{ route('products.edit', $product->id) }}" aria-label="Redigera produkt" class="bg-slate-600 hover:bg-slate-800 text-white py-2 px-4 rounded cursor-pointer focus:outline-2 focus:outline-indigo-500"><strong>Redigera produkt</strong></a>
 
     <form id="delete-form" action="{{ route('products.destroy', ['product' => $product->id]) }}" method="POST" style="display:inline;">
         @method('DELETE')
         @csrf
-        <button id="open-delete-modal" type="button" class="bg-red-600 hover:bg-red-800 text-white py-2 px-4 rounded cursor-pointer"><strong>Radera produkt</strong></button>
+        <button id="open-delete-modal" type="button" aria-label="Radera produkt" class="bg-red-600 hover:bg-red-800 text-white py-2 px-4 rounded cursor-pointer focus:outline-2 focus:outline-indigo-500"><strong>Radera produkt</strong></button>
     </form>
 
 </div>

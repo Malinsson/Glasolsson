@@ -13,40 +13,46 @@
 
 <body class="">
 
+    {{-- Header --}}
+
     @php
-        $showDesktopAside = auth()->check() && !$isMobile && request()->is('dashboard', 'products*', 'categories*');
+        $showDesktopAside = auth()->check() && request()->is('dashboard', 'products*', 'categories*');
     @endphp
 
-    <header class="{{ request()->is('/') ? 'absolute bg-transparent' : 'bg-slate-800' }} flex justify-center w-full h-24 text-white py-4 z-50">
+    {{-- Navbar --}}
+    <header class="{{ request()->is('/') || request()->is('index') ? 'absolute bg-transparent' : 'bg-slate-800' }} flex justify-center w-full h-24 text-white py-4 z-50">
         <div class="container mx-auto flex justify-between items-center px-4">
             <a href="/" class="text-4xl font-logo">Glas Olsson</a>
-            <nav>
+            <nav aria-label="Huvudnavigation">
                 <ul class="flex space-x-8">
 
-                    @if(auth()->check() && $isMobile)
-                        <button id="open-sidemenu" class="fixed top-4 right-4 z-50 bg-slate-800 text-white p-3 rounded hover:bg-slate-700 focus:outline-2 focus:outline-indigo-500">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                            </svg>
-                        </button>
+                    {{-- Admin nav menu button --}}
 
-                        <aside id="menu" class="fixed flex justify-between left-0 top-0 py-8 px-4 flex-col h-screen bg-slate-800 w-80 transform -translate-x-full opacity-0 transition-all duration-300 z-40 pointer-events-none">
+                    @if(auth()->check())
+                        <li>
+                            <button id="open-sidemenu" aria-label="Öppna meny" aria-expanded="false" aria-controls="menu" class="fixed top-4 right-4 z-50 bg-slate-800 text-white p-3 rounded hover:bg-slate-700 focus:outline-2 focus:outline-indigo-500 md:hidden">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                                </svg>
+                            </button>
+                        </li>
+
+                        {{-- Navbar navigation links --}}
+
+                        <aside id="menu" aria-label="Navigationsmeny" aria-hidden="true" class="fixed left-0 top-0 z-40 flex h-dvh max-h-dvh w-80 flex-col justify-between overflow-y-auto bg-slate-800 px-4 py-8 transform -translate-x-full opacity-0 transition-all duration-300 pointer-events-none overscroll-contain md:hidden">
                             @include('layouts.partials.admin-menu', ['showMobileClose' => true])
                         </aside>
 
-                    @elseif(auth()->check() && !$isMobile)
-                        
-                            <li><a href="/dashboard" class="font-text font-light text-xl hover:underline">Dashboard</a></li>
-                            <li>
-                                <form method="get" action="/logout">
-                                    @csrf
-                                    <button type="submit" class="font-text font-light text-xl hover:underline">Logout</button>
-                                </form>
-                            </li>
-                        @else
-                        <li><a href="#" id="login-toggle" class="font-text font-light text-xl hover:underline">Login</a></li>
-                    
-
+                        <li class="hidden md:block"><a href="/dashboard" aria-label="Gå till dashboard" class="font-text font-light text-xl hover:underline">Dashboard</a></li>
+                        <li class="hidden md:block">
+                            <form method="get" action="/logout">
+                                @csrf
+                                <button type="submit" aria-label="Logga ut" class="flex gap-2 flex-row place-items-center
+                                font-text font-light text-xl hover:underline">Logga ut<img src="{{ asset('icons/logout.svg')}}" alt="logga ut" class="w-6 h-6"></button>
+                            </form>
+                        </li>
+                    @else
+                        <li><a href="#" id="login-toggle" aria-label="Öppna inloggningsformulär" class="flex place-items-center gap-2 flex-row font-text font-light text-xl hover:underline">Logga in <img src="{{ asset('icons/login.svg')}}" alt="logga in" class="w-6 h-6"></a></li>
                     @endif
 
                 </ul>
@@ -55,21 +61,23 @@
     </header>
     
 
-    <main class="min-h-screen">
+    <main aria-label="Huvudinnehåll" class="min-h-screen bg-gray-200">
 
         @include('layouts.partials.errors')
 
         @include('layouts.partials.delete-modal')
 
-        <div class="{{ $showDesktopAside ? 'container md:flex md:items-start md:gap-6' : '' }}">
+        {{-- Admin menu container --}}
+        <div class="{{ $showDesktopAside ? 'flex items-stretch' : '' }}">
 
+            {{-- Admin menu container --}}
             @if($showDesktopAside)
-                <aside class="hidden md:flex md:w-50 lg:w-64 md:shrink-0 md:min-h-[calc(100vh)] md:bg-slate-800 md:text-white md:flex-col md:justify-between md:sticky md:top-0">
+                <aside aria-label="Adminmeny" class="hidden md:flex md:w-50 lg:w-64 md:shrink-0 md:min-h-screen md:bg-slate-800 md:text-white md:flex-col md:justify-between md:sticky md:top-0 md:overflow-y-auto">
                     @include('layouts.partials.admin-menu', ['showMobileClose' => false])
                 </aside>
             @endif
 
-            <div class="{{ $showDesktopAside ? 'flex-1 min-w-0' : '' }}">
+            <div class="{{ $showDesktopAside ? 'flex-1 min-w-0 w-full' : '' }}">
                 @yield('content')
             </div>
 
@@ -77,20 +85,21 @@
     </main>
 
 
-    <footer class="bg-slate-800 text-white py-6">
+    {{-- Footer --}}
+    <footer aria-label="Sidfot" class="bg-slate-800 text-white py-6">
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-6 container mx-auto py-4 md:px-4">
         <div class="container mx-auto text-center">
-            <h2 class="text-2xl font-logo">Glas Olsson</h2>
-            <p class="font-text text-sm mt-1">Din pålitliga partner för kvalitetsglas och speglar.</p>
+            <h3 class="text-2xl font-logo md:text-3xl">Glas Olsson</h3>
+            <p class="font-text text-sm mt-1 md:text-base">Din pålitliga partner för kvalitetsglas och speglar.</p>
         </div>
         <div class="container mx-auto text-center">
-            <h3 class="text-lg font-logo">Kontakt</h3>
-            <p class="font-text text-sm mt-1">E-post: kontakt@glasolsson.se</p>
+            <h3 class="text-lg font-logo md:text-3xl">Kontakt</h3>
+            <p class="font-text text-sm mt-1 md:text-base">E-post: kontakt@glasolsson.se</p>
         </div>
         <div class="container mx-auto text-center">
-            <h3 class="text-lg font-logo">Följ oss</h3>
-            <p class="font-text text-sm mt-1">Facebook | Instagram | LinkedIn</p>
+            <h3 class="text-lg font-logo md:text-3xl">Följ oss</h3>
+            <p class="font-text text-sm mt-1 md:text-base">Facebook | Instagram | LinkedIn</p>
         </div>
     </div>
 

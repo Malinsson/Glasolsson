@@ -4,41 +4,64 @@
 
 @section('content')
 
-<section class="p-3">
+<div aria-label="Kategorilista" class="w-full max-w-6xl mx-auto px-3 pb-3 pt-3">
 
-    <div class="flex items-center justify-between">
-        <h2 class="p-3 text-2xl"><strong>Kategorier</strong></h2>
-        <a class="bg-slate-600 hover:bg-slate-800 text-white  py-2 px-4 rounded cursor-pointer focus:outline-2 focus:outline-indigo-500" href="{{ route('categories.create') }}"><strong>Skapa ny kategori</strong></a>
+    {{-- Header --}}
+    <div class="flex items-center justify-between pb-6 pt-6">
+        <h2 class="text-2xl"><strong>Kategorier</strong></h2>
+        <a 
+        class="bg-slate-700 hover:bg-slate-900 text-white text-sm font-semibold py-2 px-4 rounded transition-colors duration-150 focus:outline-2" 
+        aria-label="Skapa ny kategori" 
+        href="{{ route('categories.create') }}">
+        <strong>Skapa ny kategori</strong>
+        </a>
     </div>
 
-    <table class="w-full table-fixed border-collapse text-sm text-left" aria-label="navigation list for extended information about products">
+    {{-- Total categories found --}}
 
-        <thead>
-            <tr>
-                <th class="border-b border-gray-100 p-4 pl-8 dark:border-gray-700">Namn</th>
-                <th class="border-b p-4 pl-8"></th>
-            </tr>
-        </thead>
+    <p class="text-sm text-gray-500">{{ $categories->total() }} kategorier hittades</p>
+    <div class="bg-white p-4 rounded-lg shadow-sm overflow-x-auto">
 
-        <tbody>
-            @foreach ($categories as $category)
-            <tr class="border-b border-black-200 p-4 pt-0 pr-8 pb-3 text-left font-medium text-black-400 dark:border-black-600 dark:text-black-200"  aria-label="navigation for information abour the {{ $category->name }}"> 
-                <td class="border-b border-black-100 p-4 pl-8 text-black-500 dark:border-black-700 dark:text-black-400">{{ $category->name }}</td>
-                <td class="cursor-pointer border-b border-black-100 p-4 pl-8 text-black-500 dark:border-black-700 dark:text-black-400" onclick="window.location='{{ route('categories.show', $category->id)}}'">
-                    <div class="flex items-center place-content-center gap-2">
-                        <img src="{{ asset('icons/edit.svg')}}" alt="pen" class="w-6 h-6">
-                        <span>Ändra</span>
-                    </div>
-                </td>
-            </tr>
-                                
-            @endforeach
-        </tbody>
-    </table>
 
-    <div class="pagination-white">
-        {{ $categories->links() }}
+        {{-- Categories table --}}
+        <table class="table" aria-label="Navigeringslista för kategorier" aria-rowcount="{{ $categories->total() + 1 }}">
+    
+            <thead>
+                <tr>
+                    <th scope="col" class="th-col">ID</th>
+                    <th scope="col" class="th-col">Namn</th>
+                    <th scope="col" class="th-col"></th>
+                </tr>
+            </thead>
+    
+            <tbody>
+                @foreach ($categories as $category)
+                <tr class="tr-row" aria-label="Rad för kategori: {{ $category->name }}"> 
+                    <td class="td-cell">{{ $category->id }}</td>
+                    <td class="td-cell">{{ $category->name }}</td>
+                    <td class="td-cell">
+                        <a 
+                            href="{{ route('categories.show', $category->id)}}"
+                            class="inline-flex items-center gap-1 text-sm text-slate-600 hover:text-slate-900 font-medium hover:underline focus:outline-2"
+                            aria-label="Ändra {{ $category->name }}">
+                            <img src="{{ asset('icons/edit.svg')}}" alt="" class="w-4 h-4">
+                            Ändra
+                        </a>
+                    </td>
+                </tr>
+                                    
+                @endforeach
+            </tbody>
+        </table>
+    
+        {{-- Pagination --}}
+        <nav 
+        role="navigation" 
+        aria-label="Pagination Navigering" 
+        class="pagination-white">
+            {{ $categories->links() }}
+        </nav>
     </div>
-</section>
+</div>
 
 @endsection

@@ -6,9 +6,9 @@
 
 
 
-<section class="flex flex-row-reverse gap-4 md: my-6 mx-4">
+<section aria-label="Dashboard-innehåll" class="flex flex-row-reverse gap-4 md: my-6 mx-4">
 
-    <article class="flex-1 px-4">
+    <article aria-label="Välkomstmeddelande" class="flex-1 px-4">
 
         <h2 class="font-logo text-4xl justify-start mx-auto my-2"><strong>Hej, {{ auth()->user()->name }}</strong></h2>
         <p class="font-text text-lg justify-start mx-auto my-2">Välkommen till din dashboard! Här kan du hantera dina produkter och kategorier. Använd menyn till höger för att navigera mellan olika sektioner.</p>
