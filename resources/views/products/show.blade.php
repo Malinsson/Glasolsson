@@ -8,12 +8,17 @@
 
 <section aria-label="Produktinformation">
 
-    <section class="font-text flex flex-col gap-3 w-full md:flex-row md:gap-6">
-        <div class="flex items-center justify-between pb-6 pt-6 w-full">
+    <section class="font-text flex flex-col gap-3 md:flex-row md:gap-6">
+        <div class="font-text pb-6 pt-6">
             <h2 class=" text-2xl"><strong>Produkt</strong></h2>
             <a href="{{ route('products.index') }}"
             aria-label="Gå tillbaka till produkter"
-            class="bg-slate-600 hover:bg-slate-800 text-white py-2 px-4 rounded cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-500">Tillbaka</a>
+            class="inline-flex items-center mt-2 bg-slate-600 hover:bg-slate-800 text-white py-2 px-4 rounded cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" class="w-6 h-6 mr-2" fill="#FFFFFF" aria-hidden="true">
+                    <path d="m313-440 224 224-57 56-320-320 320-320 57 56-224 224h487v80H313Z"/>
+                </svg>
+                Tillbaka
+            </a>
         </div>
     </section>
     
