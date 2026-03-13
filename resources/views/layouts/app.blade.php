@@ -48,11 +48,11 @@
                             <form method="get" action="/logout">
                                 @csrf
                                 <button type="submit" aria-label="Logga ut" class="flex gap-2 flex-row place-items-center
-                                font-text font-light text-xl hover:underline">Logga ut<img src="{{ asset('icons/logout.svg')}}" alt="logga ut" class="w-6 h-6"></button>
+                                font-text font-light text-xl hover:underline">Logga ut<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" class="w-6 h-6" fill="#FFFFFF" aria-hidden="true"><path d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h280v80H200v560h280v80H200Zm440-160-55-58 102-102H360v-80h327L585-622l55-58 200 200-200 200Z"/></svg></button>
                             </form>
                         </li>
                     @else
-                        <li><a href="#" id="login-toggle" aria-label="Öppna inloggningsformulär" class="flex place-items-center gap-2 flex-row font-text font-light text-xl hover:underline">Logga in <img src="{{ asset('icons/login.svg')}}" alt="logga in" class="w-6 h-6"></a></li>
+                        <li><a href="#" id="login-toggle" aria-label="Öppna inloggningsformulär" class="flex place-items-center gap-2 flex-row font-text font-light text-xl hover:underline">Logga in <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" class="w-6 h-6" fill="#FFFFFF" aria-hidden="true"><path d="M480-120v-80h280v-560H480v-80h280q33 0 56.5 23.5T840-760v560q0 33-23.5 56.5T760-120H480Zm-80-160-55-58 102-102H120v-80h327L345-622l55-58 200 200-200 200Z"/></svg></a></li>
                     @endif
 
                 </ul>

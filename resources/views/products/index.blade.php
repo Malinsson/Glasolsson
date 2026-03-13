@@ -19,6 +19,7 @@
 
     {{-- Filter --}}
     <form 
+    id="filter-form"
     aria-label="Filtrera produkter" 
     method="GET" 
     action="{{ route('products.index') }}"
@@ -78,6 +79,22 @@
                 </select>
             </div>
 
+            {{-- Sort by --}}
+            <div class="hidden lg:flex flex-col gap-1">
+                <label class="text-xs font-semibold text-gray-500 uppercase tracking-wide">Sortera efter</label>
+                <select
+                    name="sort"
+                    aria-label="Sortera produkter"
+                    class="text-sm text-gray-700 border border-gray-300 bg-white py-2 px-3 rounded cursor-pointer">
+                    <option value="id_asc" {{ request('sort', 'id_asc') === 'id_asc' ? 'selected' : '' }}>ID stigande</option>
+                    <option value="id_desc" {{ request('sort') === 'id_desc' ? 'selected' : '' }}>ID fallande</option>
+                    <option value="name_asc" {{ request('sort') === 'name_asc' ? 'selected' : '' }}>Namn A-Ö</option>
+                    <option value="name_desc" {{ request('sort') === 'name_desc' ? 'selected' : '' }}>Namn Ö-A</option>
+                    <option value="price_asc" {{ request('sort') === 'price_asc' ? 'selected' : '' }}>Pris lägst först</option>
+                    <option value="price_desc" {{ request('sort') === 'price_desc' ? 'selected' : '' }}>Pris högst först</option>
+                </select>
+        </div>
+        
             {{-- Price --}}
             <div class="hidden lg:flex flex-col gap-1">
                 <label class="text-xs font-semibold text-gray-500 uppercase tracking-wide">
@@ -117,7 +134,7 @@
     </form>
 
     {{-- Total products found --}}
-    <p class="text-sm text-gray-500">{{ $products->total() }} produkter hittades </p>
+    <p class="text-sm text-gray-600">{{ $products->total() }} produkter hittades </p>
 
     {{-- Products table --}}
     <div class="bg-white border border-gray-200 p-4 rounded-lg shadow-sm overflow-x-auto">
@@ -148,14 +165,14 @@
                                 href="{{ route('products.show', $product->id) }}"
                                 class="inline-flex items-center gap-1 text-sm text-slate-600 hover:text-slate-900 font-medium hover:underline focus:outline-2"
                                 aria-label="Ändra {{ $product->name }}">
-                                <img src="{{ asset('icons/edit.svg')}}" alt="" class="w-4 h-4">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" class="w-4 h-4" fill="#000000" aria-hidden="true"><path d="M200-200h57l391-391-57-57-391 391v57Zm-80 80v-170l528-527q12-11 26.5-17t30.5-6q16 0 31 6t26 18l55 56q12 11 17.5 26t5.5 30q0 16-5.5 30.5T817-647L290-120H120Zm640-584-56-56 56 56Zm-141 85-28-29 57 57-29-28Z"/></svg>
                                 Ändra
                             </a>
                         </td>
                     </tr>
                 @empty
                     <tr>
-                        <td colspan="7" class="text-center text-gray-400 py-12">
+                        <td colspan="7" class="text-center text-gray-600 py-12">
                             Inga produkter hittades som matchade din sökning.
                         </td>
                     </tr>
