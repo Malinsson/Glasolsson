@@ -47,7 +47,7 @@
     <form id="delete-form" action="{{ route('products.destroy', ['product' => $product->id]) }}" method="POST" style="display:inline;">
         @method('DELETE')
         @csrf
-        <button id="open-delete-modal" type="button" aria-label="Radera produkt" class="bg-red-600 hover:bg-red-800 text-white py-2 px-4 rounded cursor-pointer focus:outline-2 focus:outline-indigo-500"><strong>Radera produkt</strong></button>
+        <button id="open-delete-modal" type="button" aria-label="Radera produkt" class="bg-red-700 hover:bg-red-900 text-white py-2 px-4 rounded cursor-pointer focus:outline-2 focus:outline-indigo-500">Radera produkt</button>
     </form>
 
 </div>

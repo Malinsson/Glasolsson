@@ -18,11 +18,30 @@ class ProductController extends Controller
         $categories = Category::all();
         $colors    = Product::select('color')->distinct()->pluck('color');
         $materials = Product::select('material')->distinct()->pluck('material');
+        $null = Product::whereNull('category_id')->exists() ? 'null' : null;
+        $selectedCategories = collect($request->input('categories', []));
+        $filterNullCategory = $selectedCategories->contains('null');
 
         /** products filter query **/
         $products = Product::query()
-            ->when($request->categories, function ($query) use ($request) {
-                $query->whereIn('category_id', $request->categories);
+            ->when($selectedCategories->isNotEmpty(), function ($query) use ($selectedCategories, $filterNullCategory) {
+                $categoryIds = $selectedCategories
+                    ->filter(fn($categoryId) => $categoryId !== 'null' && $categoryId !== '')
+                    ->values();
+
+                $query->where(function ($categoryQuery) use ($categoryIds, $filterNullCategory) {
+                    if ($categoryIds->isNotEmpty()) {
+                        $categoryQuery->whereIn('category_id', $categoryIds->all());
+                    }
+
+                    if ($filterNullCategory) {
+                        if ($categoryIds->isNotEmpty()) {
+                            $categoryQuery->orWhereNull('category_id');
+                        } else {
+                            $categoryQuery->whereNull('category_id');
+                        }
+                    }
+                });
             })
             ->when($request->colors, function ($query) use ($request) {
                 $query->whereIn('color', $request->colors);
@@ -37,7 +56,7 @@ class ProductController extends Controller
             ->paginate(10)
             ->withQueryString();
 
-        return view('products.index', compact('products', 'categories', 'colors', 'materials'));
+        return view('products.index', compact('products', 'categories', 'colors', 'materials', 'null'));
     }
 
 

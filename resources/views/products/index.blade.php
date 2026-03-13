@@ -33,6 +33,11 @@
                 aria-label="Filtrera på kategori" 
                 class="text-sm text-gray-700 border border-gray-300 bg-white py-2 px-3 rounded cursor-pointer">
                     <option value="" disabled selected hidden>Välj...</option>
+                    @if ($null)
+                        <option value="{{ $null }}" {{ in_array($null, request('categories', [])) ? 'selected' : '' }}>
+                            Ingen kategori
+                        </option>
+                    @endif
                     @foreach ($categories as $category)
                         <option value="{{ $category->id }}" {{ in_array($category->id, request('categories', [])) ? 'selected' : '' }}>
                             {{ $category->name }}
