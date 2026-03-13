@@ -19,7 +19,7 @@
 
     {{-- Total categories found --}}
 
-    <p class="text-sm text-gray-500">{{ $categories->total() }} kategorier hittades</p>
+    <p class="text-sm text-gray-600">{{ $categories->total() }} kategorier hittades</p>
     <div class="bg-white p-4 rounded-lg shadow-sm overflow-x-auto">
 
 

@@ -133,7 +133,7 @@
     </form>
 
     {{-- Total products found --}}
-    <p class="text-sm text-gray-500">{{ $products->total() }} produkter hittades </p>
+    <p class="text-sm text-gray-600">{{ $products->total() }} produkter hittades </p>
 
     {{-- Products table --}}
     <div class="bg-white border border-gray-200 p-4 rounded-lg shadow-sm overflow-x-auto">
@@ -171,7 +171,7 @@
                     </tr>
                 @empty
                     <tr>
-                        <td colspan="7" class="text-center text-gray-400 py-12">
+                        <td colspan="7" class="text-center text-gray-600 py-12">
                             Inga produkter hittades som matchade din sökning.
                         </td>
                     </tr>
