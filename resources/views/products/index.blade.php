@@ -19,6 +19,7 @@
 
     {{-- Filter --}}
     <form 
+    id="filter-form"
     aria-label="Filtrera produkter" 
     method="GET" 
     action="{{ route('products.index') }}"
