@@ -15,6 +15,7 @@
         @csrf
         <label for="name"><strong>Namn</strong> <span class="text-red-600" aria-hidden="true">*</span></label>
         <input type="text" name="name" id="name" required class="border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500">
+        <p class="text-sm text-gray-500 -mt-2">Mellan 3 och 50 tecken och måste vara unikt.</p>
         <button type="submit" aria-label="Skapa ny kategori" class="bg-slate-500 hover:bg-slate-700 text-white py-2 px-4 rounded cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-500">Skapa</button>
     </form>
 
