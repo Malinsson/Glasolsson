@@ -86,5 +86,14 @@ document.addEventListener('DOMContentLoaded', function() {
                         successDialog.closest('.fixed').remove();
                 });
         }
+
+    const closeErrorButton = document.querySelector('[command="close"]');
+    const errorDialog = document.getElementById('dialog');
+    
+    if (closeErrorButton && errorDialog) {
+        closeErrorButton.addEventListener('click', function() {
+            errorDialog.closest('.fixed').remove();
+        });
+    }
     });
 

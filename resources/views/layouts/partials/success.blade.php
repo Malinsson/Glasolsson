@@ -18,7 +18,7 @@
                         <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
                             <h3 id="success-dialog-title" class="text-base font-semibold text-white">Klart</h3>
                             <div class="mt-2">
-                                <p class="text-sm text-gray-300">{{ $successMessage }}</p>
+                                <p class="text-sm text-white">{{ $successMessage }}</p>
                             </div>
                         </div>
                     </div>

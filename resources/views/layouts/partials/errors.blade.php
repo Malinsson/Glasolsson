@@ -5,7 +5,7 @@
 <section class="fixed inset-0 flex items-center justify-center z-50 w-full">
 <el-dialog open id="dialog" class="relative z-10" aria-labelledby="dialog-title" role="dialog" aria-modal="true">
     <div tabindex="0" class="flex min-h-full items-end justify-center p-4 text-center focus:outline-none sm:items-center sm:p-2">
-      <el-dialog-panel class="relative transform overflow-hidden rounded-lg bg-gray-800 text-left shadow-xl outline -outline-offset-1 outline-white/10 transition-all data-closed:translate-y-4 data-closed:opacity-0 data-enter:duration-300 data-enter:ease-out data-leave:duration-200 data-leave:ease-in w-60 sm:my-8 sm:w-full sm:max-w-lg data-closed:sm:translate-y-0 data-closed:sm:scale-95">
+      <el-dialog-panel class="relative transform overflow-hidden rounded-lg bg-slate-800 text-left shadow-xl outline -outline-offset-1 outline-white/10 transition-all data-closed:translate-y-4 data-closed:opacity-0 data-enter:duration-300 data-enter:ease-out data-leave:duration-200 data-leave:ease-in w-60 sm:my-8 sm:w-full sm:max-w-lg data-closed:sm:translate-y-0 data-closed:sm:scale-95">
         <div class="bg-slate-800 px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
           <div class="sm:flex sm:items-start">
             <div class="mx-auto flex size-12 shrink-0 items-center justify-center rounded-full bg-red-500/10 sm:mx-0 sm:size-10">
@@ -16,7 +16,7 @@
             <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
               <h3 id="dialog-title" class="text-base font-semibold text-white">Error</h3>
               <div class="mt-2">
-                <p class="text-sm text-gray-400">{{ $errors->first() }}</p>
+                <p class="text-sm text-white">{{ $errors->first() }}</p>
               </div>
             </div>
           </div>
@@ -32,16 +32,3 @@
 
 @endif
 
-
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const closeButton = document.querySelector('[command="close"]');
-    const errorDialog = document.getElementById('dialog');
-    
-    if (closeButton && errorDialog) {
-        closeButton.addEventListener('click', function() {
-            errorDialog.closest('.fixed').remove();
-        });
-    }
-});
-</script>
