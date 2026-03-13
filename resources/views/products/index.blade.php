@@ -78,6 +78,22 @@
                 </select>
             </div>
 
+            {{-- Sort by --}}
+            <div class="hidden lg:flex flex-col gap-1">
+                <label class="text-xs font-semibold text-gray-500 uppercase tracking-wide">Sortera efter</label>
+                <select
+                    name="sort"
+                    aria-label="Sortera produkter"
+                    class="text-sm text-gray-700 border border-gray-300 bg-white py-2 px-3 rounded cursor-pointer">
+                    <option value="id_asc" {{ request('sort', 'id_asc') === 'id_asc' ? 'selected' : '' }}>ID stigande</option>
+                    <option value="id_desc" {{ request('sort') === 'id_desc' ? 'selected' : '' }}>ID fallande</option>
+                    <option value="name_asc" {{ request('sort') === 'name_asc' ? 'selected' : '' }}>Namn A-Ö</option>
+                    <option value="name_desc" {{ request('sort') === 'name_desc' ? 'selected' : '' }}>Namn Ö-A</option>
+                    <option value="price_asc" {{ request('sort') === 'price_asc' ? 'selected' : '' }}>Pris lägst först</option>
+                    <option value="price_desc" {{ request('sort') === 'price_desc' ? 'selected' : '' }}>Pris högst först</option>
+                </select>
+        </div>
+        
             {{-- Price --}}
             <div class="hidden lg:flex flex-col gap-1">
                 <label class="text-xs font-semibold text-gray-500 uppercase tracking-wide">

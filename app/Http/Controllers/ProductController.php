@@ -22,6 +22,18 @@ class ProductController extends Controller
         $selectedCategories = collect($request->input('categories', []));
         $filterNullCategory = $selectedCategories->contains('null');
 
+        $sortOptions = [
+            'id_asc' => ['column' => 'id', 'direction' => 'asc'],
+            'id_desc' => ['column' => 'id', 'direction' => 'desc'],
+            'name_asc' => ['column' => 'name', 'direction' => 'asc'],
+            'name_desc' => ['column' => 'name', 'direction' => 'desc'],
+            'price_asc' => ['column' => 'price', 'direction' => 'asc'],
+            'price_desc' => ['column' => 'price', 'direction' => 'desc'],
+        ];
+
+        $sort = $request->input('sort', 'id_asc');
+        $selectedSort = $sortOptions[$sort] ?? $sortOptions['id_asc'];
+
         /** products filter query **/
         $products = Product::query()
             ->when($selectedCategories->isNotEmpty(), function ($query) use ($selectedCategories, $filterNullCategory) {
@@ -53,10 +65,11 @@ class ProductController extends Controller
                 $query->where('price', '<=', $request->max_price);
             })
             ->with('category')
+            ->orderBy($selectedSort['column'], $selectedSort['direction'])
             ->paginate(10)
             ->withQueryString();
 
-        return view('products.index', compact('products', 'categories', 'colors', 'materials', 'null'));
+        return view('products.index', compact('products', 'categories', 'colors', 'materials', 'null', 'selectedSort'));
     }
 
 
