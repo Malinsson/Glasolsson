@@ -15,7 +15,7 @@
         @csrf
         <label for="name">Namn <span class="text-red-600" aria-hidden="true">*</span></label>
         <input type="text" name="name" id="name" required class="border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500">
-        <p class="text-sm text-gray-500 -mt-2">Mellan 3 och 100 tecken och måste vara unikt.</p>
+        <p class="text-sm text-gray-500 -mt-2">Mellan 3 och 50 tecken och måste vara unikt.</p>
 
         <label for="color">Färg <span class="text-red-600" aria-hidden="true">*</span></label>
         <input list="color-options" name="color" id="color" required class="border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500">
@@ -27,8 +27,8 @@
         </datalist>
 
         <label for="material">Material <span class="text-red-600" aria-hidden="true">*</span></label>
-        <input list="material-options" name="material" id="material" required class="border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500">
-        <p class="text-sm text-gray-500 -mt-2">Mellan 2 och 100 tecken.</p>
+        <input list="material-options" name="material" id="material" min="2" max="50" required class="border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500">
+        <p class="text-sm text-gray-500 -mt-2">Mellan 2 och 50 tecken.</p>
         <datalist id="material-options">
             @foreach ($materials as $material)
                 <option value="{{ $material }}">
@@ -36,11 +36,11 @@
         </datalist>
 
         <label for="description">Produkt beskrivning <span class="text-red-600" aria-hidden="true">*</span></label>
-        <textarea name="description" id="description" rows="3" required class="border border-gray-300 rounded-md py-2 px-4 overflow-y-auto focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+        <textarea name="description" id="description" rows="3" minlength="10" maxlength="300" required class="border border-gray-300 rounded-md py-2 px-4 overflow-y-auto focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
         <p class="text-sm text-gray-500 -mt-2">Mellan 10 och 300 tecken.</p>
 
         <label for="price">Pris <span class="text-red-600" aria-hidden="true">*</span></label>
-        <input type="number" name="price" id="price" min="0" step="0.01" inputmode="decimal" required class="border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500">
+        <input type="number" name="price" id="price" min="0" max="999999.99" step="0.01" inputmode="decimal" required class="border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500">
         <p class="text-sm text-gray-500 -mt-2">Måste vara ett nummer och minst 0. Använd punkt för decimaler, till exempel 199.90.</p>
 
         <label for="category">Tilldela kategori <span class="text-red-600" aria-hidden="true">*</span></label>

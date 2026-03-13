@@ -78,10 +78,10 @@ class ProductController extends Controller
     {
 
         $request->validate([
-            'name' => 'required|unique:products|min:3|max:100',
+            'name' => 'required|unique:products|min:3|max:50',
             'color' => 'required|min:3|max:50',
-            'material' => 'required|min:2|max:100',
-            'price' => 'required|numeric|min:0',
+            'material' => 'required|min:2|max:50',
+            'price' => 'required|numeric|min:0|max:999999.99',
             'description' => 'required|min:10|max:300',
             'category_id' => 'required|exists:categories,id',
             'image' => 'nullable|file|mimetypes:image/jpeg,image/png,image/webp,image/avif|max:2048',
@@ -135,10 +135,10 @@ class ProductController extends Controller
     public function update(Request $request, Product $product)
     {
         $request->validate([
-            'name' => 'required|min:3|max:100|unique:products,name,' . $product->id,
+            'name' => 'required|min:3|max:50|unique:products,name,' . $product->id,
             'color' => 'required|min:3|max:50',
-            'material' => 'required|min:2|max:100',
-            'price' => 'required|numeric|min:0',
+            'material' => 'required|min:2|max:50',
+            'price' => 'required|numeric|min:0|max:999999.99',
             'description' => 'required|min:10|max:300',
             'category_id' => 'required|exists:categories,id',
             'image' => 'nullable|file|mimetypes:image/jpeg,image/png,image/webp,image/avif|max:2048',
