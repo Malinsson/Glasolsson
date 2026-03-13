@@ -103,7 +103,7 @@
                 <button 
                     type="submit" 
                     aria-label="Applicera filter" 
-                    class="bg-slate-700 hover:bg-slate-900 text-white text-sm font-semibold py-2 px-4 rounded transition-colors duration-150 focus:outline-2">
+                    class="bg-slate-700 hover:bg-slate-900 text-white text-sm font-semibold py-2 px-4 rounded cursor-pointer transition-colors duration-150 focus:outline-2">
                     Applicera
                 </button>
             </div>

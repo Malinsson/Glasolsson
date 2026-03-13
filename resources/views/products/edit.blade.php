@@ -56,7 +56,7 @@
             <p>Nuvarande bild: {{ basename($product->image) }}</p>
         @endif
 
-        <button type="submit" aria-label="Uppdatera produkt" class="bg-slate-700 hover:bg-slate-800 text-white py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+        <button type="submit" aria-label="Uppdatera produkt" class="bg-slate-700 hover:bg-slate-800 text-white py-2 px-4 rounded cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-500">
             <strong>Uppdatera produkt</strong>
         </button>
 
