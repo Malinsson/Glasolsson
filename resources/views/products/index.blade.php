@@ -7,15 +7,15 @@
 <div class="w-full max-w-6xl mx-auto px-3 pb-3 pt-3">
 
     {{-- Header --}}
-    <div class="flex items-center justify-between pb-6 pt-6">
-        <h2 class="text-2xl font-bold text-gray-900">Produkter</h2>
-        <a 
-            class="bg-slate-700 hover:bg-slate-900 text-white text-sm font-semibold py-2 px-4 rounded transition-colors duration-150 focus:outline-none focus:ring-2 focus:ring-blue-500" 
-            href="{{ route('products.create') }}"
-            aria-label="Skapa ny produkt">
+    <section class="font-text flex flex-row items-center justify-between pb-6 pt-6">
+        <div>
+            <h2 class="text-2xl font-bold text-gray-900">Produkter</h2>
+            {{ Breadcrumbs::render('produkter') }}
+        </div>
+        <a href="{{ route('products.create') }}" aria-label="Skapa ny produkt" class="btn-primary">
             Skapa ny produkt
         </a>
-    </div>
+    </section>
 
     {{-- Filter --}}
     <form 
@@ -138,7 +138,7 @@
 
     {{-- Products table --}}
     <div class="bg-white border border-gray-200 p-4 rounded-lg shadow-sm overflow-x-auto">
-        <table class="table" aria-label="Navigeringslista för utökad information om produkter" aria-rowcount="{{ $products->total() + 1 }}">
+        <table class="table" aria-label="Navigeringstabel för utökad information om produkter" aria-rowcount="{{ $products->total() + 1 }}">
             <thead>
                 <tr>
                     <th scope="col" class="th-col">ID</th>

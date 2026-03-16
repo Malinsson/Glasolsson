@@ -5,17 +5,18 @@
 @section('content')
 
 <div aria-label="Kategorilista" class="w-full max-w-6xl mx-auto px-3 pb-3 pt-3">
-
+    
+    
     {{-- Header --}}
-    <div class="flex items-center justify-between pb-6 pt-6">
-        <h2 class="text-2xl"><strong>Kategorier</strong></h2>
-        <a 
-        class="bg-slate-700 hover:bg-slate-900 text-white text-sm font-semibold py-2 px-4 rounded transition-colors duration-150 focus:outline-none focus:ring-2 focus:ring-blue-500" 
-        aria-label="Skapa ny kategori" 
-        href="{{ route('categories.create') }}">
-        Skapa ny kategori
+    <section class="font-text flex flex-row items-center justify-between pb-6 pt-6">
+        <div>
+            <h2 class="text-2xl font-bold text-gray-900">Kategorier</h2>
+            {{ Breadcrumbs::render('kategorier') }}
+        </div>
+        <a href="{{ route('categories.create') }}" aria-label="Skapa ny kategori" class="btn-primary">
+            Skapa ny kategori
         </a>
-    </div>
+    </section>
 
     {{-- Total categories found --}}
 
@@ -24,7 +25,7 @@
 
 
         {{-- Categories table --}}
-        <table class="table" aria-label="Navigeringslista för kategorier" aria-rowcount="{{ $categories->total() + 1 }}">
+        <table class="table" aria-label="Navigeringstabel för kategorier" aria-rowcount="{{ $categories->total() + 1 }}">
     
             <thead>
                 <tr>
