@@ -148,6 +148,7 @@
                     <th scope="col" class="th-col hidden lg:table-cell">Material</th>
                     <th scope="col" class="th-col hidden lg:table-cell">Färg</th>
                     <th scope="col" class="th-col"></th>
+                    <th scope="col" class="th-col hidden lg:table-cell"></th>
                 </tr>
             </thead>
             
@@ -169,10 +170,22 @@
                                 Ändra
                             </a>
                         </td>
+                        <td class="td-cell hidden lg:table-cell">
+                            <button 
+                                type="button"
+                                data-delete-url="{{ route('products.destroy', ['product' => $product->id]) }}"
+                                class="open-delete-modal inline-flex items-center gap-1 text-sm text-red-600 hover:text-red-900 font-medium hover:underline focus:outline-2"
+                                aria-label="Radera {{ $product->name }}">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" class="w-4 h-4" fill="currentColor" aria-hidden="true">
+                                    <path d="M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z"/>
+                                </svg>
+                                Radera
+                            </button>
+                        </td>
                     </tr>
                 @empty
                     <tr>
-                        <td colspan="7" class="text-center text-gray-600 py-12">
+                        <td colspan="8" class="text-center text-gray-600 py-12">
                             Inga produkter hittades som matchade din sökning.
                         </td>
                     </tr>
