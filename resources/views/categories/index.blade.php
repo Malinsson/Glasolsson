@@ -5,17 +5,18 @@
 @section('content')
 
 <div aria-label="Kategorilista" class="w-full max-w-6xl mx-auto px-3 pb-3 pt-3">
-
+    
+    
     {{-- Header --}}
-    <div class="flex items-center justify-between pb-6 pt-6">
-        <h2 class="text-2xl"><strong>Kategorier</strong></h2>
-        <a 
-        class="bg-slate-700 hover:bg-slate-900 text-white text-sm font-semibold py-2 px-4 rounded transition-colors duration-150 focus:outline-none focus:ring-2 focus:ring-blue-500" 
-        aria-label="Skapa ny kategori" 
-        href="{{ route('categories.create') }}">
-        Skapa ny kategori
+    <section class="font-text flex flex-row items-center justify-between pb-6 pt-6">
+        <div>
+            <h2 class="text-2xl font-bold text-gray-900">Kategorier</h2>
+            {{ Breadcrumbs::render('kategorier') }}
+        </div>
+        <a href="{{ route('categories.create') }}" aria-label="Skapa ny kategori" class="btn-primary">
+            Skapa ny kategori
         </a>
-    </div>
+    </section>
 
     {{-- Total categories found --}}
 
@@ -24,13 +25,14 @@
 
 
         {{-- Categories table --}}
-        <table class="table" aria-label="Navigeringslista för kategorier" aria-rowcount="{{ $categories->total() + 1 }}">
+        <table class="table" aria-label="Navigeringstabel för kategorier" aria-rowcount="{{ $categories->total() + 1 }}">
     
             <thead>
                 <tr>
                     <th scope="col" class="th-col">ID</th>
                     <th scope="col" class="th-col">Namn</th>
                     <th scope="col" class="th-col"></th>
+                    <th scope="col" class="th-col hidden lg:table-cell"></th>
                 </tr>
             </thead>
     
@@ -47,6 +49,18 @@
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" class="w-4 h-4" fill="#000000" aria-hidden="true"><path d="M200-200h57l391-391-57-57-391 391v57Zm-80 80v-170l528-527q12-11 26.5-17t30.5-6q16 0 31 6t26 18l55 56q12 11 17.5 26t5.5 30q0 16-5.5 30.5T817-647L290-120H120Zm640-584-56-56 56 56Zm-141 85-28-29 57 57-29-28Z"/></svg>
                             Ändra
                         </a>
+                    </td>
+                    <td class="td-cell hidden lg:table-cell">
+                        <button 
+                            type="button"
+                            data-delete-url="{{ route('categories.destroy', ['category' => $category->id]) }}"
+                            class="open-delete-modal inline-flex items-center gap-1 text-sm text-red-600 hover:text-red-900 font-medium hover:underline focus:outline-2"
+                            aria-label="Radera {{ $category->name }}">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" class="w-4 h-4" fill="currentColor" aria-hidden="true">
+                                <path d="M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z"/>
+                            </svg>
+                            Radera
+                        </button>
                     </td>
                 </tr>
                                     

@@ -58,6 +58,10 @@ main {
     @apply border-b border-gray-200 text-left font-medium text-gray-700 hover:bg-gray-50;
 }
 
+.btn-primary {
+    @apply bg-slate-700 hover:bg-slate-900 text-white text-sm font-semibold py-2 px-4 rounded transition-colors duration-150 focus:outline-none focus:ring-2 focus:ring-blue-500 text-nowrap;
+}
+
 /* Pagination: */
 
 /* text */

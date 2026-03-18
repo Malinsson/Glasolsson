@@ -4,12 +4,19 @@
 
 @section('content')
 
-    <div class="flex items-center justify-between font-text my-4">
-        <h2 class="p-3 text-xl font-text"><strong>Redigera kategori</strong></h2>
-        <a href="{{ route('categories.index') }}" aria-label="Gå tillbaka till kategorier" class="bg-slate-600 hover:bg-slate-800 text-white py-2 px-4 rounded cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-500">Tillbaka till kategorier</a>
-    </div>
+<div class="w-full max-w-6xl mx-auto px-3 pb-3 pt-3">
 
-<section aria-label="Redigera kategori" class="font-text flex flex-col flex-wrap gap-3 m-4 py-2 px-4 bg-white rounded shadow-md">
+    <section class="font-text flex flex-row items-center justify-between pb-6 pt-6">
+        <div>
+            <h2 class="text-2xl font-bold text-gray-900">Redigera produkt</h2>
+            {{ Breadcrumbs::render('categories.show', $category) }}
+        </div>
+        <a href="{{ route('categories.index') }}" aria-label="Gå tillbaka till produkter" class="btn-primary">
+            Tillbaka till produkter
+        </a>
+    </section>
+
+    <section aria-label="Redigera kategori" class="font-text flex flex-col flex-wrap gap-3 bg-white rounded shadow-md p-4">
 
     <h2 class="text-xl font-text"><strong>{{ $category->name }}</strong></h2>
     <p>Id: {{$category->id}}</p>
